@@ -1,0 +1,137 @@
+﻿<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo TOMY 1984 · Gaucho</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Chivo:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap">
+  <style>
+    :root {
+      --paper: #F4E2C4;
+      --plastic: #E8C69D;
+      --ink: #0A2B46;
+      --blue: #133A51;
+      --black: #0B0F14;
+      --red: #F3462E;
+      --glow: #FF6A55;
+      --gold: #EAA540;
+      --sky: #74ACDF;
+      --orange: #F28409;
+      --brown: #523823;
+      --night: #000320;
+      --surface: var(--paper);
+      --text: var(--ink);
+      --accent: var(--sky);
+    }
+    /* Estructura mobile first. Cada kit conserva sus propios tokens y reglas. */
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background-color: var(--surface); font: 1rem/1.55 Chivo, Arial, sans-serif; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+    .frame { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+    .kit-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; padding-block: 1rem; font-size: .875rem; }
+    main { padding-bottom: 2rem; }
+    .hero { display: grid; gap: 1.25rem; align-items: center; padding-block: 1.25rem; }
+    .label { margin: 0; font-size: .875rem; font-weight: 700; }
+    h1 { font-size: clamp(3rem, 11vw, 8rem); line-height: .98; margin: .15em 0; }
+    h2, h3 { margin: 0 0 .35rem; line-height: 1.15; }
+    .voice { max-width: 37ch; }
+    .cta { display: inline-block; padding: .65rem 1rem; border: 2px solid var(--black); color: var(--black); background: var(--accent); font-weight: 700; text-decoration: none; }
+    .cta:hover { text-decoration: underline; }
+    .cta:focus-visible { outline-color: var(--text); }
+    .art { margin: 0; min-width: 0; }
+    .art img { display: block; width: 100%; height: clamp(13rem, 40vw, 25rem); object-fit: cover; }
+    .samples { display: grid; gap: 1rem; margin-block: 1rem; }
+    .experience, .status, .system { padding: 1rem; border: 1px solid; }
+    .experience p { margin: .45rem 0; }
+    .status ul, .palette { list-style: none; padding: 0; margin: .75rem 0 0; }
+    .status ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: .35rem; }
+    .status li { display: grid; justify-items: start; gap: .35rem; font-size: .875rem; }
+    /* El texto y la silueta distinguen los estados incluso sin percibir el color. */
+    .eyes { display: inline-flex; align-items: center; gap: .22rem; min-height: 2rem; padding: .35rem; background: var(--black); border: 1px solid var(--paper); }
+    .eyes i { display: block; width: .72rem; height: .72rem; border-radius: 50%; background: var(--red); }
+    .eyes::before { content: ''; order: 1; width: .2rem; height: .35rem; background: var(--gold); }
+    .eyes i:last-child { order: 2; }
+    .thinking i { height: .3rem; background: var(--gold); }
+    .off i { background: transparent; border: 1px solid var(--sky); }
+    .palette { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .6rem; font-size: .875rem; }
+    .swatch { height: 1rem; display: block; background: var(--swatch); border: 1px solid currentColor; }
+    .palette code { display: block; }
+    .demo { margin-top: 1rem; }
+    .demo summary { cursor: pointer; font-weight: 700; width: fit-content; }
+    .demo:not(:target) { display: none; }
+    @media (min-width: 48rem) {
+      .hero { grid-template-columns: 1.15fr 1fr; }
+      .samples { grid-template-columns: 1.15fr 1fr; }
+    }
+    /* Puntos de tinta y cotas esquemáticas tomadas del lenguaje del afiche. */
+    body { background-image: radial-gradient(#52382325 .55px, transparent .8px); background-size: 5px 7px; }
+    h1 { font-family: Anton, Impact, sans-serif; }
+    .label, .kit-nav, .palette { font-family: 'IBM Plex Mono', monospace; }
+    .label { letter-spacing: .14em; text-transform: uppercase; }
+    .hero { border-block: 1px solid; }
+    .stripe { height: 1.15rem; max-width: 27rem; margin: 1rem 0; background: linear-gradient(var(--red) 25%, var(--orange) 25% 50%, var(--gold) 50% 75%, var(--sky) 75%); }
+    .art { padding: .65rem; border: 1px solid; }
+    .art img { object-fit: contain; background: var(--plastic); }
+    .dimensions { display: flex; justify-content: space-between; border-inline: 1px solid; border-bottom: 1px solid; margin-top: .55rem; }
+    .experience { background: var(--plastic); }
+    .stamp { display: inline-block; border: 3px double; padding: .2rem .55rem; transform: rotate(-5deg); }
+  </style>
+</head>
+<body>
+  <header class="frame kit-nav">
+    <a href="index.html">Comparar propuestas</a>
+    <span>Catálogo TOMY 1984</span>
+  </header>
+  <main class="frame">
+    <section class="hero" aria-label="Presentación de Gaucho">
+      <div>
+        <p class="label">Ficha de producto · Omnibot 1984</p>
+        <h1>GAUCHO</h1>
+        <div class="stripe" aria-hidden="true"></div>
+        <p class="voice">Soy un TOMY del 84 y busco laburo. Si tenés un proyecto con fierros, pasame las medidas que me acomodo.</p>
+        <a class="cta" href="#contratar">Contratar a Gaucho</a>
+        <aside class="demo" id="contratar" tabindex="-1">
+          <strong>Demo de contratación</strong>
+          <p>El canal de contacto se va a definir con Paisanos.</p>
+        </aside>
+      </div>
+      <figure class="art">
+        <img src="../../../../assets/Gaucho/fotitos/arte/merch_oficial_gaucho_omnibot_tomy_1984.png" alt="Póster oficial de Gaucho con el Omnibot, un sol naranja y planos técnicos">
+        <figcaption class="dimensions label"><span>150</span><span>240</span><span>300</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="samples" aria-label="Componentes">
+      <article class="experience">
+        <p class="label">Jurado · Paisanos × SLA</p>
+        <h2>Hackware</h2>
+        <p>Fui jurado en una hackatón de hardware de 12 horas. Me tocaron los fierros de otros, todo un voto de confianza.</p>
+        <span class="stamp label">APROBADO</span>
+      </article>
+      <section class="status" aria-labelledby="estados">
+        <h2 id="estados">Ojos de Gaucho</h2>
+        <ul>
+          <li><span class="eyes ready" aria-hidden="true"><i></i><i></i></span>Listo</li>
+          <li><span class="eyes thinking" aria-hidden="true"><i></i><i></i></span>Pensando</li>
+          <li><span class="eyes off" aria-hidden="true"><i></i><i></i></span>Apagado</li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="system" aria-labelledby="paleta">
+      <h2 id="paleta">Paleta y tipografías</h2>
+      <p>Anton · IBM Plex Mono · Chivo</p>
+      <ul class="palette">
+        <li><span class="swatch" style="--swatch: var(--paper)" aria-hidden="true"></span>Crema TOMY <code>#F4E2C4</code></li>
+        <li><span class="swatch" style="--swatch: var(--plastic)" aria-hidden="true"></span>Crema plástico <code>#E8C69D</code></li>
+        <li><span class="swatch" style="--swatch: var(--ink)" aria-hidden="true"></span>Azul Omnibot <code>#0A2B46</code></li>
+        <li><span class="swatch" style="--swatch: var(--red)" aria-hidden="true"></span>Rojo ojos <code>#F3462E</code></li>
+        <li><span class="swatch" style="--swatch: var(--orange)" aria-hidden="true"></span>Naranja <code>#F28409</code></li>
+        <li><span class="swatch" style="--swatch: var(--gold)" aria-hidden="true"></span>Amarillo sol <code>#EAA540</code></li>
+        <li><span class="swatch" style="--swatch: var(--sky)" aria-hidden="true"></span>Celeste bandera <code>#74ACDF</code></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

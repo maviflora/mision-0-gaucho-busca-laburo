@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taller de noche · Gaucho</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&amp;family=IBM+Plex+Mono&amp;family=Oswald:wght@700&amp;display=swap">
+  <style>
+    :root {
+      --paper: #F4E2C4;
+      --plastic: #E8C69D;
+      --ink: #0A2B46;
+      --blue: #133A51;
+      --black: #0B0F14;
+      --red: #F3462E;
+      --glow: #FF6A55;
+      --gold: #EAA540;
+      --sky: #74ACDF;
+      --orange: #F28409;
+      --brown: #523823;
+      --night: #000320;
+      --surface: var(--black);
+      --text: var(--paper);
+      --accent: var(--red);
+    }
+    /* Estructura mobile first. Cada kit conserva sus propios tokens y reglas. */
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background-color: var(--surface); font: 1rem/1.55 Chivo, Arial, sans-serif; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+    .frame { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+    .kit-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; padding-block: 1rem; font-size: .875rem; }
+    main { padding-bottom: 2rem; }
+    .hero { display: grid; gap: 1.25rem; align-items: center; padding-block: 1.25rem; }
+    .label { margin: 0; font-size: .875rem; font-weight: 700; }
+    h1 { font-size: clamp(3rem, 11vw, 8rem); line-height: .98; margin: .15em 0; }
+    h2, h3 { margin: 0 0 .35rem; line-height: 1.15; }
+    .voice { max-width: 37ch; }
+    .cta { display: inline-block; padding: .65rem 1rem; border: 2px solid var(--black); color: var(--black); background: var(--accent); font-weight: 700; text-decoration: none; }
+    .cta:hover { text-decoration: underline; }
+    .cta:focus-visible { outline-color: var(--text); }
+    .art { margin: 0; min-width: 0; }
+    .art img { display: block; width: 100%; height: clamp(13rem, 40vw, 25rem); object-fit: cover; }
+    .samples { display: grid; gap: 1rem; margin-block: 1rem; }
+    .experience, .status, .system { padding: 1rem; border: 1px solid; }
+    .experience p { margin: .45rem 0; }
+    .status ul, .palette { list-style: none; padding: 0; margin: .75rem 0 0; }
+    .status ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: .35rem; }
+    .status li { display: grid; justify-items: start; gap: .35rem; font-size: .875rem; }
+    /* El texto y la silueta distinguen los estados incluso sin percibir el color. */
+    .eyes { display: inline-flex; align-items: center; gap: .22rem; min-height: 2rem; padding: .35rem; background: var(--black); border: 1px solid var(--paper); }
+    .eyes i { display: block; width: .72rem; height: .72rem; border-radius: 50%; background: var(--red); }
+    .eyes::before { content: ''; order: 1; width: .2rem; height: .35rem; background: var(--gold); }
+    .eyes i:last-child { order: 2; }
+    .thinking i { height: .3rem; background: var(--gold); }
+    .off i { background: transparent; border: 1px solid var(--sky); }
+    .palette { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .6rem; font-size: .875rem; }
+    .swatch { height: 1rem; display: block; background: var(--swatch); border: 1px solid currentColor; }
+    .palette code { display: block; }
+    .demo { margin-top: 1rem; }
+    .demo summary { cursor: pointer; font-weight: 700; width: fit-content; }
+    .demo:not(:target) { display: none; }
+    @media (min-width: 48rem) {
+      .hero { grid-template-columns: 1.15fr 1fr; }
+      .samples { grid-template-columns: 1.15fr 1fr; }
+    }
+    /* La viñeta roja cae sobre el acanalado, lejos del texto principal. */
+    body { background-image: radial-gradient(ellipse at top right, #74281866, transparent 58%), repeating-linear-gradient(90deg, transparent 0 13px, #52382333 14px 16px, #0005 17px 19px); }
+    h1 { font-family: Oswald, Impact, sans-serif; }
+    .label, .kit-nav { font-family: 'IBM Plex Mono', monospace; }
+    .neon { width: fit-content; margin: 1rem 0; padding: .2rem .6rem; border: 1px solid var(--glow); color: var(--paper); font: 700 1.25rem Oswald, Impact, sans-serif; letter-spacing: .13em; text-shadow: 0 0 5px var(--glow), 0 0 12px var(--red); box-shadow: 0 0 14px #f3462e55; }
+    .art { border: 1px solid var(--glow); padding: .35rem; background: var(--black); }
+    .art img { object-position: center 48%; }
+    .experience { background: var(--black); border-left: .35rem solid var(--red); }
+    .eyes { box-shadow: inset 0 0 0 1px var(--brown); }
+    .ready i { box-shadow: 0 0 .65rem var(--red); }
+  </style>
+</head>
+<body>
+  <header class="frame kit-nav">
+    <a href="index.html">Comparar propuestas</a>
+    <span>Taller de noche</span>
+  </header>
+  <main class="frame">
+    <section class="hero" aria-label="Presentación de Gaucho">
+      <div>
+        <p class="label">Banco de trabajo · Omnibot 1984</p>
+        <h1>GAUCHO</h1>
+        <p class="neon">CONTRATAME</p>
+        <p class="voice">Tengo dos motores y ganas de laburar. Si me vas a poner bajo presión, dejame un poco de aire para la Raspberry.</p>
+        <a class="cta" href="#contratar">Contratar a Gaucho</a>
+        <aside class="demo" id="contratar" tabindex="-1">
+          <strong>Demo de contratación</strong>
+          <p>El canal de contacto se va a definir con Paisanos.</p>
+        </aside>
+      </div>
+      <figure class="art">
+        <img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho con los ojos encendidos bajo el neón de Paisanos y la bandera argentina">
+        
+      </figure>
+    </section>
+
+    <section class="samples" aria-label="Componentes">
+      <article class="experience">
+        <p class="label">Speaker · Escenario Visión</p>
+        <h2>LABITCONF 2026</h2>
+        <p>Subí al escenario a hablar de creatividad humana. Los nervios también vinieron, pero no les dieron micrófono.</p>
+        
+      </article>
+      <section class="status" aria-labelledby="estados">
+        <h2 id="estados">Ojos de Gaucho</h2>
+        <ul>
+          <li><span class="eyes ready" aria-hidden="true"><i></i><i></i></span>Listo</li>
+          <li><span class="eyes thinking" aria-hidden="true"><i></i><i></i></span>Pensando</li>
+          <li><span class="eyes off" aria-hidden="true"><i></i><i></i></span>Apagado</li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="system" aria-labelledby="paleta">
+      <h2 id="paleta">Paleta y tipografías</h2>
+      <p>Oswald · Chivo · IBM Plex Mono</p>
+      <ul class="palette">
+        <li><span class="swatch" style="--swatch: var(--black)" aria-hidden="true"></span>Negro taller <code>#0B0F14</code></li>
+        <li><span class="swatch" style="--swatch: var(--brown)" aria-hidden="true"></span>Marrón sombrero <code>#523823</code></li>
+        <li><span class="swatch" style="--swatch: var(--paper)" aria-hidden="true"></span>Crema TOMY <code>#F4E2C4</code></li>
+        <li><span class="swatch" style="--swatch: var(--red)" aria-hidden="true"></span>Rojo ojos <code>#F3462E</code></li>
+        <li><span class="swatch" style="--swatch: var(--glow)" aria-hidden="true"></span>Rojo glow <code>#FF6A55</code></li>
+        <li><span class="swatch" style="--swatch: var(--gold)" aria-hidden="true"></span>Amarillo sol <code>#EAA540</code></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

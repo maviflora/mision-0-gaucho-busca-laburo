@@ -1,0 +1,236 @@
+﻿<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Videos 16-bit · Gaucho</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Chivo:wght@400;600;700&amp;family=IBM+Plex+Mono&amp;display=swap">
+  <style>
+    :root {
+      --surface: #000320;
+      --text: #F4E2C4;
+      --panel: #0A2B46;
+      --line: #74ACDF;
+      --accent: #EAA540;
+      --title-font: clamp(1.55rem, 5.5vw, 3.8rem)/1.35 'Press Start 2P', monospace;
+      --mark-font: clamp(1.2rem, 4vw, 2rem)/1.4 'Press Start 2P', monospace;
+    }
+    /* Las placas y el storyboard comparten los mismos tokens de la guía. */
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--surface); color: var(--text); font: 1rem/1.55 Chivo, Arial, sans-serif; }
+    main, nav { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+    nav { padding-block: 1rem; }
+    a { color: inherit; text-underline-offset: .22em; }
+    a:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font: var(--title-font); overflow-wrap: anywhere; }
+    h2 { font-size: 1.45rem; line-height: 1.18; }
+    h3 { font-size: 1rem; }
+    p + p { margin-top: .45rem; }
+    .eyebrow, .shot-time, .swatch code { font: .85rem/1.5 'IBM Plex Mono', monospace; }
+    .eyebrow, .shot-time { color: var(--accent); }
+    .hero { padding: clamp(1rem, 4vw, 3rem); border: 1px solid var(--line); background: var(--panel); }
+    .hero h1 { margin-block: .45rem .85rem; }
+    .hero p { max-width: 66ch; }
+    .section { margin-block: 1.8rem; }
+    .section > h2 { margin-bottom: .65rem; }
+    .palette, .storyboard { list-style: none; padding: 0; }
+    .palette { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .5rem; }
+    .swatch { border: 1px solid var(--line); padding: .35rem; font-size: .875rem; }
+    .swatch span { display: block; height: 1.5rem; margin-bottom: .25rem; background: var(--sample); border: 1px solid var(--line); }
+    .swatch code { display: block; }
+    .production, .plates { display: grid; gap: .75rem; }
+    .production article { border-top: 1px solid var(--line); padding-top: .65rem; }
+    .storyboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: .75rem; }
+    .shot { background: var(--panel); border: 1px solid var(--line); }
+    .shot svg { width: 100%; aspect-ratio: 16 / 9; display: block; border-bottom: 1px solid var(--line); }
+    .shot div { padding: .6rem; }
+    .shot p { font-size: .92rem; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--panel); border: 1px solid var(--line); padding: .9rem; font: .9rem/1.6 'IBM Plex Mono', monospace; }
+    .plate { min-height: 11rem; padding: 1rem; display: grid; align-content: center; justify-items: start; gap: .55rem; background: var(--panel); border: 1px solid var(--line); }
+    .wordmark { font: var(--mark-font); letter-spacing: .04em; }
+    .stripe { display: block; width: min(100%, 10rem); height: .6rem; background: linear-gradient(90deg, #F3462E 25%, #F28409 25% 50%, #EAA540 50% 75%, #74ACDF 75%); }
+    .caption-example { display: inline-block; margin-top: .45rem; padding: .12rem .4rem; background: #0B0F14; color: #F4E2C4; font-weight: 600; }
+    .cta { color: #0B0F14; background: var(--accent); padding: .25rem .65rem; font-weight: 700; }
+    @media (min-width: 42rem) { .production, .plates { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+  <nav aria-label="Design kits"><a href="../../index.html">Todos los design kits</a></nav>
+  <main>
+    <header class="hero">
+      <p class="eyebrow">Cartucho de taller</p>
+      <h1>Videos 16-bit</h1>
+      <p><strong>Concepto.</strong> Metí mi búsqueda de laburo en un cartucho de 16 bits.</p>
+      <p><strong>Regla de oro.</strong> Si no se entiende el gag en silueta, sacale ruido antes de sumar frames.</p>
+    </header>
+
+    <section class="section" aria-labelledby="story">
+      <h2 id="story">El check · Easter egg 7.1</h2>
+      <p>Una terminal de empleo inventada, en la onda de Gaucho Adventures. El chiste vive en la pausa entre el check y los ojos rojos.</p>
+      <!-- Cinco encuadres de referencia. La descripción de cada cuadro acompaña al dibujo. -->
+      <ol class="storyboard">
+        <li class="shot">
+      <svg viewBox="0 0 160 90" aria-hidden="true" shape-rendering="crispEdges">
+        <path fill="#000320" d="M0 0h160v90H0z"/><path fill="#133A51" d="M0 62h160v28H0z"/><path stroke="#293358" d="M0 70h160M0 82h160M20 62 4 90m56-28-5 28m50-28 5 28m23-28 19 28"/><path fill="#523823" d="M118 51h31v31h-4V56h-27z"/>
+        <g transform="translate(34 31)">
+          <ellipse cx="25" cy="53" rx="27" ry="4" fill="#0B0F14" opacity=".62"/>
+          <path fill="#0B0F14" d="M6 46h11v8H6zm27 0h11v8H33z"/>
+          <path fill="#E8C69D" d="M9 25h32l5 21-4 5H8l-4-5z"/>
+          <path fill="#CAA47B" d="M10 42h30l2 5H8z"/>
+          <path fill="#F4E2C4" d="M13 1h24l7 7v14l-5 5H11l-5-5V8z"/>
+          <path fill="#0A2B46" d="M10 9h30v12H10zm4 21h22v9H14z"/>
+          <circle cx="16" cy="15" r="4" fill="#F3462E"/>
+          <circle cx="34" cy="15" r="4" fill="#F3462E"/>
+          <path fill="#EAA540" d="M24 12h2v12h-2z"/>
+          <path fill="#0B0F14" d="M22 11h6v5h-6z"/>
+          <path stroke="#97A1AA" stroke-width="6" fill="none" d="M8 30 1 35l-2 8m43-13 7 6 1 7"/>
+          <path stroke="#0B0F14" stroke-width="3" fill="none" d="M-4 46v-4h6v4m43 0v-4h6v4"/>
+        </g>
+        
+      </svg>
+          <div><span class="shot-time">0–1 s</span><h3>Arranque</h3><p>Ruedo hacia la terminal y freno.</p></div>
+        </li>
+        <li class="shot">
+      <svg viewBox="0 0 160 90" aria-hidden="true" shape-rendering="crispEdges">
+        <path fill="#000320" d="M0 0h160v90H0z"/><path fill="#133A51" d="M0 62h160v28H0z"/><path stroke="#293358" d="M0 70h160M0 82h160M20 62 4 90m56-28-5 28m50-28 5 28m23-28 19 28"/><path fill="#523823" d="M118 51h31v31h-4V56h-27z"/>
+        <g transform="translate(48 31)">
+          <ellipse cx="25" cy="53" rx="27" ry="4" fill="#0B0F14" opacity=".62"/>
+          <path fill="#0B0F14" d="M6 46h11v8H6zm27 0h11v8H33z"/>
+          <path fill="#E8C69D" d="M9 25h32l5 21-4 5H8l-4-5z"/>
+          <path fill="#CAA47B" d="M10 42h30l2 5H8z"/>
+          <path fill="#F4E2C4" d="M13 1h24l7 7v14l-5 5H11l-5-5V8z"/>
+          <path fill="#0A2B46" d="M10 9h30v12H10zm4 21h22v9H14z"/>
+          <circle cx="16" cy="15" r="4" fill="#F3462E"/>
+          <circle cx="34" cy="15" r="4" fill="#F3462E"/>
+          <path fill="#EAA540" d="M24 12h2v12h-2z"/>
+          <path fill="#0B0F14" d="M22 11h6v5h-6z"/>
+          <path stroke="#97A1AA" stroke-width="6" fill="none" d="M8 30 1 35l-2 8m43-13 7 6 1 7"/>
+          <path stroke="#0B0F14" stroke-width="3" fill="none" d="M-4 46v-4h6v4m43 0v-4h6v4"/>
+        </g>
+        <g><path fill="#74ACDF" d="M97 8h59v33H97z"/><path fill="#000320" d="M99 17h55v22H99z"/><path stroke="#F4E2C4" fill="none" d="M104 23h10v10h-10z"/><text x="117" y="31" fill="#F4E2C4" font-size="4.7" font-family="monospace">NO SOY ROBOT</text></g>
+      </svg>
+          <div><span class="shot-time">1–3 s</span><h3>El pedido</h3><p>La pantalla pide «No soy un robot».</p></div>
+        </li>
+        <li class="shot">
+      <svg viewBox="0 0 160 90" aria-hidden="true" shape-rendering="crispEdges">
+        <path fill="#000320" d="M0 0h160v90H0z"/><path fill="#133A51" d="M0 62h160v28H0z"/><path stroke="#293358" d="M0 70h160M0 82h160M20 62 4 90m56-28-5 28m50-28 5 28m23-28 19 28"/><path fill="#523823" d="M118 51h31v31h-4V56h-27z"/>
+        <g transform="translate(58 31)">
+          <ellipse cx="25" cy="53" rx="27" ry="4" fill="#0B0F14" opacity=".62"/>
+          <path fill="#0B0F14" d="M6 46h11v8H6zm27 0h11v8H33z"/>
+          <path fill="#E8C69D" d="M9 25h32l5 21-4 5H8l-4-5z"/>
+          <path fill="#CAA47B" d="M10 42h30l2 5H8z"/>
+          <path fill="#F4E2C4" d="M13 1h24l7 7v14l-5 5H11l-5-5V8z"/>
+          <path fill="#0A2B46" d="M10 9h30v12H10zm4 21h22v9H14z"/>
+          <circle cx="16" cy="15" r="4" fill="#F3462E"/>
+          <circle cx="34" cy="15" r="4" fill="#F3462E"/>
+          <path fill="#EAA540" d="M24 12h2v12h-2z"/>
+          <path fill="#0B0F14" d="M22 11h6v5h-6z"/>
+          <path stroke="#97A1AA" stroke-width="6" fill="none" d="M8 30 1 35l-2 8m43-13 8-5 10-8"/>
+          <path stroke="#0B0F14" stroke-width="3" fill="none" d="M-4 46v-4h6v4m54-29v-3h6v3"/>
+        </g>
+        <g><path fill="#74ACDF" d="M97 8h59v33H97z"/><path fill="#000320" d="M99 17h55v22H99z"/><path stroke="#F4E2C4" fill="none" d="M104 23h10v10h-10z"/><text x="119" y="31" fill="#F4E2C4" font-size="5" font-family="monospace">NO SOY BOT</text></g>
+      </svg>
+          <div><span class="shot-time">3–5 s</span><h3>La pinza</h3><p>Hago clic con la garra y me quedo quieto.</p></div>
+        </li>
+        <li class="shot">
+      <svg viewBox="0 0 160 90" aria-hidden="true" shape-rendering="crispEdges">
+        <path fill="#000320" d="M0 0h160v90H0z"/><path fill="#133A51" d="M0 62h160v28H0z"/><path stroke="#293358" d="M0 70h160M0 82h160M20 62 4 90m56-28-5 28m50-28 5 28m23-28 19 28"/><path fill="#523823" d="M118 51h31v31h-4V56h-27z"/>
+        <g transform="translate(58 31)">
+          <ellipse cx="25" cy="53" rx="27" ry="4" fill="#0B0F14" opacity=".62"/>
+          <path fill="#0B0F14" d="M6 46h11v8H6zm27 0h11v8H33z"/>
+          <path fill="#E8C69D" d="M9 25h32l5 21-4 5H8l-4-5z"/>
+          <path fill="#CAA47B" d="M10 42h30l2 5H8z"/>
+          <path fill="#F4E2C4" d="M13 1h24l7 7v14l-5 5H11l-5-5V8z"/>
+          <path fill="#0A2B46" d="M10 9h30v12H10zm4 21h22v9H14z"/>
+          <circle cx="16" cy="15" r="4" fill="#F3462E"/>
+          <circle cx="34" cy="15" r="4" fill="#F3462E"/>
+          <path fill="#EAA540" d="M24 12h2v12h-2z"/>
+          <path fill="#0B0F14" d="M22 11h6v5h-6z"/>
+          <path stroke="#97A1AA" stroke-width="6" fill="none" d="M8 30 1 35l-2 8m43-13 7 6 1 7"/>
+          <path stroke="#0B0F14" stroke-width="3" fill="none" d="M-4 46v-4h6v4m43 0v-4h6v4"/>
+        </g>
+        <g><path fill="#74ACDF" d="M97 8h59v33H97z"/><path fill="#000320" d="M99 17h55v22H99z"/><path stroke="#9DC889" fill="none" d="M104 23h10v10h-10zm2 5 3 3 7-9"/><text x="119" y="31" fill="#F4E2C4" font-size="5" font-family="monospace">ACEPTADO</text></g>
+      </svg>
+          <div><span class="shot-time">5–7 s</span><h3>Confirmado</h3><p>Bip seco. Giro apenas hacia cámara.</p></div>
+        </li>
+        <li class="shot">
+      <svg viewBox="0 0 160 90" aria-hidden="true" shape-rendering="crispEdges">
+        <path fill="#000320" d="M0 0h160v90H0z"/><path fill="#133A51" d="M0 62h160v28H0z"/><path stroke="#293358" d="M0 70h160M0 82h160M20 62 4 90m56-28-5 28m50-28 5 28m23-28 19 28"/><path fill="#523823" d="M118 51h31v31h-4V56h-27z"/>
+        <g transform="translate(60 31)">
+          <ellipse cx="25" cy="53" rx="27" ry="4" fill="#0B0F14" opacity=".62"/>
+          <path fill="#0B0F14" d="M6 46h11v8H6zm27 0h11v8H33z"/>
+          <path fill="#E8C69D" d="M9 25h32l5 21-4 5H8l-4-5z"/>
+          <path fill="#CAA47B" d="M10 42h30l2 5H8z"/>
+          <path fill="#F4E2C4" d="M13 1h24l7 7v14l-5 5H11l-5-5V8z"/>
+          <path fill="#0A2B46" d="M10 9h30v12H10zm4 21h22v9H14z"/>
+          <circle cx="16" cy="15" r="4" fill="#F3462E"/>
+          <circle cx="34" cy="15" r="4" fill="#F3462E"/>
+          <path fill="#EAA540" d="M24 12h2v12h-2z"/>
+          <path fill="#0B0F14" d="M22 11h6v5h-6z"/>
+          <path stroke="#97A1AA" stroke-width="6" fill="none" d="M8 30 1 35l-2 8m43-13 7 6 1 7"/>
+          <path stroke="#0B0F14" stroke-width="3" fill="none" d="M-4 46v-4h6v4m43 0v-4h6v4"/>
+        </g>
+        <g><path fill="#74ACDF" d="M97 8h59v33H97z"/><path fill="#000320" d="M99 17h55v22H99z"/><path stroke="#9DC889" fill="none" d="M104 23h10v10h-10zm2 5 3 3 7-9"/><text x="119" y="31" fill="#F4E2C4" font-size="5" font-family="monospace">ACEPTADO</text></g>
+      </svg>
+          <div><span class="shot-time">7–10 s</span><h3>El remate</h3><p>«Dale. Al fin me toman por mi experiencia». Entra el cierre.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="color">
+      <h2 id="color">Paleta de cartucho</h2>
+      <p>16 colores para todo el arte. Usá 4–6 por cuadro como base y reservá rojo para los ojos, ámbar para el flex y verde para el check.</p>
+      <ul class="palette">
+        <li class="swatch"><span aria-hidden="true" style="--sample: #000320"></span>Noche<code>#000320</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #0B0F14"></span>Taller<code>#0B0F14</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #0A2B46"></span>Omnibot<code>#0A2B46</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #133A51"></span>Tinta<code>#133A51</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #293358"></span>Sombra azul<code>#293358</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #74ACDF"></span>Celeste<code>#74ACDF</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #F4E2C4"></span>Crema TOMY<code>#F4E2C4</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #E8C69D"></span>Plástico<code>#E8C69D</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #CAA47B"></span>Pátina<code>#CAA47B</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #523823"></span>Sombrero<code>#523823</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #F3462E"></span>Rojo ojos<code>#F3462E</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #FF6A55"></span>Brillo<code>#FF6A55</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #F28409"></span>Naranja<code>#F28409</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #EAA540"></span>Sol<code>#EAA540</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #97A1AA"></span>Metal<code>#97A1AA</code></li>
+        <li class="swatch"><span aria-hidden="true" style="--sample: #9DC889"></span>Confirmación<code>#9DC889</code></li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="production">
+      <h2 id="production">Guía de producción</h2>
+      <div class="production">
+        <article><h3>Formato técnico</h3><p>9:16 a 1080 × 1920 y 16:9 a 1920 × 1080, ambos a 30 fps. Easter egg de 8–12 s y TikTok de 12–20 s. Placas de 1 s al abrir y ≥2 s al cerrar.</p></article>
+        <article><h3>Tipografías y Subtítulos</h3><p>Press Start 2P para títulos breves. Chivo semibold para subtítulos. IBM Plex Mono para zócalos de terminal. Subtitulá siempre sobre placa oscura, en hasta dos líneas, con sonidos clave entre corchetes. Dejá margen para la interfaz de redes. Entregá subtítulos incrustados y un SRT.</p><span class="caption-example">[Bip de confirmación]</span></article>
+        <article><h3>Cámara y encuadre</h3><p>Lienzos internos de 180 × 320 y 320 × 180. Escalá ×6 por vecino más próximo. Recomponé para vertical, con Gaucho y el check en el centro útil. Fondo a ¼ de la velocidad del primer plano cuando haya paneo.</p></article>
+        <article><h3>Movimiento</h3><p>Anclá sprites a píxeles enteros. Reposo de 2–3 poses, avance de 4–6 y pinza de 3. Sostené cada pose 2–4 frames de entrega. Usá dithering de damero en sombras puntuales y reservá una pausa de 12 frames antes del remate.</p></article>
+        <article><h3>Sonido</h3><p>Bajo y arpegio FM originales, bombo corto, bips de cursor y clic de relé. Cortá el bucle al confirmar. En web, audio por acción del usuario.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="plates">
+      <h2 id="plates">Intro y cierre</h2>
+      <div class="plates">
+        <article class="plate">
+          <h3 class="eyebrow">Intro</h3><span class="wordmark">GAUCHO</span><span class="stripe" aria-hidden="true"></span><p>Día 1 buscando laburo</p>
+        </article>
+        <article class="plate">
+          <h3 class="eyebrow">Cierre</h3><span class="wordmark">GAUCHO</span><span class="stripe" aria-hidden="true"></span><span class="cta">Contratar a Gaucho</span>
+        </article>
+      </div>
+      <p>En TikTok, sumá el link al portfolio en el perfil cuando esté publicado.</p>
+    </section>
+
+    <section class="section" aria-labelledby="prompt">
+      <h2 id="prompt">Prompt reutilizable</h2>
+      <pre>[REFERENCIA FRONTAL Y ¾] + [SPRITE MAESTRO]. Omnibot TOMY 1984 crema con ojos rojos, Raspberry y flex ámbar entre los ojos, brazos con pinzas negras y base con ruedas. En [ESCENA], hace [ACCIÓN] y espera [PAUSA] antes de [REMATE]. Plano [ENCUADRE], [9:16 o 16:9], [SEGUNDOS]. Pixel art Mega Drive de 16 colores [HEX], contornos duros, poses discretas, píxel entero y dithering selectivo. Fondo [CAPAS]. Dejá espacio para [SUBTÍTULO] y [ZÓCALO]. Generá el plano limpio; el texto y el sonido se agregan en edición.</pre>
+      <p><strong>DO.</strong> Fijá el sprite maestro, la escala y el pivote de las ruedas. Dibujá la ventana ficticia y sus rótulos en edición.</p>
+      <p><strong>DON’T.</strong> Suavizado, píxeles de tamaño variable, manos humanas, logos o interfaces calcadas de LinkedIn o Claude.</p>
+    </section>
+  </main>
+</body>
+</html>

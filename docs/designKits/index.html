@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design kits · Gaucho</title>
+  <style>
+    :root {
+      --paper: #F4E2C4;
+      --ink: #0A2B46;
+      --plastic: #E8C69D;
+      --stripe: linear-gradient(90deg, #F3462E 25%, #F28409 25% 50%, #EAA540 50% 75%, #74ACDF 75%);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 system-ui, sans-serif; }
+    main { width: min(100% - 2rem, 72rem); margin: 2rem auto; }
+    header { border-top: .55rem solid var(--ink); padding-block: 1rem; }
+    header::after { content: ''; display: block; height: .55rem; max-width: 22rem; background: var(--stripe); }
+    h1 { font-size: clamp(2.25rem, 7vw, 4.75rem); line-height: 1; margin: 0; }
+    h2 { margin: 1rem 0 .5rem; }
+    h3 { margin: 0; font-size: 1.1rem; }
+    p { margin: .4rem 0 .85rem; }
+    .grid { display: grid; gap: 1rem; }
+    article { border: 1px solid; background: var(--plastic); }
+    article img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--ink); }
+    .catalogue img { object-fit: contain; }
+    .description { padding: .85rem; }
+    a { color: inherit; font-weight: 650; text-underline-offset: .18em; }
+    a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+    .badge { display: inline-block; background: var(--ink); color: var(--paper); padding: .15rem .4rem; margin-top: .4rem; font: bold .78rem/1.4 monospace; letter-spacing: .035em; }
+    @media (min-width: 52rem) { .portfolio { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Design kits de Gaucho</h1>
+      <p>Portfolio del Omnibot, prototipos navegables y guías para sus videitos.</p>
+    </header>
+
+    <!-- Cada tema lista sus originales. La insignia enlaza a la copia elegida. -->
+    <section aria-labelledby="webPortfolio">
+      <h2 id="webPortfolio">Portfolio web</h2>
+      <div class="grid portfolio">
+        <article class="catalogue">
+          <img src="../../assets/Gaucho/fotitos/arte/merch_oficial_gaucho_omnibot_tomy_1984.png" alt="Afiche del Omnibot con sol naranja y planos técnicos">
+          <div class="description">
+            <h3><a href="propuestas/webPortfolio/propuesta1_catalogoTomy.html">Catálogo TOMY 1984</a></h3>
+            <a class="badge" href="seleccionados/webPortfolio/propuesta1_catalogoTomy.html">SELECCIONADA</a>
+            <p>Papel crema, cotas y franja de cuatro tintas.</p>
+          </div>
+        </article>
+        <article>
+          <img src="../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho frente al neón de Paisanos">
+          <div class="description">
+            <h3><a href="propuestas/webPortfolio/propuesta2_tallerDeNoche.html">Taller de noche</a></h3>
+            <p>Madera acanalada, luz roja y neón.</p>
+          </div>
+        </article>
+        <article>
+          <img src="../../assets/Gaucho/fotitos/arte/gaucho_pixel_art_sombrero_y_saco.png" alt="Retrato pixelado de Gaucho con sombrero">
+          <div class="description">
+            <h3><a href="propuestas/webPortfolio/propuesta3_historieta16bit.html">Historieta 16-bit</a></h3>
+            <p>Viñetas, globos y cinta dorada.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="paginaGaucho">
+      <h2 id="paginaGaucho">Página de Gaucho</h2>
+      <div class="grid portfolio">
+        <article class="description">
+          <h3><a href="propuestas/paginaGaucho/propuesta1_manualDeUsuario.html">Manual de usuario</a></h3>
+          <p>CV rasgado, manual vertical, televisor de 8 bits y banco de taller.</p>
+        </article>
+        <article class="description">
+          <h3><a href="propuestas/paginaGaucho/propuesta2_unaSolaEscena.html">Una sola escena</a></h3>
+          <p>Cambio de señal, escritorio explorable y vista de texto.</p>
+        </article>
+        <article class="description">
+          <h3><a href="propuestas/paginaGaucho/propuesta3_casetteYRecibo.html">Cassette y recibo</a></h3>
+          <p>Impresora atascada, cinta C-60 y un relato en tres actos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="videos16bit">
+      <h2 id="videos16bit">Videos 16-bit</h2>
+      <article class="description">
+        <h3><a href="propuestas/videos16bit/kit_videos16bit.html">Cartucho de taller</a></h3>
+        <p>Sprites, paleta de 16 colores y el check «No soy un robot».</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="videosRealista">
+      <h2 id="videosRealista">Videos realistas</h2>
+      <article class="description">
+        <h3><a href="propuestas/videosRealista/kit_videosRealista.html">Prueba de cámara</a></h3>
+        <p>Luz de oficina, foley mecánico y el gag de la batería.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

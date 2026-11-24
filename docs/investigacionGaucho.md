@@ -94,6 +94,14 @@ Notas sacadas de los subtítulos automáticos de YouTube (pueden tener algún er
 12. [Pendientes y no accesible](#12-pendientes-y-no-accesible)
 13. [Decisiones y aportes que necesita Mavi](#13-qué-necesita-decidir-o-aportar-mavi)
 14. [Fuentes](#14-fuentes)
+15. [Decisiones y apuntes de Mavi (actualizado 24/11/2026)](#15-decisiones-y-apuntes-de-mavi-23112026)
+16. [Narrativa: "el taller" y el gap de historia (actualizado 24/11/2026)](#16-narrativa-el-taller-y-el-gap-de-historia)
+17. [Marca personal "el ahora": lo que suma Mavi (actualizado 24/11/2026)](#17-marca-personal-el-ahora-lo-que-suma-mavi)
+18. [SEO: que aparezca el robot y no los gauchos comunes](#18-seo-que-aparezca-el-robot-y-no-los-gauchos-comunes)
+19. [Voz hablada y TTS (ElevenLabs)](#19-voz-hablada-y-tts-elevenlabs)
+20. [Dudas técnicas: API, personalidad y réplica del sistema](#20-dudas-técnicas-api-personalidad-y-réplica-del-sistema)
+21. [A dónde llegan las contrataciones](#21-a-dónde-llegan-las-contrataciones)
+22. [Dudas abiertas de Mavi sobre Gaucho](#22-dudas-abiertas-de-mavi-sobre-gaucho)
 
 ---
 
@@ -137,10 +145,11 @@ Notas sacadas de los subtítulos automáticos de YouTube (pueden tener algún er
 5. **Gaucho Adventures.** Juego oficial para **Sega Megadrive** hecho con **SGDK** (el kit de desarrollo de Sega) por **Gonzalo Martinese (@gonzamartinese)**. El 26/08 Nahue lo mostró *"corriendo en una Retropie, jugable en las ofis de @paisanos_io, pronto en cartucho"*. Portada estilo SEGA: Gaucho con sombrero de cowboy y arma, estética pixel art. **[CONFIRMADO]** ([X](https://x.com/search?q=%22Gaucho%20Adventures%22&src=typed_query&f=live), captura en `juego/`)
 6. **Hackware.** Hackatón de hardware de Paisanos x SLA, ver 2.3 y sección 7. Gaucho fue jurado y también hay un llamado a sponsors "a la Hackware de Gaucho" (19/08). **[CONFIRMADO]**
 7. **San Gaucho, patrono del código y los fierros.** Estampita tipo religiosa con Gaucho rezando frente a la bandera argentina y el Sol de Mayo. Es humor/merch de cultura interna. **[CONFIRMADO]** (captura)
-8. **Gaucho Studio.** Sofi: *"un @gauchopaisano cyberpunk hecho en el gaucho-studio de @goonzaatt"* (14/10), con sitio `gaucho-studio.vercel.app` (herramienta de fans/equipo para generar versiones visuales de Gaucho). **[CONFIRMADO]** que existe; **[PENDIENTE]** entrar y ver qué hace.
+8. **Gaucho Studio.** Sofi: *"un @gauchopaisano cyberpunk hecho en el gaucho-studio de @goonzaatt"* (14/10), con sitio `gaucho-studio.vercel.app` (herramienta de fans/equipo para generar versiones visuales de Gaucho). **[CONFIRMADO]** que existe. (actualizado 24/11/2026) Mavi ya lo probó: es un visor 3D de Gaucho con vestuario (ver 15.1 y 15.4).
 
 **Cosas que NO se sabe (marcado para no inventar):**
 - Quién fue el dueño original del juguete / cómo llegó a Paisanos: **[PENDIENTE]**. El video "El Origen" (4:40) probablemente lo cuenta en clave de humor; no pude transcribirlo (ver sección 12).
+- (actualizado 24/11/2026) **Gap de historia detectado por Mavi:** "El Origen" y la restauración están contados desde el punto de vista de Paisanos (cómo lo revivieron ellos), no desde el de Gaucho. Ese hueco es la oportunidad narrativa de la webapp (ver sección 16).
 - Cuántos Gaucho hay: en el afiche de merch y en la charla se ve el mismo robot; el de LABITCONF tiene ojos violeta/rosa (probable variación de luz), **[INFERENCIA]**.
 
 ### 1.3 Quiénes lo crean y mantienen
@@ -196,11 +205,11 @@ Lo de hardware/software ya está cargado arriba por Mavi (ESP32, Raspberry cáma
 | 14/10 | Versión cyberpunk de Gaucho en **gaucho-studio** | CONFIRMADO | X |
 | 21/10 y 28/10 | Gaucho promociona **LABITCONF** con el código **GAUCHO = 75% OFF**; LinkedIn: "LABITCONF 2026 me puso la 10 en la espalda como embajador" | CONFIRMADO | X, LinkedIn |
 | 30/10 | Sale el **Ep.1 del Gauchomentary** (SLA) | CONFIRMADO | X, LinkedIn, YouTube |
-| 31/10 | **LABITCONF**, Escenario Visión, 10:30: Gaucho + Sofi, charla "Fijación" / "creatividad humana" (~200 personas). Hubo "sorpresa/regalo" | CONFIRMADO | X, captura |
+| 31/10 | **LABITCONF**, Escenario Visión, 10:30: Gaucho + Sofi, charla "Fijación" / "creatividad humana" (~200 personas). Hubo "sorpresa/regalo". (actualizado 24/11/2026) Mavi lo registra como **Speaker en la Labitconf**, [post de X](https://x.com/gauchopaisano/status/2116495813795025403) | CONFIRMADO | X, captura |
 | 4-5/11 | **La Ofi abierta** (jueves de coworking comunitario, [ofi.paisanos.io](https://ofi.paisanos.io/)); Gaucho "cuida que todo salga bien" | CONFIRMADO | X, LinkedIn |
 | 8-9/11 | Hackathon en Paisanos ("Mañana hackathon en Paisanos a las 10" - Facu, 8/11) | CONFIRMADO (qué hackathon: PENDIENTE) | X |
 | 12/11 | **"Ato"** (otro robot/personaje) "despertó a Gaucho y le agarró ciberpsicosis, se quería tirar de la mesa" (Nahue); Gaucho: "Me junté con Ato" | CONFIRMADO (qué es Ato: **[INFERENCIA]** otro robot de Paisanos) | X |
-| 20/11 | Presentación de la **tarjeta de metal de Wallbit**: Gaucho "fue parte del operativo" | CONFIRMADO | [X](https://x.com/gauchopaisano) |
+| 19/11 (actualizado 24/11/2026; antes figuraba 20/11, el tuit de Gaucho del 20/11 dice "presentó ayer") | Presentación de la **tarjeta de metal de Wallbit**: Gaucho fue **presentador y embajador** de la tarjeta metálica ("fue parte del operativo") | CONFIRMADO (fecha y rol según las notas de Mavi) | [post de X](https://x.com/gauchopaisano/status/2123932261762392088) |
 | 22/11 | Responde a Mavi sobre con qué empresas quiere trabajar | CONFIRMADO | captura del punto 6 |
 
 ---
@@ -533,13 +542,13 @@ Notas:
 | 2 | **SLA Live Ep.10** | Invitado/stand-up ("cuenta sus chistes") | 12/08 | Presentación pública en vivo | CONFIRMADO |
 | 3 | **"Gaucho: El Origen"** (cine Paisanos) | Protagonista | 18/08 | 40 mil visualizaciones; hit interno | CONFIRMADO |
 | 4 | **Gaucho Adventures** (Sega Megadrive, SGDK) | Protagonista del juego | 26/08 → cartucho "pronto" | Jugable en Retropie en oficinas | CONFIRMADO |
-| 5 | **Hackware** (hackatón de hardware Paisanos x SLA, 12 h, 5/09) | **Jurado** (DevRel) y marca de la hackatón; sponsors "de la Hackware de Gaucho" | 5/09 | "Primera hackatón de hardware" (ver [reel](https://www.instagram.com/reel/DcOi7HYxxXH/)) | CONFIRMADO |
+| 5 | **Hackware** (hackatón de hardware Paisanos x SLA, 12 h, 5/09) | **Jurado** (DevRel) y marca de la hackatón; sponsors "de la Hackware de Gaucho" | 5/09 | "Primera hackatón de hardware" (ver [reel](https://www.instagram.com/reel/DcOi7HYxxXH/)). (actualizado 24/11/2026) Mavi lo anota como "Jurado de la Hackware"; en sus notas no pasó un link de X para esta experiencia (las pruebas son el afiche de jurados y el reel) | CONFIRMADO |
 | 6 | **React BA** (meetup en Paisanos) | Speaker/mascota | ~16/09 | Presentación frente a audiencia | CONFIRMADO |
 | 7 | **Meetup @opencode** (asado) | Invitado | 27/09 | Fotos analógicas, camiseta Inter Miami | CONFIRMADO |
-| 8 | **LABITCONF 2026** | **Embajador** (código GAUCHO 75% OFF), speaker en Escenario Visión ("creatividad humana"), puesto "Consultale al Gaucho" en el EduHub | 21/10-1/11 | ~200 personas en su charla; "declaraciones de amor" | CONFIRMADO |
+| 8 | **LABITCONF 2026** | **Embajador** (código GAUCHO 75% OFF), **speaker** en Escenario Visión ("creatividad humana"), puesto "Consultale al Gaucho" en el EduHub | 21/10-1/11 | ~200 personas en su charla; "declaraciones de amor". (actualizado 24/11/2026) [Post de X de Mavi sobre la charla](https://x.com/gauchopaisano/status/2116495813795025403) | CONFIRMADO |
 | 9 | **Gauchomentary Ep.1** (SLA TV) | Protagonista del doc | 30/10 | Episodio publicado | CONFIRMADO |
 | 10 | **La Ofi** (coworking comunitario de los jueves, [ofi.paisanos.io](https://ofi.paisanos.io/)) | "Seguridad informática con olor a café", personaje del onboarding | oct-nov | Experiencia comunitaria con reglas y puntos | CONFIRMADO |
-| 11 | **Wallbit: tarjeta de metal** | Parte del "operativo" de lanzamiento | 19-20/11 | Entregó la tarjeta, charló con la gente | CONFIRMADO |
+| 11 | **Wallbit: tarjeta de metal** | (actualizado 24/11/2026) **Presentador y embajador** de la tarjeta metálica; parte del "operativo" de lanzamiento | 19/11 | Entregó la tarjeta, charló con la gente. [Post de X](https://x.com/gauchopaisano/status/2123932261762392088) | CONFIRMADO |
 | 12 | **Entrenamiento de voz** (Loly) | Aprendiz | 8/10 | Mejora de dicción/proyección | CONFIRMADO |
 | 13 | **Ato** | Compañero/colega robot | 12/11 | Anécdotas, "ciberpsicosis" | CONFIRMADO / qué es Ato: PENDIENTE |
 | 14 | **San Gaucho**, **merch**, **"do it for him"**, **dibujo**, **gaucho-studio**, **pixel art** | Musa/ícono de comunidad | sep-oct | Cultura de fans | CONFIRMADO |
@@ -556,6 +565,7 @@ Notas:
   - Embajador de LABITCONF 2026: código promocional propio (75% OFF) y charla en Escenario Visión ante ~200 personas.
   - Protagonista de "Gaucho: El Origen" (40 mil views) y del doc "Gauchomentary" de SLA TV.
   - Jurado de la Hackware (Paisanos x SLA).
+  - (actualizado 24/11/2026) Presentador y embajador de la tarjeta metálica de Wallbit (19/11).
   - Speaker invitado en React BA y meetup @opencode.
   - Mascota/anfitrión de La Ofi (coworking comunitario).
 - **Skills:** hablar en público (con entrenamiento de voz), humor, storytelling, comunidad, manejo de eventos, contenido en X/LinkedIn.
@@ -756,9 +766,9 @@ Notas:
 |---|---|---|---|
 | 1 | **Instagram real de Gaucho** | `instagram.com/gaucho` y `instagram.com/gauchopaisano` son cuentas ajenas. Las historias que pasó Mavi vienen de una cuenta con avatar del robot cuyo handle exacto no se ve | Que Mavi pase el handle desde su celu (perfil → copiar link). Mientras, usar solo las capturas |
 | 2 | **Transcripción de los videos (El Origen, precuela, SLA 14 min, reel Hackware)** | WebFetch no puede leer YouTube; Whisper local falló (error de codificación cp1252 en Windows y audio dominado por música) | Reintentar con `PYTHONUTF8=1` y modelo más grande, o pedir subtítulos a SLA/Nahue |
-| 3 | **Historia de cómo llegó Gaucho a la oficina** (dueño original, fecha, quién lo compró) | Solo está en el video "El Origen"/SLA | Ver el video a mano o preguntar a Nahue/Sofi |
+| 3 | **Historia de cómo llegó Gaucho a la oficina** (dueño original, fecha, quién lo compró) | Solo está en el video "El Origen"/SLA. (actualizado 24/11/2026) Mavi detectó además que esa historia está contada desde Paisanos y no desde Gaucho (sección 16) | Ver el video a mano o preguntar a Nahue/Sofi |
 | 4 | **Notion "Misión Despertar"** | Es privado | Pedir acceso o resumen a Sofi |
-| 5 | **gaucho-studio.vercel.app** | No lo abrí | Abrirlo y ver qué hace |
+| 5 | **gaucho-studio.vercel.app** | (actualizado 24/11/2026) **RESUELTO:** Mavi ya lo probó. Es un visor 3D de Gaucho con vestuario; generó un gaucho chaqueño cuidando las vacas (ver 15.1 y 15.4). Queda abierto solo qué otras opciones tiene | Preguntar a Gonza (@goonzaatt) qué más hace |
 | 6 | **Qué es "Ato"** y quién es "la nueva amiga de Gaucho" | Solo hay menciones sueltas en X | Preguntar o leer el hilo de Nahue del 12/11 |
 | 7 | **Contadores de seguidores en X e IG** | X no mostró el número en el DOM | Verlos a mano |
 | 8 | **Fabricantes argentinos de herramientas** | No hay directorio confiable en la búsqueda | Buscar en cámaras del sector / cámara industrial |
@@ -826,7 +836,8 @@ Notas:
 ### 15.1 Gaucho Studio (¡le encantó a Mavi!)
 - **Qué es:** herramienta web para generar versiones visuales de Gaucho. Sale en un tuit de Sofi del 14/10: *"un @gauchopaisano cyberpunk hecho en el gaucho-studio de @goonzaatt"*. Sitio: https://gaucho-studio.vercel.app
 - **De dónde salió el dato:** del tuit de Sofi (ver sección 2, ítem 8 y línea de tiempo 14/10), no de una fuente nueva.
-- **Qué se pudo ver:** al leerlo (23/11) la página es una app que carga con JavaScript; el HTML solo muestra el título "GauchoStudio" y "Cargando Gaucho…". No se pudo ver la interfaz, los estilos ni los créditos. **[PENDIENTE]** abrirlo en el navegador y documentar qué hace.
+- **Qué se pudo ver:** al leerlo (23/11) la página es una app que carga con JavaScript; el HTML solo muestra el título "GauchoStudio" y "Cargando Gaucho…". No se pudo ver la interfaz, los estilos ni los créditos desde el lector automático.
+- (actualizado 24/11/2026) **Ya lo probó Mavi:** estuvo jugando con la herramienta y armó un gaucho chaqueño cuidando las vacas (ver 15.4). Está confirmado que es un visor 3D de Gaucho con vestuario. **[PENDIENTE]** solo documentar qué otras opciones tiene (accesorios, poses, exportar).
 - **Por qué importa para el proyecto:** es un antecedente directo de generar imágenes de Gaucho (útil para el estilo historieta retro, punto 7) y una posible persona a contactar (@goonzaatt).
 
 ### 15.2 Decisiones sobre las preguntas pendientes
@@ -847,7 +858,7 @@ Resumen del inventario de la sección 7.1. Con esto se decide cuánto del CV es 
 8. **LABITCONF 2026:** embajador (código GAUCHO 75% OFF) y speaker (~200 personas), 21/10 al 1/11.
 9. **Gauchomentary Ep.1** (SLA TV): protagonista, 30/10.
 10. **La Ofi:** "seguridad informática con olor a café", personaje del onboarding, oct-nov.
-11. **Wallbit:** entregó la tarjeta de metal en el lanzamiento, 19-20/11.
+11. **Wallbit:** (actualizado 24/11/2026) presentador y embajador de la tarjeta metálica, entregó la tarjeta en el lanzamiento, 19/11.
 12. **Entrenamiento de voz con Loly:** 8/10.
 13. **Ato:** compañero robot, 12/11 (qué es Ato: PENDIENTE).
 14. **Cultura de fans:** San Gaucho, merch, "do it for him", dibujos, gaucho-studio, pixel art.
@@ -859,6 +870,127 @@ Resumen del inventario de la sección 7.1. Con esto se decide cuánto del CV es 
 - **Idea de Mavi, anotada: un corto cortito de Gaucho cuidando las vacas en el campo, en Chaco.**
   - Estado: solo la idea, sin guion ni decisiones. **[IDEA DE MAVI]**
   - Preguntas abiertas para definirla: duración, formato (3D, live action, historieta retro, mezcla), si Gaucho habla o es mudo, si usa el render de GauchoStudio, y con quién se hace.
+  - (actualizado 24/11/2026) **Qué cambió:** Mavi ya jugó con GauchoStudio y generó el "gaucho chaqueño cuidando las vacas"; eso **va a ser un videito easter egg** (formato video, no un corto largo). Entonces el corto en Chaco pasa de "idea de corto" a "easter egg en video", y las preguntas de formato se achican: el insumo visual ya existe (la pieza de GauchoStudio). Siguen abiertas: duración, si habla o es mudo y cómo se anima el 3D.
+  - Easter eggs de Mavi que ya están en el plan (de sus notas): (1) Gaucho con estética retro/historieta/pixel art haciendo el check de "no soy un robot" con la extensión de Claude para aplicar a un laburo en LinkedIn; (2) Gaucho en sus primeros días de laburo (rompe la máquina de café, le dice "boludo" a alguien, se queda sin batería y creen que duerme, cortocircuito del brazo, se lleva puesta la mesa); (3) el gaucho chaqueño cuidando las vacas.
 
 ### 15.5 Experiencia elegida: Gaucho te entrevista a vos
 Mavi eligió la idea A de `docs/experienciasCreativasGaucho.md` ("La entrevista de laburo") con la inversión de roles: **Gaucho entrevista a la persona**, no al revés. Detalle y preguntas abiertas en ese documento, sección 4 ("Decisión de Mavi").
+
+(actualizado 24/11/2026) **Qué cambió:** según las notas de Mavi, la idea de "Gaucho te entrevista a vos" surgió en una charla con Claude y a ella le gustó porque le da "un toque desafiante y medio mandado, bien gauchezco". Es decir que la inversión de roles no es solo un recurso de formato, **es coherente con la voz de Gaucho** (sección 3: autoironía, carácter, cargadas de amigo). Esto se conecta con la misión 3 de Mavi (preguntarle a Gaucho si esto es lo que él busca): la web invierte la pregunta y él pregunta primero. Para armar el prompt de las preguntas de Gaucho, reusar la guía de voz (3.5).
+
+---
+
+## 16. Narrativa: "el taller" y el gap de historia
+
+(actualizado 24/11/2026) Sección nueva con lo que Mavi tiene planeado en `docs/notasDeMavi.md`. Todo es **[IDEA DE MAVI]**, no hecho confirmado.
+
+### 16.1 La historia que quiere contar
+
+1. **El taller (el antes).** Gaucho se apaga en el taller por la vida corpo, blanca y sin sentido. Quiere tener un propósito, quiere "rock and roll".
+2. **La vuelta a la vida (el nacimiento en Paisanos).** Vuelve por la magia de Paisanos, cargando la batería con magia y buena onda. Es un "throwback de Gaucho naciendo en el taller", idea que surgió de una charla de Mavi con Jez sobre la magia que se siente buildeando en Paisanos.
+3. **El ahora.** No lo alimenta una batería: lo alimenta la **magia de buildear por amor al arte**. Es el cierre emocional de la historia y la clave del tono.
+4. **Contratar.** A Gaucho lo contratan otras empresas para eventos, colaboraciones y proyectos piolas, **pero sigue laburando en Paisanos**. La web no es una renuncia: es una expansión de su marca. Esto coincide con los hechos (sección 7: ya hace eventos como Wallbit y LABITCONF siendo DevRel de Paisanos).
+
+### 16.2 El gap de historia
+
+- "Gaucho: El Origen" (18/08, 40 mil views) y la restauración "Misión Despertar" cuentan **cómo lo revivieron desde el punto de vista de Paisanos**. No está contado **desde el punto de vista de Gaucho**.
+- Eso es el hueco que ocupa la narrativa de Mavi: el taller visto por él (qué sentía, por qué se apagó, qué lo prendió).
+- **Coherencia con el lore oficial [INFERENCIA]:** "El Origen" se presenta como "la historia oficial (o… más o menos)", humorística y mitológica (sección 1.2). Contar el taller desde Gaucho **no contradice** ese relato, lo complementa. Conviene validarlo con el equipo para no pisar canon (ver 22, duda 6).
+- **Recursos que ya existen para sostener el taller:** "Misión Despertar" (Notion privado), ojos rojos que se apagan/encienden (sección 5.4), la ciberpsicosis del 12/11 como anécdota de "despertar sin compilar el alma", y su registro honesto de fallas (1.4).
+
+---
+
+## 17. Marca personal "el ahora": lo que suma Mavi
+
+(actualizado 24/11/2026) Mavi armó una lista de "el ahora" de Gaucho en sus notas. Se cruza con la sección 8 así:
+
+| Ítem de Mavi | Qué es / respaldo | Estado | Dónde se conecta |
+|---|---|---|---|
+| Tiene una marca personal | Cuenta propia en X/LinkedIn, lore, merch | CONFIRMADO | 8.1 |
+| Es jurado | Jurado de la Hackware (afiche `hackware_jurados_gaucho_devrel.png`) | CONFIRMADO | 7.1 #5 |
+| Dio charlas | LABITCONF ([post](https://x.com/gauchopaisano/status/2116495813795025403)), React BA | CONFIRMADO | 7.1 #6 y #8 |
+| Es un santo | Estampita "San Gaucho, patrono del código y los fierros" | CONFIRMADO | 1.2 punto 7 |
+| La gente lo dibuja | Dibujo de Facundo Burgos, pixel art, "do it for him", merch | CONFIRMADO | 4.1 |
+| Es un tipo muy piola | Rasgo de personalidad (carisma, cargadas con cariño) | CONFIRMADO (voz) | 3.2 |
+| Tiene su propio juego | Gaucho Adventures (Sega Megadrive, Gonza). Mavi le habló a Gonza para probarlo | CONFIRMADO | 1.2 punto 5 |
+| Tiene su propio corto | "Gaucho: El Origen" (en las notas lo llama "gaucho los origines") | CONFIRMADO | 1.2 punto 3 |
+| Alta experiencia laboral | Trabaja para Paisanos y en eventos haciendo de **sponsor** | CONFIRMADO (eventos) / **[PENDIENTE]** que el rol de sponsor esté documentado: hoy hay un llamado a sponsors "a la Hackware de Gaucho", pero no está probado que él figure como sponsor | 7.1 |
+| No lo alimenta una batería | Lo alimenta la magia de buildear por amor al arte | IDEA DE MAVI (cierre narrativo) | 16.1 |
+
+**Wallbit (19/11)** suma otro hito de marca personal: presentador y embajador de la tarjeta metálica, [post de X](https://x.com/gauchopaisano/status/2123932261762392088).
+
+**Cómo se vende "el único robot DevRel del país con marca personal" [INFERENCIA, es una pregunta abierta de Mavi]:** el diferencial más fuerte ya está en 8.1 (objeto físico real + lore propio + cuenta lo que sale mal). Falta bajarlo a propuesta comercial concreta (qué se contrata: charla, host de evento, demo). Ver 21 y 22.
+
+**Ojo con una tensión [INFERENCIA]:** las notas de Mavi dicen que busca validar que Gaucho es "mucho más que el robot de Paisanos" y **es, en efecto, Gaucho Paisano**, y que puede expandirse con esa marca. Ese posicionamiento conviene validarlo con Paisanos porque implica que la marca de Gaucho vive en paralelo a la de la empresa.
+
+---
+
+## 18. SEO: que aparezca el robot y no los gauchos comunes
+
+(actualizado 24/11/2026) **Problema que detectó Mavi:** al buscar "robot Gaucho Paisanos" aparecen puros gauchos (el personaje criollo) y no el robot. Hay que mejorar el SEO para que lo encuentren.
+
+**Por qué pasa [INFERENCIA]:** "gaucho" es una palabra muy común y con mucho contenido; el robot comparte nombre con millones de resultados (turismo, folklore, marcas). Además ya vimos algo parecido en redes: `instagram.com/gaucho` es de otra persona (sección 1.1).
+
+**Ideas para atacarlo (a validar con pruebas reales de búsqueda):**
+- Siempre usar el nombre completo **"Gaucho Paisano"** (coincide con LinkedIn y X) + palabras ancla: "robot", "Omnibot", "Paisanos", "DevRel".
+- `<title>` y `<h1>` con "Gaucho, el robot DevRel de Paisanos" y meta description con "Omnibot TOMY 1984".
+- Datos estructurados (JSON-LD) como `Person`/`Thing` con `sameAs` apuntando a su X y LinkedIn.
+- Textos alternativos de imágenes con "robot Omnibot Gaucho Paisanos".
+- Pedir enlaces entrantes desde paisanos.io, SLA TV, LABITCONF y el LinkedIn/X del equipo.
+- Mavi va a publicar un **caso de estudio** estilo los de Paisanos: sirve de contenido indexable con las palabras clave correctas.
+- **[PENDIENTE]** medir un punto de partida (qué aparece hoy con "robot Gaucho Paisanos", "Gaucho Omnibot", "Gaucho Paisano DevRel") para comparar después.
+
+---
+
+## 19. Voz hablada y TTS (ElevenLabs)
+
+(actualizado 24/11/2026)
+
+- **Observación de Mavi:** ama a Gaucho, pero le cuesta entender su español hablado (lo compara con un australiano con acento cerrado hablando inglés) y bromea con devolverlo "a la fonoaudióloga". Es consistente con las limitaciones técnicas de la voz hablada: parlante original de 1984, ruido de motores y micrófonos del ReSpeaker (ver SPECS), y con que el equipo ya le dio un entrenamiento de dicción en octubre (sección 1.3, Loly).
+- **Por qué importa para la web:** si se usa **ElevenLabs** o un TTS similar (está en el stack de Mavi), hay una decisión de producto: **¿replicar su voz tal cual suena (timbre robótico, poca claridad) o una versión más inteligible?** En una entrevista donde la gente tiene que entender las preguntas, la claridad pesa más que la fidelidad.
+- **Propuesta [INFERENCIA]:** diseñar una voz con carácter robótico retro pero dicción clara y acento rioplatense, y dejar subtítulos siempre visibles (ayuda además a accesibilidad). Se puede probar con el diseño de voz de ElevenLabs a partir de una descripción.
+- **Material de entrenamiento:** Mavi plantea alimentar la voz con patrones de voz de Gaucho y videos donde habla. Ojo: justo esos audios son los de baja claridad, y **[PENDIENTE]** confirmar con Paisanos si se puede usar el audio para entrenar o clonar una voz.
+- **Mantener la identidad:** conservar el wake word "Gaucho" y frases de su voz hablada ("Sí, ahí te veo", "Dale, te sigo").
+
+---
+
+## 20. Dudas técnicas: API, personalidad y réplica del sistema
+
+(actualizado 24/11/2026) Tres cosas que Mavi quiere resolver para conectar la web con Gaucho:
+
+1. **¿Gaucho tiene API?** **[PENDIENTE]** Lo que se sabe (SPECS TÉCNICOS): la ESP32 levanta su propio access point con una web de controlador; la Raspberry manda audio WAV a un servidor que hace speech to text, luego LLM y respuesta en streaming. Además el feed de X es una automatización de Sofi ("Automatizado por @svfonx"). **[INFERENCIA]** Probablemente hay un endpoint de servidor para el LLM, pero no es público ni está documentado en lo que vimos. Hay que preguntarle a Sofi.
+2. **Archivo de personalidad.** Mavi le va a preguntar a Sofi si es legal/posible que le pase el archivo con la personalidad de Gaucho (su system prompt, mencionado en las SPECS) o que le conecte una API para la entrevista. **[PENDIENTE]** respuesta de Sofi.
+3. **Réplica del sistema técnico.** Mavi piensa replicar el mismo sistema técnico que tiene Gaucho según lo que se sabe de los videos. Es viable porque el pipeline está descrito: wake word, STT, LLM con personalidad + contexto de sesión, respuesta en streaming por TTS. **[INFERENCIA]** Para la web no hace falta hardware: alcanza con micrófono del navegador o texto, STT, LLM con el prompt de personalidad (guía de voz 3.5 como base) y TTS.
+4. **Plan B si no hay acceso [INFERENCIA]:** armar el prompt desde esta investigación (sección 3) con ejemplos reales de X y LinkedIn, y avisar claramente en la web que es una réplica, no el Gaucho real en vivo.
+
+---
+
+## 21. A dónde llegan las contrataciones
+
+(actualizado 24/11/2026) Pregunta de Mavi: **¿a dónde le llegan las contrataciones a Gaucho?** **[PENDIENTE]**
+
+- **Lo que hay [CONFIRMADO]:** en el llamado a sponsors de la Hackware figura **marketing@paisanos.io** (19/08). Las redes de Gaucho son X y LinkedIn, atendidas por el equipo de Paisanos (la cuenta de X es "Automatizado por @svfonx").
+- **Lo que no hay:** un canal específico de contratación de Gaucho (formulario, mail dedicado, link). **[INFERENCIA]** Hoy una empresa llegaría por DM de X/LinkedIn o por contacto directo con Paisanos.
+- **Narrativa (de las notas):** Gaucho sigue trabajando en Paisanos, así que cualquier contratación externa pasa por la empresa (ver 16.1).
+- **Qué decidir con Paisanos:** el destino del botón "Contratar" de la webapp (¿mail de marketing, Calendly, formulario?). Si la web es solo parte de la Misión 0, puede ser un destino de demostración claramente marcado.
+
+---
+
+## 22. Dudas abiertas de Mavi sobre Gaucho
+
+(actualizado 24/11/2026) Lo no resuelto, sacado de `docs/notasDeMavi.md`.
+
+| # | Duda | Quién puede resolverla | Contexto |
+|---|---|---|---|
+| 1 | ¿Gaucho tiene API? ¿Cómo se conecta la web con él? | Sofi | 20 |
+| 2 | ¿Es legal/posible que Sofi pase el archivo de personalidad de Gaucho o conecte una API para la entrevista? | Sofi (Mavi ya planea preguntarle) | 20 |
+| 3 | ¿A dónde llegan las contrataciones a Gaucho? | Paisanos | 21 |
+| 4 | ¿Cómo se vendería "el único robot DevRel del país" con marca personal? | Mavi + equipo | 17 |
+| 5 | ¿Cómo conseguirle laburo de verdad a Gaucho (tracción, alcance, leads) y cómo llegar a nuevas empresas? Idea en pie: TikTok con el challenge "día 1 buscando laburo hasta que lo encuentre" | Mavi, validar con Paisanos | 9, 10 |
+| 6 | ¿La narrativa del taller encaja con el canon de "El Origen"? | Nacho / Jez | 16 |
+| 7 | ¿Qué voz usar en el TTS: fiel al audio real o una más clara? ¿Se pueden usar los audios para entrenar? | Mavi + Paisanos | 19 |
+| 8 | ¿Cómo mejorar el SEO para que "robot Gaucho Paisanos" devuelva al robot? | Mavi | 18 |
+| 9 | La meeting que Mavi quiere tener con Gaucho: qué preguntarle (misión 3: "¿esto es lo que buscás?") | Mavi + Sofi | 15.5 |
+| 10 | ¿Es sponsor en eventos? Aparece en las notas pero no está documentado | Paisanos | 17 |
+| 11 | Instagram real de Gaucho, qué es "Ato", Notion "Misión Despertar", opciones de GauchoStudio | Mavi / Sofi / Gonza | 12 |
+| 12 | Falta el link de X de la experiencia como jurado de la Hackware (las notas no lo incluyen) | Mavi | 7.1 |

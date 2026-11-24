@@ -18,8 +18,14 @@
 7. [Experiencias y productos de Paisanos](#7-experiencias-y-productos-de-paisanos)
 8. [Línea de tiempo](#8-línea-de-tiempo)
 9. [Ecosistema y dónde encaja Gaucho "busca laburo"](#9-ecosistema-y-encaje-de-gaucho)
-10. [Para saber más / pendientes](#10-para-saber-más--pendientes)
-11. [Fuentes](#11-fuentes)
+10. [Stack de la web de Paisanos](#10-stack-de-la-web-de-paisanos) (nuevo, 24/11/2026)
+11. [Casos de estudio de Paisanos y cómo mapearlos al de Gaucho](#11-casos-de-estudio-de-paisanos-y-mapeo-al-caso-de-gaucho) (nuevo, 24/11/2026)
+12. [Contexto: la relación de Mavi con Paisanos y el challenge](#12-contexto-la-relación-de-mavi-con-paisanos-y-el-challenge) (nuevo, 24/11/2026)
+13. [Para saber más / pendientes](#13-para-saber-más--pendientes)
+14. [Fuentes](#14-fuentes)
+15. [Dudas abiertas sobre Paisanos](#15-dudas-abiertas-sobre-paisanos) (nuevo, 24/11/2026)
+
+Actualizado 24/11/2026: la sección 3 suma 3.1 (cosas que le contaron a Mavi), la 7.4 y la 7.8 suman novedades de las notas de Mavi, y se agregan las secciones 10, 11, 12 y 15. Las notas de Mavi ahora están en `docs/notasDeMavi.md` (antes `docs/notas.md`).
 
 ---
 
@@ -94,7 +100,7 @@ Aliados / gente alrededor (no son Paisanos pero aparecen siempre):
 - **Puertas abiertas**: "La Ofi" abre los jueves para coworkear y compartir mates, previa inscripción en https://ofi.paisanos.io. Condición: *"traer algo rico para compartir"*. [C] https://x.com/paisanos_io (cita de @delfiiargento, 4/11/2026)
 - **Construir en público** con humor: restauraron a Gaucho "semana a semana" y lo contaron en serie (Episodio 1 en LinkedIn de Sofía Ferro; video SLA; precuela; "El Origen"). [C/A]
 - **Alianzas ágiles**: hacen eventos con otros (SLA, mthd_405, Fardo, Lazo, DSH, Belo). [C]
-- Herramientas de la web (según la captura de Wappalyzer que pegó Mavi en `docs/notas.md`): Webflow, GSAP, Google Analytics GA4, HubSpot, Google Tag Manager, Cloudflare Turnstile, Lottie, jQuery, Intellimize, Finsweet, Bunny CDN. [C, es de Mavi]
+- Herramientas de la web (según la captura de Wappalyzer que pegó Mavi en `docs/notasDeMavi.md`): Webflow, GSAP, Google Analytics GA4, HubSpot, Google Tag Manager, Cloudflare Turnstile, Lottie, jQuery, Intellimize, Finsweet, Bunny CDN. [C, es de Mavi] (actualizado 24/11/2026: detalle completo y cruce con los casos en la sección 10)
 
 ---
 
@@ -112,6 +118,14 @@ Aliados / gente alrededor (no son Paisanos pero aparecen siempre):
 6. **Comunidad abierta de creadores.** Chiche Night apunta a design engineers, diseñadores, artistas, ilustradores "de cualquier disciplina". Tagline: *"Trae tu curiosidad; el resto lo ponemos nosotros."* [C chichenight.com / A audiencia por resumen de búsqueda]
 7. **Santificar al robot.** Existe la estampita "San Gaucho, patrono del código y los fierros", el merch oficial, dibujos de fans, "esto es real" en el cine. El robot se vive como mascota con culto propio. [C] `assets/fuentes.md`
 8. **Cripto/tech local.** Aliados y eventos de bitcoin (LABITCONF, Wallbit, Belo, Punta Tech). [C]
+
+### 3.1 Lo que le contaron a Mavi sobre cómo se trabaja (actualizado 24/11/2026)
+
+Salen de charlas de Mavi con gente de Paisanos, contadas en `docs/notasDeMavi.md`. No son verificables por mí.
+
+- **Jez le sugirió un throwback de "Gaucho naciendo en el taller"**, a partir de la magia que Mavi siente en Paisanos al buildear (entre proyectos innovadores y gente "copada y crack"). Mavi le había contado esa sensación varias veces y le comentó que quería encarar el portfolio de Gaucho de forma creativa. [A, autoreportado por Mavi, de una charla con Jez]
+- **Nacho y Sofi le dijeron que una característica de los paisanos es que alguien viene con un proyecto y termina quedándose con 5 más.** Mavi lo usó para leer su propio "me estoy yendo de alcance" como algo coherente con la cultura. [A, autoreportado por Mavi, de charlas con Nacho y Sofi]
+- Lectura mía [I]: ambas frases van en línea con lo que se ve en público (Chiche Night, Hackware, Gaucho Adventures: proyectos que crecen por gusto de hacerlos). El "Nacho" de las notas podría ser Nahue/Nahuel Alberti, pero no está confirmado; "Jez" no figura en mis fuentes (ver sección 15).
 
 **Lenguaje interno / vocabulario** que se repite: *manija / manijeó*, *chiche* ("fast chiches"), *groso*, *romperla*, *ponerle garra*, *fierros*, *taller*, *la Ofi*, *pochoclos*, *laburo*, *paisano/paisanos*. [C, por frecuencia en las fuentes]
 
@@ -283,6 +297,7 @@ Cuidado [I]: la nota de Mavi pide evitar un diseño "claudístico" (genérico); 
 - **Para quién**: fans del retro y de Gaucho.
 - **Diferencial**: se hizo para un hardware real de 16 bits y no solo como web. [I: "en cartucho" indica intención de edición física]
 - **Qué dice de la marca** [I]: cariño por lo retro y por el hacer artesanal; sumar gente del equipo a proyectos "por amor al arte".
+- **Novedad (24/11/2026)**: Mavi le escribió a Gonza para poder probar el juego (no hay página pública, ver sección 13) y dice que le dio fomo. [A, autoreportado por Mavi] Falta confirmar si lo pudo jugar y qué vio (útil para la estética pixel art/Sega de los easter eggs).
 
 ### 7.5 La Ofi (oficina abierta de los jueves)
 
@@ -305,7 +320,8 @@ Cuidado [I]: la nota de Mavi pide evitar un diseño "claudístico" (genérico); 
 ### 7.8 a better byte (experiencia de Sofi)
 
 - **Qué es**: homenaje web a la Macintosh IIsi de Charles Bukowski. Una escena 3D de su escritorio de noche (lámpara naranja, radio, botella de vino, cenicero, libros, impresora) donde se leen en la pantalla de la compu sus poemas sobre la computadora (1990-1994). Se empieza con "click to begin", se lee con scroll o arrastrando, se puede cerrar un poema y hacer doble click en otro de la carpeta, y se imprime para llevarse la página. Hay sonido (arranca apagado), "skip intro" y una salida alternativa "or read the poems as text". [C, visto en el navegador el 23/11/2026] https://a-better-byte.vercel.app/
-- **Quién**: la atribución a **Sofi Ferro** la dio Mavi. El sitio no muestra créditos ni autoría. [A, pendiente de confirmar]
+- **Quién**: **Sofi Ferro**. La atribución la dio Mavi y (actualizado 24/11/2026) Mavi la confirma en sus notas: "lo que hizo Sofi, me leí todos los poemas". El sitio en sí no muestra créditos ni autoría. [Confirmado por Mavi]
+- **Lo que le provocó a Mavi** (actualizado 24/11/2026): le gustó la bronca y la desdicha del autor en poemas como "my first computer poem" y "a computer now", y lo conectó con lo que se siente la primera vez que uno usa una computadora; destaca la estética y los sonidos de la experiencia. Sirve como referencia emocional para los easter eggs retro. [A, autoreportado por Mavi]
 - **Para quién**: gente de cultura tech y literatura, fans de Bukowski.
 - **Qué la hace distinta**: toma un texto existente (poemas) y lo convierte en un lugar con atmósfera. El gesto "imprimir" cierra la experiencia con algo que te llevás. Siempre hay una versión en texto plano para accesibilidad.
 - **Qué dice de la marca** [I]: el equipo de Paisanos hace "chiches" con una idea fuerte, una sola escena y una interacción mínima, y los publica como sitios sueltos en Vercel. Análisis comparado de este tipo de experiencias en `docs/experienciasCreativasGaucho.md`.
@@ -367,7 +383,142 @@ Nota: el año de los posts de X lo infiero de la fecha del tuit de Mavi (22 nov 
 
 ---
 
-## 10. Para saber más / pendientes
+## 10. Stack de la web de Paisanos
+
+*(Sección nueva, 24/11/2026.)* Mavi corrió **Wappalyzer** sobre https://www.paisanos.io/es para tener "una idea muy básica" de qué tools usa Paisanos, y aclara que **sabe que cambian de tools según el proyecto**. Lo de abajo es la transcripción de sus dos capturas (`docs/orca-paste-1795412954075-07720b43-ee3e-482d-a192-47fe2da371b8.png` y `docs/orca-paste-1795412961291-d15cc4d2-c62c-4811-942a-c2439f384d00.png`). [C, lo vi en las capturas] La segunda captura empieza y termina cortada, así que puede faltar alguna categoría arriba o abajo.
+
+| Categoría (Wappalyzer) | Tecnología | Versión |
+|---|---|---|
+| Analítica | HubSpot Analytics | |
+| Analítica | Google Analytics | GA4 |
+| Automatización de marketing | HubSpot | |
+| Red de publicidad | DoubleClick Floodlight | |
+| Gestor de etiquetas | Google Tag Manager | |
+| Constructor de páginas de destino | Finsweet | |
+| Constructor de páginas (se ve cortado arriba en la 2.ª captura) | Webflow | 1.6.0 |
+| Framework JavaScript | GSAP | 3.13.0 |
+| Librerías JavaScript | core-js | 3.0.1 |
+| Librerías JavaScript | jQuery | 3.5.1 |
+| Seguridad | Cloudflare Turnstile | |
+| Tipografía | Google Font API | |
+| Misceláneo | Open Graph, LottieFiles, Webpack, HTTP/3 | |
+| CDN | Bunny, jsDelivr, Google Hosted Libraries (puede haber más debajo, cortado) | |
+| Pruebas A/B | Intellimize | |
+| Personalización | Intellimize | |
+
+**Cruce con lo ya investigado**
+- Coincide con lo que ya tenía: **Webflow + GSAP + Lottie** (sección 5.1) y que el sitio se arma en Webflow (CSS `paisanos-v2...min.css`). [C]
+- Sumado por las capturas y que antes no estaba detallado: DoubleClick Floodlight (publicidad), Webpack, HTTP/3, jsDelivr y Google Hosted Libraries como CDN, Open Graph, core-js, Google Font API. Intellimize figura tanto en A/B como en personalización: la web probablemente se optimiza por conversión [I].
+- Según Wappalyzer, la web es de **marketing/captación de leads** (HubSpot, GTM, GA4, Floodlight, Intellimize, Turnstile contra bots en formularios). [I] Eso concuerda con que Paisanos vende servicios y usa el sitio como vidriera.
+- **Cruce con los casos de estudio** (sección 11): las herramientas listadas en los casos que leí son otras: Figma, Slack, Notion, Webflow, HubSpot, Next.js, Spline, Endlesstools, Higgsfield, Midjourney, Gemini, ChatGPT, After Effects. Confirma lo que dice Mavi: el stack depende del proyecto. [C, tomado de las tres páginas de casos]
+- **Para el sitio de Gaucho** [I]: las notas de Mavi apuntan a React o Astro, no a Webflow. Eso es compatible con Paisanos, que usó Next.js en Medicus. Las animaciones podrían ser GSAP y Lottie como en la web de Paisanos, pero es decisión de Mavi.
+
+---
+
+## 11. Casos de estudio de Paisanos y mapeo al caso de Gaucho
+
+*(Sección nueva, 24/11/2026.)* Mavi anotó que "Paisanos hace un caso de estudio por cada empresa y/o producto que hace" y que quiere hacer uno de Gaucho (es su primer caso de estudio). Acá analizo la estructura real. Páginas leídas con Chrome el 24/11/2026. [C]
+
+### 11.1 Qué casos hay y cómo se llaman
+
+En la home https://www.paisanos.io/es se enlazan cinco casos (los que aparecen en el carrusel; puede haber más en "Proyectos"):
+
+| Caso | URL |
+|---|---|
+| PedidosYa | https://www.paisanos.io/es/projects/pedidosya-case-study |
+| Coderhouse (brand) | https://www.paisanos.io/es/projects/coderhouse-brand-case-study |
+| Medicus (website) | https://www.paisanos.io/es/projects/medicus-website-case-study |
+| Mostaza (creative design) | https://www.paisanos.io/es/projects/mostaza-creative-design |
+| MODO (product) | https://www.paisanos.io/es/projects/modo-product-case-study |
+
+Más el de Switch (el que citó Mavi): https://www.paisanos.io/es/projects/switch-website-case-study. Abrí en detalle **Switch, Medicus y Coderhouse**; PedidosYa, Mostaza y MODO no los abrí. Patrón de URL: `/projects/{cliente}-{tipo}-case-study` (con excepciones), y el título de la pestaña es "{Cliente} | {Tipo} case study".
+
+### 11.2 Estructura real del caso de Switch
+
+Cliente: Switch Software (empresa uruguaya de desarrollo a medida). Título/bajada: *"Diseño estratégico, innovación y una Alpaca: el ADN de Switch Software en su nueva web"*.
+
+| Bloque | Qué contiene en Switch |
+|---|---|
+| **Ficha** | Cliente: Switch Software · Año: 2024 · País: Argentina · Industria: Tech Services · Servicio ("Service"): Brand Website · Link: switchsoftware.io |
+| **Sobre el cliente** ("Acerca de Switch") | 2 párrafos: quiénes son, cuántos años, qué hacen, en qué industrias |
+| **El desafío** | El sitio ya no reflejaba su sofisticación; tras una redefinición estratégica buscaban un socio; objetivo: repensar identidad, profesionalizar la marca sin perder cercanía |
+| **Outcomes** | Texto narrativo (sin cifras): equilibrio cercanía/profesionalismo, mejora "de métricas de navegación y conversión" (sin números), nueva paleta, tipografía, fotos de cultura, gráficos 3D/2D con Spline y Endless Tool, sitio en Webflow con landings por servicio, **un easter egg** (la alpaca, mascota digital, en la sección de equipo) |
+| **Herramientas** | Figma, Slack, Notion, Webflow, Endlesstools, Spline |
+| **Equipo, ambos lados** | Paisanos: Project Manager, Product Designer, Webflow Dev, Head of Design. Switch: CSMO, CTO, UX Studio Lead, Head of Mktg (con nombre abreviado + rol) |
+| **Testimonio** | Cita de Mariana Sanguinetti (Chief Sales and Marketing Officer de Switch): profesionalismo, procesos estructurados, creatividad y "muy buena onda" |
+| **Cierre** | "¿Te ha gustado nuestro sitio web? ¡Compártelo!" (botón copiar enlace) y contacto |
+
+Detalles de formato [C]: secciones colapsables ("Show/Hide"), versión ES/EN, y un cuerpo que repite cada bloque como capítulos con imágenes y el remate "Ve a los detalles del caso para obtener más información". Hay un dato curioso: aunque Switch es uruguaya, el campo País dice Argentina (se ve que "País" es dónde se hizo el proyecto, no la sede del cliente) [I].
+
+### 11.3 Qué se repite en los tres casos que leí y qué varía
+
+| Bloque | Switch | Medicus | Coderhouse |
+|---|---|---|---|
+| Ficha (cliente, año, país, industria, servicio, link) | Sí | Sí | Sí |
+| Descripción / resumen corto | No (bajada en el título) | Sí | Sí |
+| Sobre el cliente | Sí | Sí ("La empresa") | No |
+| El desafío | Sí | Sí | Sí |
+| Proceso | No | Sí | No (va narrado en el cuerpo) |
+| Solución / impacto | En "Outcomes" | "La solución" | "El impacto" |
+| **Outcomes con números** | No | **Sí**: 224k usuarios mensuales, 7,8 % de conversión, migrado a Webflow, 100 % autogestivo (primer mes) | No: "Concept based", "las métricas están por medirse" |
+| Herramientas | Sí | Sí | Sí |
+| Equipo de ambos lados | Sí | Sí | Sí |
+| Testimonio | **Sí** | No visible | No visible |
+
+Lo fijo: **ficha, desafío, outcomes, herramientas, equipo de ambos lados**. Lo variable: descripción, sobre el cliente, proceso, testimonio, y si hay cifras. Es decir, el esqueleto es un molde y el contenido se adapta al tipo de proyecto (web, marca, producto). Dato útil para Mavi: **Paisanos publica casos sin números cuando todavía no los hay (Coderhouse) y lo dice explícitamente** ("las métricas... están por medirse"). Eso legitima publicar un caso con resultados parciales.
+
+### 11.4 Para qué sirve un caso de estudio (lectura mía [I])
+
+- **Prueba**: muestra que el trabajo existió, con quién, cuándo y con qué resultado. Los números (Medicus) y la cita del cliente (Switch) son la evidencia.
+- **Venta**: ordena el pitch en "problema, solución, resultado", y la ficha deja ver rápido rubro y servicio. Los casos funcionan como argumento para el próximo cliente y para los equipos de producto de bancos, fintech y retail.
+- **Marca**: cuenta cómo piensan y cómo trabajan (el proceso, el equipo, las herramientas, la anécdota de la alpaca). Muestra el tono: serio en la estructura, humano en los remates.
+- **Reclutamiento**: mostrar el equipo y las herramientas atrae talento (Paisanos busca perfiles, ver sección 2.2).
+
+Para Mavi tiene una cuarta función: **es un entregable que Paisanos reconoce**, en su propio formato, y le da un lugar natural donde contar el proceso del challenge.
+
+### 11.5 Propuesta de mapeo al caso de estudio de Gaucho [I, propuesta]
+
+Pendiente de definir por Mavi: **cuál es el "producto" del caso**. Hay al menos tres lecturas, que cambian el cliente de la ficha:
+
+1. **El portfolio web de Gaucho** (el cliente sería Gaucho/Paisanos; servicio: "Personal brand website").
+2. **La campaña creativa para conseguirle laburo a Gaucho** (portfolio + experiencia + tracción).
+3. **El challenge "Misión 0" completo** (proceso de Mavi, incluido el rediseño del enfoque).
+
+| Bloque Paisanos | Cómo se llenaría en el caso de Gaucho |
+|---|---|
+| Ficha | Cliente: Gaucho (Paisanos) · Año: 2026 · País: Argentina · Industria: a decidir (Robótica / DevRel / marca personal) · Servicio: a decidir según el producto · Link: la web publicada |
+| Sobre el cliente | Quién es Gaucho: Omnibot TOMY 1984, DevRel y Content Creator, jurado, speaker, juego, merch (ver `docs/investigacionGaucho.md`) |
+| Desafío | Convertir al "robot de Paisanos" en un profesional contratable, sin portfolio aburrido (frase de las notas de Mavi: Gaucho es único y sabe que lo es). Y el gap narrativo: hay un origen contado desde el punto de vista de Paisanos, no desde el de Gaucho |
+| Proceso | Investigación de marca, mockups, design kit, historia del taller. Acá es donde más aporta Mavi |
+| Outcomes | Web, design kit, easter eggs y campaña. Resultados medibles cuando existan: visitas, consultas de contratación, menciones. Si todavía no hay cifras, decirlo como hizo Coderhouse |
+| Herramientas | Las que use realmente (React o Astro, Claude, ChatGPT/Codex, Figma, ElevenLabs si se usa) |
+| Equipo, ambos lados | Mavi como diseño/desarrollo; del lado Paisanos, las personas que la ayudaron o validaron (con su permiso) |
+| Testimonio | Una cita de alguien del equipo de Paisanos o del propio Gaucho (entrevista "Gaucho te entrevista a vos", idea de Mavi) |
+| Easter egg | Switch cierra con una mascota escondida; el equivalente en Gaucho ya está en las notas de Mavi (los videítos) |
+
+**Cuándo hacerlo**
+- **Ahora**: el esqueleto (ficha, sobre el cliente, desafío, proceso hasta donde va, herramientas, equipo), porque el proceso se olvida si no se registra mientras pasa.
+- **Al final**: outcomes, testimonio y números, que dependen de que la web esté publicada y de que exista alguna respuesta real.
+- No escribo el caso en sí: este documento solo define el molde.
+
+---
+
+## 12. Contexto: la relación de Mavi con Paisanos y el challenge
+
+*(Sección nueva, 24/11/2026, sobre lo que dicen las notas de Mavi y solo en lo útil para entender el challenge.)* [A, autoreportado por Mavi]
+
+- **Es la "Misión 0"** del challenge "Gaucho busca laburo" (el brief está en Notion de Paisanos, link en `docs/notasDeMavi.md`; ver también `docs/requirementsPaisa.md`).
+- **Todavía no está en el equipo oficialmente.** Mavi lo llama "moto robada": la primera cosita que hace como parte del equipo, aunque no oficial. Para ella es una buena oportunidad para conocerlos.
+- **Quiere validar con el equipo**: qué piensan, cómo encararían la situación, qué cambiarían. Esto está entre sus misiones principales ("preguntarle a Gaucho si eso es lo que él busca").
+- **Quiere ampliar el alcance** del brief a algo escalable y con impacto (que Gaucho consiga trabajo de verdad, que lo vea gente, que genere leads) y no solo una web donde se pueda entrevistar a Gaucho. Se dio cuenta de que está "desafiando los límites y el alcance del challenge"; la charla con Nacho y Sofi (sección 3.1) la tranquilizó.
+- **Misiones secundarias de Mavi** sobre Paisanos: investigarlos "de pies a cabeza" en todas sus redes (esta misma investigación) para tomar su estilo, e inspirarse en la Chiche Night y otros productos de Paisanos para el flow y la estética.
+- **Hace un caso de estudio** de Gaucho como los de Paisanos (sección 11).
+- **Hallazgo de oportunidad**: hay una historia de los orígenes de Gaucho hecha por Paisanos ("Gaucho: El Origen") y el gap es contar cómo nació desde el punto de vista de Gaucho (conecta con la sugerencia de Jez).
+- Quiere un **mejor SEO** para que al buscar "robot Gaucho Paisanos" aparezca el robot y no otros gauchos.
+
+---
+
+## 13. Para saber más / pendientes
 
 No pude confirmar o acceder a:
 
@@ -399,7 +550,7 @@ No pude confirmar o acceder a:
 
 ---
 
-## 11. Fuentes
+## 14. Fuentes
 
 Web y prensa
 - Sitio: https://www.paisanos.io/es (incl. CSS de Webflow: `paisanos-v2.65aa6eba80d4ae8ace2ac962.b1754118d.opt.min.css`)
@@ -419,4 +570,29 @@ Redes (leídas con Chrome el 23/11/2026)
 - YouTube SLA TV: https://www.youtube.com/watch?v=jlnoMtGMSz4
 
 Material del repo
-- `docs/requirementsPaisa.md`, `docs/investigacionGaucho.md`, `assets/fuentes.md`, `docs/notas.md` (solo lectura), `docs/orca-paste-*.png`, imágenes de `assets/Gaucho/fotitos/`.
+- `docs/requirementsPaisa.md`, `docs/investigacionGaucho.md`, `assets/fuentes.md`, `docs/notasDeMavi.md` (solo lectura; antes `docs/notas.md`), `docs/orca-paste-*.png`, imágenes de `assets/Gaucho/fotitos/`.
+
+Casos de estudio (leídos con Chrome el 24/11/2026, actualizado)
+- Switch: https://www.paisanos.io/es/projects/switch-website-case-study
+- Medicus: https://www.paisanos.io/es/projects/medicus-website-case-study
+- Coderhouse: https://www.paisanos.io/es/projects/coderhouse-brand-case-study
+- Enlazados en la home y no abiertos: https://www.paisanos.io/es/projects/pedidosya-case-study · https://www.paisanos.io/es/projects/mostaza-creative-design · https://www.paisanos.io/es/projects/modo-product-case-study
+- Stack de la web: capturas de Wappalyzer de Mavi (`docs/orca-paste-1795412954075-...png`, `docs/orca-paste-1795412961291-...png`).
+
+---
+
+## 15. Dudas abiertas sobre Paisanos
+
+*(Sección nueva, 24/11/2026.)* Cosas que no puedo resolver con las fuentes y que conviene preguntarle al equipo.
+
+1. **¿A dónde llegan las contrataciones de Gaucho?** Las notas de Mavi lo preguntan. Hoy el único contacto oficial que tengo es nahue@paisanos.io (challenge), marketing@paisanos.io y hola@paisanos.io (sección 9). Falta saber si hay un canal específico, quién decide si Gaucho acepta un trabajo y cómo se cobra (el trabajo en Wallbit, ¿lo cobra Paisanos?).
+2. **¿Es legal/posible que Sofi le pase a Mavi el archivo de personalidad de Gaucho, o que le abran una API?** Mavi quiere preguntárselo a Sofi. Lo que sé: la cuenta de X la automatiza @svfonx y el robot tiene personalidad definida por LLM (ver `docs/investigacionGaucho.md`). Dudas: si ese archivo es propiedad intelectual de Paisanos, si contiene datos que no deberían salir, si se puede compartir bajo NDA, y si existe una API aunque sea interna. [A que exista el archivo; I el resto]
+3. **¿Puede Mavi replicar el sistema técnico de Gaucho** a partir de los videos? Está en sus planes. Conviene confirmar con Sofi/Nahue qué se puede reusar y qué no.
+4. **¿Qué permisos hay sobre el material de marca?** Bandera, cartel de neón, merch, dibujos de fans, fotos y el video "El Origen" (el punto 3 de "Qué necesita decidir o aportar Mavi", sección 13, ya lo anota).
+5. **¿Quiénes son "Jez" y "Nacho" de las notas?** No figuran con ese nombre en mis fuentes. Podría ser que "Nacho" sea Nahue/Nahuel Alberti y que "Jez" sea otra persona del equipo; no lo asumo.
+6. **¿Cuál es el "producto" del caso de estudio de Gaucho?** (sección 11.5). Decisión de Mavi.
+7. **¿Paisanos acepta publicar el caso de Gaucho en su sitio** o va en la web de Mavi/Gaucho? Y si lleva el nombre de personas de Paisanos, ¿necesitan dar el OK?
+8. **¿El campo "País" de la ficha es dónde se hizo el proyecto o dónde está el cliente?** En Switch (empresa uruguaya) dice Argentina.
+9. **¿Cuántos casos tiene Paisanos y cuáles son los otros tres no abiertos?** (PedidosYa, Mostaza, MODO). Falta ver si siguen el mismo molde.
+10. **¿Mavi pudo jugar Gaucho Adventures con Gonza?** Falta confirmar el resultado y si hay un build o repo para ver.
+11. **¿Va a quedar Mavi en el equipo?** Es su "moto robada", ¿cómo se conecta el resultado de esta misión con una posible incorporación? Pregunta de Mavi, no mía.
