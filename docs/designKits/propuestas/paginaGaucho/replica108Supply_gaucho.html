@@ -11,6 +11,8 @@
   <style>
     /* ============================================================
        Réplica del estilo de 108 Supply con la información de Gaucho.
+       Colores del CV real de Gaucho (docs/designKits/propuestas/cv/cv.css):
+       papel crema TOMY con puntitos de tinta, texto azul Omnibot, bordes marrón.
        Spec: specs/paginaGauchoReplica108Supply.md
        ============================================================ */
 
@@ -22,15 +24,17 @@
       --gaucho-crema-tomy: #F4E2C4;
       --gaucho-crema-sucio: #E8C69D;
       --gaucho-rojo-ojos: #F3462E;
+      --gaucho-rojo-glow: #FF6A55;
       --gaucho-sol: #EAA540;
       --gaucho-celeste: #74ACDF;
-      --gaucho-lima: #D8F500;
+      --gaucho-naranja-sunset: #F28409;
+      --gaucho-marron-sombrero: #523823;
 
-      /* Neutros de apoyo para los paneles claros */
-      --papel-blanco: #FFFFFF;
-      --papel-gris: #EFF1F0;
-      --tinta-suave: #6B7280;
-      --texto-sobre-oscuro: #EFF1F0;
+      /* Roles de color derivados de la paleta (sin colores nuevos) */
+      --superficie-carta: color-mix(in srgb, var(--gaucho-crema-sucio) 45%, var(--gaucho-crema-tomy));
+      --borde-suave: color-mix(in srgb, var(--gaucho-marron-sombrero) 40%, transparent);
+      --puntitos-de-tinta: color-mix(in srgb, var(--gaucho-marron-sombrero) 15%, transparent);
+      --texto-tenue: var(--gaucho-marron-sombrero);
 
       --tipografia-texto: "Geist", Arial, sans-serif;
       --tipografia-mono: "Geist Mono", ui-monospace, monospace;
@@ -39,15 +43,18 @@
       --radio-panel: 27px;
       --margen-pagina: 10px;
       --alto-nav: 48px;
-      color-scheme: dark;
+      color-scheme: light;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--gaucho-taller);
-      color: var(--texto-sobre-oscuro);
+      background-color: var(--gaucho-crema-tomy);
+      /* Puntitos de tinta, el mismo recurso que usa el CV real */
+      background-image: radial-gradient(var(--puntitos-de-tinta) 0.55px, transparent 0.8px);
+      background-size: 5px 7px;
+      color: var(--gaucho-azul-omnibot);
       font-family: var(--tipografia-texto);
       font-size: 17px;
       line-height: 1.35;
@@ -56,7 +63,7 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; color: inherit; cursor: pointer; }
-    :focus-visible { outline: 2px solid var(--gaucho-lima); outline-offset: 3px; }
+    :focus-visible { outline: 2px solid var(--gaucho-azul-tinta); outline-offset: 3px; }
 
     /* Etiqueta mono en mayúsculas, como en 108 Supply */
     .etiqueta {
@@ -84,14 +91,15 @@
       height: var(--alto-nav);
       padding: 0 16px;
       border-radius: 999px;
-      background: rgba(48, 50, 52, 0.88);
+      border: 1px solid var(--gaucho-marron-sombrero);
+      background: color-mix(in srgb, var(--gaucho-crema-tomy) 92%, transparent);
       backdrop-filter: blur(10px);
       font-size: 15px;
     }
     .pildora-logo { font-family: var(--tipografia-condensada); font-size: 22px; letter-spacing: 0.04em; }
     .pildora-links { gap: 20px; padding: 0 22px; display: none; }
-    .pildora-links a:hover { color: var(--gaucho-lima); }
-    .pildora-cta { background: var(--gaucho-lima); color: var(--gaucho-taller); font-weight: 500; }
+    .pildora-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .pildora-cta { background: var(--gaucho-rojo-ojos); color: var(--gaucho-taller); font-weight: 500; }
 
     /* ---------- Hero: panel gigante con foto ---------- */
     .hero {
@@ -100,18 +108,20 @@
       min-height: calc(100svh - 20px);
       border-radius: var(--radio-panel);
       overflow: hidden;
-      background: var(--gaucho-azul-omnibot);
+      border: 1px solid var(--gaucho-marron-sombrero);
+      background: var(--gaucho-crema-sucio);
     }
     .hero-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hero::after { /* oscurece el borde inferior para que lea la tarjeta */
+    .hero::after { /* oscurece solo el borde inferior de la foto para que lea el título */
       content: "";
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(11, 15, 20, 0.75), transparent 55%);
+      background: linear-gradient(to top, color-mix(in srgb, var(--gaucho-azul-omnibot) 70%, transparent), transparent 50%);
     }
     .hero-titulo {
       position: absolute; z-index: 2;
       left: 20px; bottom: 110px;
       margin: 0;
+      color: var(--gaucho-crema-tomy);
       font-family: var(--tipografia-condensada);
       font-weight: 400;
       font-size: clamp(72px, 20vw, 230px);
@@ -123,18 +133,19 @@
       left: 10px; right: 10px; bottom: 10px;
       padding: 14px 16px;
       border-radius: 14px;
-      background: rgba(32, 34, 36, 0.9);
+      border: 1px solid var(--gaucho-marron-sombrero);
+      background: color-mix(in srgb, var(--gaucho-crema-tomy) 94%, transparent);
       backdrop-filter: blur(10px);
       display: grid;
       gap: 4px;
     }
-    .hero-tarjeta span:last-child { color: var(--gaucho-lima); }
-    .tarjeta-lima {
+    .hero-tarjeta span:last-child { color: var(--texto-tenue); }
+    .tarjeta-sol {
       position: absolute; z-index: 2;
       top: 84px; left: 20px;
       padding: 14px 18px 12px;
       border-radius: 18px;
-      background: var(--gaucho-lima);
+      background: var(--gaucho-sol);
       color: var(--gaucho-taller);
       transform: rotate(-4deg);
       font-family: var(--tipografia-condensada);
@@ -142,33 +153,35 @@
       line-height: 0.95;
       text-transform: uppercase;
     }
-    .tarjeta-lima small { display: block; font-family: var(--tipografia-mono); font-size: 11px; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .tarjeta-sol small { display: block; font-family: var(--tipografia-mono); font-size: 11px; letter-spacing: 0.06em; margin-bottom: 6px; }
 
     /* ---------- Perfil: frase en dos tonos ---------- */
     .perfil { padding: 140px 20px 70px; text-align: center; max-width: 980px; margin: 0 auto; }
     .dos-tonos { font-size: clamp(28px, 5vw, 46px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; margin: 0 0 40px; }
-    .dos-tonos span { color: #8A8F94; }
+    .dos-tonos span { color: var(--texto-tenue); }
     .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 0; margin: 0; list-style: none; }
     .chips a {
       display: inline-block; padding: 12px 20px; border-radius: 999px;
-      background: #1D1F21; font-size: 19px;
+      border: 1px solid var(--gaucho-marron-sombrero);
+      background: var(--gaucho-crema-sucio); font-size: 19px;
     }
-    .chips a:hover { background: #2B2E31; }
+    .chips a:hover { background: var(--gaucho-sol); }
 
     /* ---------- Visto en (marquee) ---------- */
     .visto-en { padding: 30px 0 110px; text-align: center; overflow: hidden; }
-    .visto-en .etiqueta { color: #5A5F64; margin: 0 0 30px; }
+    .visto-en .etiqueta { color: var(--texto-tenue); margin: 0 0 30px; }
     .marquee { display: flex; width: max-content; animation: deslizar 28s linear infinite; }
-    .marquee span { padding: 0 34px; font-size: 26px; font-weight: 500; color: #7B8086; white-space: nowrap; }
+    .marquee span { padding: 0 34px; font-size: 26px; font-weight: 500; color: var(--gaucho-azul-tinta); white-space: nowrap; }
     @keyframes deslizar { to { transform: translateX(-50%); } }
 
-    /* ---------- Paneles claros redondeados ---------- */
+    /* ---------- Paneles redondeados (hoja de papel) ---------- */
     .panel-claro {
       margin: var(--margen-pagina);
       padding: 24px 16px 40px;
       border-radius: var(--radio-panel);
-      background: var(--papel-blanco);
-      color: var(--gaucho-taller);
+      border: 1px solid var(--gaucho-marron-sombrero);
+      background: var(--gaucho-crema-tomy);
+      color: var(--gaucho-azul-omnibot);
     }
     .panel-encabezado {
       display: flex; justify-content: space-between; gap: 12px;
@@ -176,16 +189,18 @@
     }
     .panel-encabezado span:nth-child(2) { display: none; }
     .panel-titulo { font-size: clamp(34px, 6vw, 54px); font-weight: 500; line-height: 1.02; letter-spacing: -0.04em; margin: 0 0 40px; }
-    .panel-titulo span { color: #8A8F94; display: block; }
+    .panel-titulo span { color: var(--texto-tenue); display: block; }
 
     /* Carrusel de tarjetas */
-    .carrusel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; }
+    /* El padding vertical (compensado con margen negativo) deja lugar a la tarjeta elevada, que si no se recortaría */
+    .carrusel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-block: 18px; margin-block: -18px; scrollbar-width: none; }
     .carrusel::-webkit-scrollbar { display: none; }
     .ficha { flex: 0 0 min(86%, 430px); scroll-snap-align: start; }
     .ficha-marco {
       aspect-ratio: 1 / 1.1;
       border-radius: var(--radio-panel);
-      background: var(--papel-gris);
+      border: 1px solid var(--borde-suave);
+      background: var(--superficie-carta);
       padding: 22px;
       display: grid; place-items: center;
       overflow: hidden;
@@ -193,59 +208,78 @@
     /* Las fotos son capturas verticales: se muestran enteras, como los mockups de la referencia */
     .ficha-marco img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
     .ficha-pie { display: flex; justify-content: space-between; gap: 12px; padding: 12px 4px 0; font-size: 16px; }
-    .ficha-pie span { color: var(--tinta-suave); }
+    .ficha-pie span { color: var(--texto-tenue); }
     .ficha-pie span:first-child { margin-left: 8px; }
     .ficha-nombre { font-weight: 500; }
     .ficha-nombre + span { margin-right: auto; }
     .carrusel-controles { display: flex; justify-content: space-between; margin-top: 30px; }
     .boton-redondo, .boton-pildora {
-      border: 0; border-radius: 999px; background: var(--papel-gris); color: var(--gaucho-taller);
+      border: 1px solid var(--gaucho-marron-sombrero); border-radius: 999px;
+      background: var(--gaucho-crema-sucio); color: var(--gaucho-azul-omnibot);
       height: 48px; min-width: 48px; padding: 0 20px; font-size: 16px;
     }
     .boton-redondo { padding: 0; width: 48px; margin-right: 6px; }
-    .boton-redondo:hover, .boton-pildora:hover { background: #E1E4E2; }
-    .boton-lima { background: var(--gaucho-lima); }
-    .boton-lima:hover { background: #E6FF3A; }
+    .boton-redondo:hover, .boton-pildora:hover { background: var(--gaucho-sol); }
+    .boton-redondo:disabled, .boton-pildora:disabled { opacity: 0.55; cursor: not-allowed; }
+    .boton-rojo { background: var(--gaucho-rojo-ojos); color: var(--gaucho-taller); }
+    .boton-rojo:hover { background: var(--gaucho-rojo-glow); }
+
+    /* ---------- Comunidad e historia ---------- */
+    .panel-claro + .panel-claro { margin-top: 0; }
+    .subtitulo { margin: 56px 0 18px; font-weight: 400; color: var(--texto-tenue); }
+    .linea-de-tiempo { list-style: none; margin: 0; padding: 0; }
+    .linea-de-tiempo li {
+      display: grid; gap: 4px 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--borde-suave);
+    }
+    .linea-de-tiempo li:last-child { border-bottom: 1px solid var(--borde-suave); }
+    .linea-de-tiempo p { margin: 0; font-size: 19px; }
+    .linea-de-tiempo time { color: var(--texto-tenue); }
+    .grilla-comunidad { display: grid; gap: 12px; }
+    .pieza { margin: 0; }
+    .pieza .ficha-marco { aspect-ratio: 1 / 1; padding: 16px; }
+    /* Lugar reservado para una foto que todavía no existe */
+    .foto-pendiente { border-style: dashed; background: transparent; text-align: center; color: var(--texto-tenue); }
+    .foto-pendiente p { margin: 0; }
 
     /* ---------- Taller: tres empresas candidatas ---------- */
     .grilla-taller { display: grid; gap: 12px; }
     .objeto {
       border-radius: var(--radio-panel);
-      background: var(--papel-gris);
+      border: 1px solid var(--borde-suave);
+      background: var(--superficie-carta);
       padding: 22px;
       min-height: 280px;
       display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
     }
     .objeto h3 { margin: 0 0 8px; font-size: 28px; font-weight: 500; letter-spacing: -0.03em; }
-    .objeto p { margin: 0; color: #3F454B; }
-    .objeto .etiqueta { color: var(--tinta-suave); }
+    .objeto p { margin: 0; color: var(--gaucho-azul-tinta); }
+    .objeto .etiqueta { color: var(--texto-tenue); }
     .objeto-numero { font-family: var(--tipografia-condensada); font-size: 72px; line-height: 0.9; color: var(--gaucho-azul-tinta); }
 
-    /* ---------- Entrevista (oscura) ---------- */
-    .entrevista { padding: 110px 20px 90px; max-width: 1100px; margin: 0 auto; }
-    .entrevista .panel-titulo span { color: #8A8F94; }
+    /* ---------- Entrevista (también sobre papel) ---------- */
+    .entrevista { max-width: 1100px; margin-inline: auto; padding: 32px 20px 44px; }
     .llamada { display: grid; gap: 12px; margin-top: 10px; }
     .pantalla-llamada {
       border-radius: var(--radio-panel);
-      background: #16191C;
+      border: 1px solid var(--borde-suave);
+      background: var(--superficie-carta);
       overflow: hidden;
       position: relative;
       aspect-ratio: 16 / 10;
       display: grid; place-items: center;
     }
     .pantalla-llamada img { width: 100%; height: 100%; object-fit: cover; }
-    .pantalla-llamada .etiqueta { position: absolute; left: 14px; bottom: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(0, 0, 0, 0.6); }
-    .pantalla-compartida { background: var(--papel-blanco); }
+    .pantalla-llamada .etiqueta { position: absolute; left: 14px; bottom: 14px; padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--gaucho-crema-tomy) 92%, transparent); }
+    .pantalla-compartida { background: var(--gaucho-crema-tomy); }
     .pantalla-compartida img { object-fit: contain; }
     .acciones { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-    .acciones .boton-pildora { background: #1D1F21; color: var(--texto-sobre-oscuro); }
-    .acciones .boton-pildora:hover { background: #2B2E31; }
-    .acciones .boton-lima { background: var(--gaucho-lima); color: var(--gaucho-taller); }
-    .estado { font-family: var(--tipografia-mono); font-size: 13px; color: #9AA0A6; margin-top: 18px; min-height: 1.4em; }
+    .estado { font-family: var(--tipografia-mono); font-size: 13px; color: var(--texto-tenue); margin-top: 18px; min-height: 1.4em; }
 
     /* ---------- Pie y aviso flotante ---------- */
-    .pie { padding: 40px 20px 150px; text-align: center; color: #6C7176; }
-    .franja-80s { height: 20px; width: 160px; margin: 0 auto 24px; border-radius: 4px; background: linear-gradient(var(--gaucho-rojo-ojos) 0 25%, #F28409 25% 50%, var(--gaucho-sol) 50% 75%, var(--gaucho-celeste) 75% 100%); }
+    .pie { padding: 40px 20px 150px; text-align: center; color: var(--texto-tenue); }
+    .franja-80s { height: 20px; width: 160px; margin: 0 auto 24px; border-radius: 4px; background: linear-gradient(var(--gaucho-rojo-ojos) 0 25%, var(--gaucho-naranja-sunset) 25% 50%, var(--gaucho-sol) 50% 75%, var(--gaucho-celeste) 75% 100%); }
     .aviso-flotante {
       position: fixed; z-index: 20;
       left: 50%; bottom: 16px; transform: translateX(-50%);
@@ -253,14 +287,15 @@
       max-width: calc(100% - 20px);
       padding: 8px 8px 8px 18px;
       border-radius: 999px;
-      background: rgba(48, 50, 52, 0.92);
+      border: 1px solid var(--gaucho-marron-sombrero);
+      background: color-mix(in srgb, var(--gaucho-crema-tomy) 94%, transparent);
       backdrop-filter: blur(10px);
       font-size: 15px;
     }
     .aviso-flotante[hidden] { display: none; }
-    .aviso-flotante i { width: 10px; height: 10px; border-radius: 50%; background: var(--gaucho-lima); flex: none; }
-    .aviso-flotante .tenue { color: #9AA0A6; }
-    .aviso-flotante button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: #1D1F21; }
+    .aviso-flotante i { width: 10px; height: 10px; border-radius: 50%; background: var(--gaucho-rojo-ojos); flex: none; }
+    .aviso-flotante .tenue { color: var(--texto-tenue); }
+    .aviso-flotante button { width: 36px; height: 36px; border: 1px solid var(--gaucho-marron-sombrero); border-radius: 50%; background: var(--gaucho-crema-sucio); }
 
     /* ---------- Pantallas anchas ---------- */
     @media (min-width: 760px) {
@@ -268,10 +303,13 @@
       .pildora-links { display: inline-flex; }
       .hero-titulo { left: 40px; bottom: 150px; }
       .hero-tarjeta { left: auto; right: 24px; bottom: 24px; width: 380px; }
-      .tarjeta-lima { top: auto; bottom: 150px; left: auto; right: 80px; font-size: 80px; }
+      .tarjeta-sol { top: auto; bottom: 150px; left: auto; right: 80px; font-size: 80px; }
       .panel-claro { padding: 24px 24px 48px; }
+      .entrevista { padding: 32px 24px 52px; }
       .panel-encabezado span:nth-child(2) { display: inline; }
       .grilla-taller { grid-template-columns: repeat(3, 1fr); }
+      .grilla-comunidad { grid-template-columns: repeat(3, 1fr); }
+      .linea-de-tiempo li { grid-template-columns: 140px 1fr; align-items: baseline; }
       .llamada { grid-template-columns: 1fr 1fr; }
       .ficha { flex-basis: 430px; }
     }
@@ -284,6 +322,18 @@
     }
     @media (prefers-reduced-motion: no-preference) {
       .boton-redondo, .boton-pildora, .chips a, .pildora { transition: background 0.2s ease; }
+
+      /* Tarjetas de laburos: al pasar el mouse (o enfocar con teclado) se vienen un poco hacia adelante */
+      .ficha { position: relative; transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+      .ficha .ficha-marco { transition: box-shadow 0.28s ease, background 0.28s ease; }
+      .ficha:focus-within { z-index: 1; }
+      @media (hover: hover) {
+        .ficha:hover { transform: translateY(-10px) scale(1.035); z-index: 1; }
+        .ficha:hover .ficha-marco {
+          background: var(--gaucho-crema-sucio);
+          box-shadow: 0 18px 28px -14px color-mix(in srgb, var(--gaucho-marron-sombrero) 55%, transparent);
+        }
+      }
     }
   </style>
 </head>
@@ -295,6 +345,7 @@
     <div class="pildora pildora-links">
       <a href="#perfil">Ficha</a>
       <a href="#cinta">La cinta</a>
+      <a href="#comunidad">Comunidad</a>
       <a href="#taller">Taller</a>
       <a href="#entrevista">Entrevista</a>
     </div>
@@ -307,7 +358,7 @@
     <header class="hero">
       <img class="hero-foto" src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png"
            alt="Gaucho, el robot Omnibot, frente al cartel de neón de Paisanos y una bandera argentina">
-      <div class="tarjeta-lima" aria-hidden="true"><small>Hackware · Colegiales</small>5 / 09<br>2026</div>
+      <div class="tarjeta-sol" aria-hidden="true"><small>Hackware · Colegiales</small>5 / 09<br>2026</div>
       <h1 class="hero-titulo">Gaucho</h1>
       <p class="hero-tarjeta etiqueta">
         <span>Omnibot 5402 · TOMY · 1984</span>
@@ -323,6 +374,7 @@
       </h2>
       <ul class="chips">
         <li><a href="#cinta">La cinta</a></li>
+        <li><a href="#comunidad">Comunidad</a></li>
         <li><a href="#taller">Taller</a></li>
         <li><a href="#entrevista">Entrevista</a></li>
       </ul>
@@ -342,7 +394,7 @@
     <section class="panel-claro" id="cinta" aria-labelledby="cinta-titulo">
       <div class="panel-encabezado etiqueta">
         <span>Laburos</span>
-        <span>Hackware, LABITCONF, Wallbit, La Ofi</span>
+        <span>Hackware, LABITCONF, Wallbit, La Ofi</span><!-- solo laburos: lo demás está en Comunidad -->
         <span>Actualizado 2026</span>
       </div>
       <h2 class="panel-titulo" id="cinta-titulo">Lo más elegido.<span>Y algunos favoritos.</span></h2>
@@ -361,11 +413,7 @@
           <div class="ficha-pie"><b class="ficha-nombre">Wallbit</b><span>Presentador</span><span>19/11/2026</span></div>
         </article>
         <article class="ficha">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/juego/gaucho_adventures_juego_sega_gonzalo_martinese.png" alt="Portada estilo Sega de Gaucho Adventures"></div>
-          <div class="ficha-pie"><b class="ficha-nombre">Gaucho Adventures</b><span>Juego</span><span>Megadrive</span></div>
-        </article>
-        <article class="ficha">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png" alt="Gaucho al lado de un televisor con la pantalla PRESS START"></div>
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho frente al cartel de neón de Paisanos, en la oficina donde hace de anfitrión"></div>
           <div class="ficha-pie"><b class="ficha-nombre">La Ofi</b><span>Anfitrión</span><span>2026</span></div>
         </article>
       </div>
@@ -376,6 +424,82 @@
           <button class="boton-redondo" type="button" data-carrusel="1" aria-label="Laburo siguiente">→</button>
         </div>
         <a class="boton-pildora" href="#entrevista" style="display:inline-flex;align-items:center">Ver todos</a>
+      </div>
+    </section>
+
+    <!-- COMUNIDAD E HISTORIA: lo que se armó alrededor de Gaucho (separado de los laburos) -->
+    <section class="panel-claro" id="comunidad" aria-labelledby="comunidad-titulo">
+      <div class="panel-encabezado etiqueta">
+        <span>Comunidad</span>
+        <span>Pelis, juegos y arte de fans</span>
+        <span>Desde agosto 2026</span>
+      </div>
+      <h2 class="panel-titulo" id="comunidad-titulo">Comunidad e historia.<span>Lo que se armó alrededor.</span></h2>
+
+      <h3 class="subtitulo etiqueta">Historia</h3>
+      <ol class="linea-de-tiempo">
+        <li><time class="etiqueta" datetime="2026-08-12">12/08/2026</time><p><b>SLA Live, Ep. 10.</b> Sofi y Gaucho cuentan desde Paisanos cómo y por qué lo recuperaron.</p></li>
+        <li><time class="etiqueta" datetime="2026-08-18">18/08/2026</time><p><b>Gaucho: El Origen.</b> La precuela oficial, o más o menos. 40 mil visualizaciones.</p></li>
+        <li><time class="etiqueta" datetime="2026-08-26">26/08/2026</time><p><b>Gaucho Adventures</b> corre en una Retropie, jugable en las ofis de Paisanos.</p></li>
+        <li><time class="etiqueta" datetime="2026-09-10">10/09/2026</time><p><b>Misión Despertar.</b> El proyecto de Notion que documenta cómo un Omnibot de 1984 terminó siendo Gaucho.</p></li>
+        <li><time class="etiqueta" datetime="2026-10-30">30/10/2026</time><p><b>Gauchomentary, Ep. 1.</b> El documental de SLA TV sobre su vida: "El robot que cobró vida".</p></li>
+      </ol>
+
+      <h3 class="subtitulo etiqueta">Pelis y juegos</h3>
+      <div class="grilla-taller">
+        <article class="objeto">
+          <div><p class="etiqueta">Peli · 18/08/2026</p><span class="objeto-numero" aria-hidden="true">PELI</span></div>
+          <div><h3>Gaucho: El Origen</h3><p>La historia oficial (o… más o menos) de cómo Gaucho llegó a la oficina. Dirigida y publicada por Nahue, de Paisanos.</p></div>
+        </article>
+        <article class="objeto">
+          <div><p class="etiqueta">Documental · 30/10/2026</p><span class="objeto-numero" aria-hidden="true">DOC</span></div>
+          <div><h3>Gauchomentary</h3><p>El documental de SLA TV con el protagonista que tiene ruedas y opiniones. Episodio 1: "El robot que cobró vida".</p></div>
+        </article>
+        <article class="objeto">
+          <div><p class="etiqueta">Juego · Sega Megadrive</p><span class="objeto-numero" aria-hidden="true">JUEGO</span></div>
+          <div><h3>Gaucho Adventures</h3><p>Hecho por Gonzalo Martinese con SGDK, el kit de desarrollo de Sega. Jugable en la oficina y pronto en cartucho.</p></div>
+        </article>
+      </div>
+
+      <h3 class="subtitulo etiqueta">Arte de fans y recuerdos</h3>
+      <div class="grilla-comunidad">
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/juego/gaucho_adventures_juego_sega_gonzalo_martinese.png" alt="Portada estilo Sega Genesis de Gaucho Adventures, con Gaucho cowboy"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Gaucho Adventures</b><span>Portada</span><span>Gonzalo Martinese</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png" alt="Gaucho al lado de un televisor con la pantalla PRESS START"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Press start</b><span>En la oficina</span><span>2026</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/san_gaucho_estampita_patrono_del_codigo.jpeg" alt="Estampita de San Gaucho, patrono del código y los fierros, con la bandera argentina"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">San Gaucho</b><span>Estampita</span><span>Patrono del código</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/la_creacion_del_gaucho_dibujo_facundo_burgos.png" alt="Dibujo a birome azul titulado La creación del Gaucho"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">La creación del Gaucho</b><span>Dibujo a birome</span><span>Facundo Burgos</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/render3d/gaucho_studio_render_3d_sombrero_pajilla_poncho_y_escopeta.png" alt="Render 3D de Gaucho con sombrero de paja, poncho marrón y una escopeta roja"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">GauchoStudio</b><span>Render 3D</span><span>Gaucho chaqueño</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/merch_oficial_gaucho_omnibot_tomy_1984.png" alt="Póster de merch oficial de Gaucho, Omnibot TOMY 1984, con rayas de colores"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Merch oficial</b><span>Póster Omnibot</span><span>11/09/2026</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/gaucho_pixel_art_sombrero_y_saco.png" alt="Retrato en pixel art de Gaucho con sombrero y saco marrón"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Pixel art</b><span>Retrato</span><span>Sombrero y saco</span></figcaption>
+        </figure>
+        <figure class="pieza">
+          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/do_it_for_him_thecualcaexperience.png" alt="Tarjeta azul con Gaucho y el texto do it for him, sobre un escritorio de programador"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Do it for him</b><span>Tarjeta</span><span>@thecualcaexperience</span></figcaption>
+        </figure>
+        <!-- Lugar reservado: todavía no hay una foto de Mavi con la estampita de la chinita -->
+        <figure class="pieza">
+          <div class="ficha-marco foto-pendiente"><p class="etiqueta">Foto con la chinita<br>(pendiente)</p></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Mavi y la chinita</b><span>Estampita</span><span>A sumar</span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -401,12 +525,12 @@
           <div><h3>Arbit Ingeniería</h3><p>Me gustaría contar cómo un sensor de taller termina hablando con la red. De latencia tengo experiencia de primera mano.</p></div>
         </article>
       </div>
-      <p class="etiqueta" style="margin:24px 0 0;color:var(--tinta-suave)">Ideas de colaboración. Contacto y logos: a confirmar.</p>
+      <p class="etiqueta" style="margin:24px 0 0;color:var(--texto-tenue)">Ideas de colaboración. Contacto y logos: a confirmar.</p>
     </section>
 
     <!-- ENTREVISTA: llamada simulada local -->
-    <section class="entrevista" id="entrevista" aria-labelledby="entrevista-titulo">
-      <p class="etiqueta" style="color:#9AA0A6">Canal de entrevista · Demostración local</p>
+    <section class="entrevista panel-claro" id="entrevista" aria-labelledby="entrevista-titulo">
+      <p class="etiqueta" style="color:var(--texto-tenue)">Canal de entrevista · Demostración local</p>
       <h2 class="panel-titulo" id="entrevista-titulo">Te entrevisto yo.<span>Vos traé el proyecto.</span></h2>
 
       <div class="llamada">
@@ -421,7 +545,7 @@
       </div>
 
       <div class="acciones">
-        <button class="boton-pildora boton-lima" type="button" id="boton-llamar">Llamar a Gaucho</button>
+        <button class="boton-pildora boton-rojo" type="button" id="boton-llamar">Llamar a Gaucho</button>
         <button class="boton-pildora" type="button" id="boton-compartir" disabled>Compartir pantalla</button>
         <button class="boton-pildora" type="button" id="boton-colgar" disabled>Colgar</button>
       </div>
@@ -434,7 +558,7 @@
     <p class="etiqueta">Gaucho · Omnibot 5402 · TOMY 1984 · Paisanos, Colegiales</p>
   </footer>
 
-  <!-- Aviso flotante inferior, con punto lima y cierre -->
+  <!-- Aviso flotante inferior, con punto rojo y cierre -->
   <div class="aviso-flotante" id="aviso" role="region" aria-label="Disponibilidad">
     <i aria-hidden="true"></i>
     <span>Gaucho busca laburo</span>

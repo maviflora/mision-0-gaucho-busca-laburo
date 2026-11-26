@@ -30,4 +30,4 @@ Pedido aparte de las 5 propuestas: Mavi pidió replicar el estilo de [108 Supply
 |---|---|---|
 | `replica108Supply_gaucho.html` | Página negra con paneles redondeados | Nav en píldoras flotantes con CTA lima, hero de foto full-bleed con tarjeta mono, títulos en dos tonos, "Visto en" en marquee, panel claro con carrusel, aviso flotante inferior |
 
-Es oscura a propósito (108 Supply lo es), a diferencia de la regla de "modo claro" de la ronda 2. No copia logo, textos ni imágenes de 108 Supply. Para verla hace falta un servidor local (por ejemplo `python -m http.server` desde la raíz del repo) o abrir el `.html` directo en el navegador.
+Tiene una sección `#comunidad` (Comunidad e historia) debajo de los laburos, con las pelis, los juegos y el arte de fans; falta la foto con la chinita. Es clara y usa los colores del CV real (crema TOMY con puntitos de tinta, azul Omnibot, marrón sombrero, rojo ojos), sin la lima ni el fondo negro de 108 Supply. No copia logo, textos ni imágenes de 108 Supply. Para verla hace falta un servidor local (por ejemplo `python -m http.server` desde la raíz del repo) o abrir el `.html` directo en el navegador.
