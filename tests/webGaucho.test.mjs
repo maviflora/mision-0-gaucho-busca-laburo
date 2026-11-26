@@ -239,3 +239,17 @@ test('favicon.ico es un ICO válido con las medidas 16 y 32', () => {
   }
   assert.deepEqual(medidasEnElIco.sort((a, b) => a - b), [16, 32]);
 });
+
+test('la cinta infinita tiene dos mitades iguales y lo bastante largas para no cortarse en pantallas anchas', () => {
+  // La animación corre la cinta el 50 %: si cada mitad es más corta que la pantalla, queda un hueco a la derecha.
+  // Una vuelta de los 6 nombres mide unos 1000 px; con 4 vueltas por mitad se cubren hasta ~4000 px de ancho.
+  const VUELTAS_MINIMAS_POR_MITAD = 4;
+  const NOMBRES_POR_VUELTA = 6;
+  const cinta = html.match(/<div class="marquee"[^>]*>([\s\S]*?)<\/div>\s*<p class="etiqueta"/);
+  assert.ok(cinta, 'no se encontró la cinta infinita');
+  const mitades = [...cinta[1].matchAll(/<div class="marquee-mitad">([\s\S]*?)<\/div>/g)].map((m) => m[1]);
+  assert.equal(mitades.length, 2, 'la cinta necesita exactamente 2 mitades iguales');
+  assert.equal(mitades[0], mitades[1], 'las dos mitades tienen que ser idénticas para que el loop no salte');
+  const cantidadDeNombres = (mitades[0].match(/<span>/g) ?? []).length;
+  assert.ok(cantidadDeNombres >= VUELTAS_MINIMAS_POR_MITAD * NOMBRES_POR_VUELTA, `cada mitad tiene ${cantidadDeNombres} nombres, hacen falta ${VUELTAS_MINIMAS_POR_MITAD * NOMBRES_POR_VUELTA}`);
+});

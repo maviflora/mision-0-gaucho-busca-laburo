@@ -176,6 +176,7 @@
     .visto-en { padding: 30px 0 110px; text-align: center; overflow: hidden; }
     .visto-en .etiqueta { color: var(--texto-tenue); margin: 0 0 30px; }
     .marquee { display: flex; width: max-content; animation: deslizar 28s linear infinite; }
+    .marquee-mitad { display: flex; flex-shrink: 0; }
     .marquee span { padding: 0 34px; font-size: 26px; font-weight: 500; color: var(--gaucho-azul-tinta); white-space: nowrap; }
     @keyframes deslizar { to { transform: translateX(-50%); } }
 
@@ -394,9 +395,20 @@
     <!-- VISTO EN -->
     <section class="visto-en" aria-label="Dónde me vieron">
       <p class="etiqueta">Me vieron en</p>
+      <!-- Cinta infinita: dos mitades idénticas, cada una más ancha que cualquier pantalla; la animación corre el 50 % -->
       <div class="marquee" aria-hidden="true">
-        <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
-        <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+        <div class="marquee-mitad">
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+        </div>
+        <div class="marquee-mitad">
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+          <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
+        </div>
       </div>
       <p class="etiqueta" style="margin-top:20px"><a class="enlace" href="https://www.paisanos.io/" target="_blank" rel="noopener noreferrer">Paisanos<span aria-hidden="true"> ↗</span></a> · SLA · <a class="enlace" href="https://www.labitconf.com/" target="_blank" rel="noopener noreferrer">LABITCONF<span aria-hidden="true"> ↗</span></a> · Wallbit · Hackware · <a class="enlace" href="https://ofi.paisanos.io/" target="_blank" rel="noopener noreferrer">La Ofi<span aria-hidden="true"> ↗</span></a></p>
     </section>
