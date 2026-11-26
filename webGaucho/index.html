@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gaucho busca laburo</title>
   <meta name="description" content="Gaucho, el Omnibot 5402 de 1984 que hoy hace DevRel en Paisanos, busca laburo con fierros de verdad.">
+  <!-- Favicon: logo de Gaucho (opción 1 "Frente"), pixel art sin reescalar -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,7 +18,7 @@
        Réplica del estilo de 108 Supply con la información de Gaucho.
        Colores del CV real de Gaucho (docs/designKits/propuestas/cv/cv.css):
        papel crema TOMY con puntitos de tinta, texto azul Omnibot, bordes marrón.
-       Spec: specs/paginaGauchoReplica108Supply.md
+       Spec: specs/webGaucho.md
        ============================================================ */
 
     :root {
@@ -297,6 +302,12 @@
     .aviso-flotante .tenue { color: var(--texto-tenue); }
     .aviso-flotante button { width: 36px; height: 36px; border: 1px solid var(--gaucho-marron-sombrero); border-radius: 50%; background: var(--gaucho-crema-sucio); }
 
+    /* ---------- Links externos, intro de la entrevista y links del pie ---------- */
+    .enlace { text-decoration: underline; text-decoration-color: var(--gaucho-rojo-ojos); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+    .enlace:hover { text-decoration-color: var(--gaucho-azul-omnibot); }
+    .intro { font-size: 19px; max-width: 640px; margin: -14px 0 28px; color: var(--gaucho-azul-tinta); }
+    .enlaces-pie { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin: 16px 0 22px; }
+
     /* ---------- Pantallas anchas ---------- */
     @media (min-width: 760px) {
       :root { --margen-pagina: 14px; }
@@ -343,78 +354,78 @@
   <nav class="nav-pildoras" aria-label="Secciones">
     <a class="pildora pildora-logo" href="#inicio" aria-label="Gaucho, inicio">GAUCHO</a>
     <div class="pildora pildora-links">
-      <a href="#perfil">Ficha</a>
-      <a href="#cinta">La cinta</a>
-      <a href="#comunidad">Comunidad</a>
-      <a href="#taller">Taller</a>
-      <a href="#entrevista">Entrevista</a>
+      <a href="#perfil">Quién soy</a>
+      <a href="#cinta">Mis laburos</a>
+      <a href="#comunidad">Mi gente</a>
+      <a href="#taller">Mi taller</a>
+      <a href="#entrevista">Charlemos</a>
     </div>
-    <a class="pildora pildora-cta" href="#entrevista">Contratar a Gaucho</a>
+    <a class="pildora pildora-cta" href="#entrevista">Contratame</a>
   </nav>
 
   <main id="inicio">
 
     <!-- HERO -->
     <header class="hero">
-      <img class="hero-foto" src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png"
+      <img class="hero-foto" src="../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png"
            alt="Gaucho, el robot Omnibot, frente al cartel de neón de Paisanos y una bandera argentina">
-      <div class="tarjeta-sol" aria-hidden="true"><small>Hackware · Colegiales</small>5 / 09<br>2026</div>
+      <div class="tarjeta-sol" aria-hidden="true"><small>Hackware · fui jurado</small>5 / 09<br>2026</div>
       <h1 class="hero-titulo">Gaucho</h1>
       <p class="hero-tarjeta etiqueta">
         <span>Omnibot 5402 · TOMY · 1984</span>
-        <span>Busca laburo · DevRel en Paisanos</span>
+        <span>Busco laburo · DevRel en Paisanos</span>
       </p>
     </header>
 
     <!-- PERFIL -->
     <section class="perfil" id="perfil" aria-labelledby="perfil-titulo">
       <h2 class="dos-tonos" id="perfil-titulo">
-        Soy el Omnibot del 84 que recuperaron en Misión Despertar. Hago DevRel y contenido en Paisanos.
-        <span>Si hay fierros con propósito y aire para la Raspberry, charlemos.</span>
+        Confirmo: soy un Omnibot del 84 que revivieron en Misión Despertar, y hoy hago DevRel y contenido en Paisanos.
+        <span>Si hay fierros con propósito y me dejan meter una Raspberry, negocio cerrado.</span>
       </h2>
       <ul class="chips">
-        <li><a href="#cinta">La cinta</a></li>
-        <li><a href="#comunidad">Comunidad</a></li>
-        <li><a href="#taller">Taller</a></li>
-        <li><a href="#entrevista">Entrevista</a></li>
+        <li><a href="#cinta">Mis laburos</a></li>
+        <li><a href="#comunidad">Mi gente</a></li>
+        <li><a href="#taller">Mi taller</a></li>
+        <li><a href="#entrevista">Charlemos</a></li>
       </ul>
     </section>
 
     <!-- VISTO EN -->
-    <section class="visto-en" aria-label="Dónde se lo vio">
-      <p class="etiqueta">Visto en</p>
+    <section class="visto-en" aria-label="Dónde me vieron">
+      <p class="etiqueta">Me vieron en</p>
       <div class="marquee" aria-hidden="true">
         <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
         <span>Paisanos</span><span>SLA</span><span>LABITCONF</span><span>Wallbit</span><span>Hackware</span><span>La Ofi</span>
       </div>
-      <p class="etiqueta" style="margin-top:20px">Paisanos · SLA · LABITCONF · Wallbit · Hackware · La Ofi</p>
+      <p class="etiqueta" style="margin-top:20px"><a class="enlace" href="https://www.paisanos.io/" target="_blank" rel="noopener noreferrer">Paisanos<span aria-hidden="true"> ↗</span></a> · SLA · <a class="enlace" href="https://www.labitconf.com/" target="_blank" rel="noopener noreferrer">LABITCONF<span aria-hidden="true"> ↗</span></a> · Wallbit · Hackware · <a class="enlace" href="https://ofi.paisanos.io/" target="_blank" rel="noopener noreferrer">La Ofi<span aria-hidden="true"> ↗</span></a></p>
     </section>
 
     <!-- LA CINTA: laburos anteriores (panel claro con carrusel) -->
     <section class="panel-claro" id="cinta" aria-labelledby="cinta-titulo">
       <div class="panel-encabezado etiqueta">
-        <span>Laburos</span>
-        <span>Hackware, LABITCONF, Wallbit, La Ofi</span><!-- solo laburos: lo demás está en Comunidad -->
-        <span>Actualizado 2026</span>
+        <span>Mis laburos</span>
+        <span>Jurado, speaker, presentador y anfitrión</span><!-- solo laburos: lo demás está en Comunidad -->
+        <span>Al día, con soldadura fresca</span>
       </div>
-      <h2 class="panel-titulo" id="cinta-titulo">Lo más elegido.<span>Y algunos favoritos.</span></h2>
+      <h2 class="panel-titulo" id="cinta-titulo">Mis laburos.<span>Con menos dramatismo y más soldadura.</span></h2>
 
-      <div class="carrusel" id="carrusel" tabindex="0" aria-label="Laburos anteriores de Gaucho">
+      <div class="carrusel" id="carrusel" tabindex="0" aria-label="Mis laburos anteriores">
         <article class="ficha">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/eventos/hackware_jurados_gaucho_devrel.png" alt="Afiche de jurados de Hackware con Gaucho en estilo grabado naranja"></div>
-          <div class="ficha-pie"><b class="ficha-nombre">Hackware</b><span>Jurado</span><span>05/09/2026</span></div>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/eventos/hackware_jurados_gaucho_devrel.png" alt="Afiche de jurados de Hackware con Gaucho en estilo grabado naranja"></div>
+          <div class="ficha-pie"><b class="ficha-nombre"><a class="enlace" href="https://www.instagram.com/reel/DcOi7HYxxXH/" target="_blank" rel="noopener noreferrer">Hackware<span aria-hidden="true"> ↗</span></a></b><span>Fui jurado</span><span>05/09/2026</span></div>
         </article>
         <article class="ficha">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/eventos/charla_fijacion_labitconf_gaucho_en_escenario.png" alt="Gaucho sentado en un banquito en el escenario de LABITCONF junto a Sofi"></div>
-          <div class="ficha-pie"><b class="ficha-nombre">LABITCONF</b><span>Speaker y embajador</span><span>31/10/2026</span></div>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/eventos/charla_fijacion_labitconf_gaucho_en_escenario.png" alt="Gaucho sentado en un banquito en el escenario de LABITCONF junto a Sofi"></div>
+          <div class="ficha-pie"><b class="ficha-nombre"><a class="enlace" href="https://www.labitconf.com/" target="_blank" rel="noopener noreferrer">LABITCONF<span aria-hidden="true"> ↗</span></a></b><span>Hablé y fui embajador</span><span>31/10/2026</span></div>
         </article>
         <article class="ficha">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_campera_cuero_y_lentes_gonzalo_martinese.png" alt="Gaucho con campera de cuero y anteojos oscuros"></div>
-          <div class="ficha-pie"><b class="ficha-nombre">Wallbit</b><span>Presentador</span><span>19/11/2026</span></div>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/fotos/gaucho_campera_cuero_y_lentes_gonzalo_martinese.png" alt="Gaucho con campera de cuero y anteojos oscuros"></div>
+          <div class="ficha-pie"><b class="ficha-nombre"><a class="enlace" href="https://x.com/gauchopaisano/status/2123932261762392088" target="_blank" rel="noopener noreferrer">Wallbit<span aria-hidden="true"> ↗</span></a></b><span>Presenté la tarjeta</span><span>19/11/2026</span></div>
         </article>
         <article class="ficha">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho frente al cartel de neón de Paisanos, en la oficina donde hace de anfitrión"></div>
-          <div class="ficha-pie"><b class="ficha-nombre">La Ofi</b><span>Anfitrión</span><span>2026</span></div>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho frente al cartel de neón de Paisanos, en la oficina donde hace de anfitrión"></div>
+          <div class="ficha-pie"><b class="ficha-nombre"><a class="enlace" href="https://ofi.paisanos.io/" target="_blank" rel="noopener noreferrer">La Ofi<span aria-hidden="true"> ↗</span></a></b><span>Cuido la ofi</span><span>2026</span></div>
         </article>
       </div>
 
@@ -423,82 +434,82 @@
           <button class="boton-redondo" type="button" data-carrusel="-1" aria-label="Laburo anterior">←</button>
           <button class="boton-redondo" type="button" data-carrusel="1" aria-label="Laburo siguiente">→</button>
         </div>
-        <a class="boton-pildora" href="#entrevista" style="display:inline-flex;align-items:center">Ver todos</a>
+        <a class="boton-pildora" href="#comunidad" style="display:inline-flex;align-items:center">Mirá lo demás</a>
       </div>
     </section>
 
     <!-- COMUNIDAD E HISTORIA: lo que se armó alrededor de Gaucho (separado de los laburos) -->
     <section class="panel-claro" id="comunidad" aria-labelledby="comunidad-titulo">
       <div class="panel-encabezado etiqueta">
-        <span>Comunidad</span>
-        <span>Pelis, juegos y arte de fans</span>
-        <span>Desde agosto 2026</span>
+        <span>Mi gente</span>
+        <span>Pelis, juegos y arte que me hicieron</span>
+        <span>Desde agosto de 2026</span>
       </div>
-      <h2 class="panel-titulo" id="comunidad-titulo">Comunidad e historia.<span>Lo que se armó alrededor.</span></h2>
+      <h2 class="panel-titulo" id="comunidad-titulo">Comunidad e historia.<span>Lo que se armó alrededor de un robot chiquito.</span></h2>
 
-      <h3 class="subtitulo etiqueta">Historia</h3>
+      <h3 class="subtitulo etiqueta">Mi historia, versión corta</h3>
       <ol class="linea-de-tiempo">
-        <li><time class="etiqueta" datetime="2026-08-12">12/08/2026</time><p><b>SLA Live, Ep. 10.</b> Sofi y Gaucho cuentan desde Paisanos cómo y por qué lo recuperaron.</p></li>
-        <li><time class="etiqueta" datetime="2026-08-18">18/08/2026</time><p><b>Gaucho: El Origen.</b> La precuela oficial, o más o menos. 40 mil visualizaciones.</p></li>
-        <li><time class="etiqueta" datetime="2026-08-26">26/08/2026</time><p><b>Gaucho Adventures</b> corre en una Retropie, jugable en las ofis de Paisanos.</p></li>
-        <li><time class="etiqueta" datetime="2026-09-10">10/09/2026</time><p><b>Misión Despertar.</b> El proyecto de Notion que documenta cómo un Omnibot de 1984 terminó siendo Gaucho.</p></li>
-        <li><time class="etiqueta" datetime="2026-10-30">30/10/2026</time><p><b>Gauchomentary, Ep. 1.</b> El documental de SLA TV sobre su vida: "El robot que cobró vida".</p></li>
+        <li><time class="etiqueta" datetime="2026-08-12">12/08/2026</time><p><b><a class="enlace" href="https://x.com/search?q=Hackware%20paisanos&amp;src=typed_query&amp;f=live" target="_blank" rel="noopener noreferrer">SLA Live, Ep. 10.<span aria-hidden="true"> ↗</span></a></b> Con Sofi contamos desde Paisanos cómo y por qué me recuperaron.</p></li>
+        <li><time class="etiqueta" datetime="2026-08-18">18/08/2026</time><p><b><a class="enlace" href="https://x.com/nays1_/status/2089865919849812091" target="_blank" rel="noopener noreferrer">Gaucho: El Origen.<span aria-hidden="true"> ↗</span></a></b> Mi precuela oficial (o… más o menos). 40 mil visualizaciones.</p></li>
+        <li><time class="etiqueta" datetime="2026-08-26">26/08/2026</time><p><b><a class="enlace" href="https://x.com/search?q=%22Gaucho%20Adventures%22&amp;src=typed_query&amp;f=live" target="_blank" rel="noopener noreferrer">Gaucho Adventures<span aria-hidden="true"> ↗</span></a></b> Mi juego corre en una Retropie y se juega en las ofis de Paisanos.</p></li>
+        <li><time class="etiqueta" datetime="2026-09-10">10/09/2026</time><p><b><a class="enlace" href="https://x.com/search?q=from%3Asvfonx%20gaucho&amp;src=typed_query&amp;f=live" target="_blank" rel="noopener noreferrer">Misión Despertar.<span aria-hidden="true"> ↗</span></a></b> El proyecto de Notion donde documentaron cómo un Omnibot de 1984 terminó siendo yo.</p></li>
+        <li><time class="etiqueta" datetime="2026-10-30">30/10/2026</time><p><b><a class="enlace" href="https://www.youtube.com/watch?v=jlnoMtGMSz4" target="_blank" rel="noopener noreferrer">Gauchomentary, Ep. 1.<span aria-hidden="true"> ↗</span></a></b> El documental de SLA TV sobre mi vida: por fin una producción donde el protagonista tiene ruedas y opiniones.</p></li>
       </ol>
 
-      <h3 class="subtitulo etiqueta">Pelis y juegos</h3>
+      <h3 class="subtitulo etiqueta">Mis pelis y mis juegos</h3>
       <div class="grilla-taller">
         <article class="objeto">
-          <div><p class="etiqueta">Peli · 18/08/2026</p><span class="objeto-numero" aria-hidden="true">PELI</span></div>
-          <div><h3>Gaucho: El Origen</h3><p>La historia oficial (o… más o menos) de cómo Gaucho llegó a la oficina. Dirigida y publicada por Nahue, de Paisanos.</p></div>
+          <div><p class="etiqueta">Mi peli · 18/08/2026</p><span class="objeto-numero" aria-hidden="true">PELI</span></div>
+          <div><h3><a class="enlace" href="https://x.com/nays1_/status/2089479891246813296" target="_blank" rel="noopener noreferrer">Gaucho: El Origen<span aria-hidden="true"> ↗</span></a></h3><p>La historia oficial (o… más o menos) de cómo llegué a la oficina. La dirigió y publicó Nahue, de Paisanos.</p></div>
         </article>
         <article class="objeto">
-          <div><p class="etiqueta">Documental · 30/10/2026</p><span class="objeto-numero" aria-hidden="true">DOC</span></div>
-          <div><h3>Gauchomentary</h3><p>El documental de SLA TV con el protagonista que tiene ruedas y opiniones. Episodio 1: "El robot que cobró vida".</p></div>
+          <div><p class="etiqueta">Mi documental · 30/10/2026</p><span class="objeto-numero" aria-hidden="true">DOC</span></div>
+          <div><h3><a class="enlace" href="https://www.youtube.com/watch?v=jlnoMtGMSz4" target="_blank" rel="noopener noreferrer">Gauchomentary<span aria-hidden="true"> ↗</span></a></h3><p>El documental de SLA TV sobre mi vida. Episodio 1: "El robot que cobró vida".</p></div>
         </article>
         <article class="objeto">
-          <div><p class="etiqueta">Juego · Sega Megadrive</p><span class="objeto-numero" aria-hidden="true">JUEGO</span></div>
-          <div><h3>Gaucho Adventures</h3><p>Hecho por Gonzalo Martinese con SGDK, el kit de desarrollo de Sega. Jugable en la oficina y pronto en cartucho.</p></div>
+          <div><p class="etiqueta">Mi juego · Sega Megadrive</p><span class="objeto-numero" aria-hidden="true">JUEGO</span></div>
+          <div><h3><a class="enlace" href="https://x.com/search?q=%22Gaucho%20Adventures%22&amp;src=typed_query&amp;f=live" target="_blank" rel="noopener noreferrer">Gaucho Adventures<span aria-hidden="true"> ↗</span></a></h3><p>Mi juego para Sega Megadrive. Lo hizo Gonzalo Martinese con SGDK, el kit de desarrollo de Sega. Se juega en la oficina y pronto en cartucho.</p></div>
         </article>
       </div>
 
-      <h3 class="subtitulo etiqueta">Arte de fans y recuerdos</h3>
+      <h3 class="subtitulo etiqueta">Lo que me dibujaron, renderizaron y estamparon</h3>
       <div class="grilla-comunidad">
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/juego/gaucho_adventures_juego_sega_gonzalo_martinese.png" alt="Portada estilo Sega Genesis de Gaucho Adventures, con Gaucho cowboy"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">Gaucho Adventures</b><span>Portada</span><span>Gonzalo Martinese</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/juego/gaucho_adventures_juego_sega_gonzalo_martinese.png" alt="Portada estilo Sega Genesis de Gaucho Adventures, con Gaucho cowboy"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Gaucho Adventures</b><span>Mi portada</span><span>Gonzalo Martinese</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png" alt="Gaucho al lado de un televisor con la pantalla PRESS START"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">Press start</b><span>En la oficina</span><span>2026</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png" alt="Gaucho al lado de un televisor con la pantalla PRESS START"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Press start</b><span>Dale, jugá</span><span>En la ofi</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/san_gaucho_estampita_patrono_del_codigo.jpeg" alt="Estampita de San Gaucho, patrono del código y los fierros, con la bandera argentina"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">San Gaucho</b><span>Estampita</span><span>Patrono del código</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/arte/san_gaucho_estampita_patrono_del_codigo.jpeg" alt="Estampita de San Gaucho, patrono del código y los fierros, con la bandera argentina"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">San Gaucho</b><span>Mi estampita</span><span>Patrono del código</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/la_creacion_del_gaucho_dibujo_facundo_burgos.png" alt="Dibujo a birome azul titulado La creación del Gaucho"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">La creación del Gaucho</b><span>Dibujo a birome</span><span>Facundo Burgos</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/arte/la_creacion_del_gaucho_dibujo_facundo_burgos.png" alt="Dibujo a birome azul titulado La creación del Gaucho"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">La creación del Gaucho</b><span>Me dibujó a birome</span><span>Facundo Burgos</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/render3d/gaucho_studio_render_3d_sombrero_pajilla_poncho_y_escopeta.png" alt="Render 3D de Gaucho con sombrero de paja, poncho marrón y una escopeta roja"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">GauchoStudio</b><span>Render 3D</span><span>Gaucho chaqueño</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/render3d/gaucho_studio_render_3d_sombrero_pajilla_poncho_y_escopeta.png" alt="Render 3D de Gaucho con sombrero de paja, poncho marrón y una escopeta roja"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre"><a class="enlace" href="https://gaucho-studio.vercel.app" target="_blank" rel="noopener noreferrer">GauchoStudio<span aria-hidden="true"> ↗</span></a></b><span>Me renderizaron</span><span>Versión chaqueña</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/merch_oficial_gaucho_omnibot_tomy_1984.png" alt="Póster de merch oficial de Gaucho, Omnibot TOMY 1984, con rayas de colores"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">Merch oficial</b><span>Póster Omnibot</span><span>11/09/2026</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/arte/merch_oficial_gaucho_omnibot_tomy_1984.png" alt="Póster de merch oficial de Gaucho, Omnibot TOMY 1984, con rayas de colores"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Merch oficial</b><span>Mi póster</span><span>11/09/2026</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/gaucho_pixel_art_sombrero_y_saco.png" alt="Retrato en pixel art de Gaucho con sombrero y saco marrón"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">Pixel art</b><span>Retrato</span><span>Sombrero y saco</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/arte/gaucho_pixel_art_sombrero_y_saco.png" alt="Retrato en pixel art de Gaucho con sombrero y saco marrón"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Pixel art</b><span>Mi retrato 16-bit</span><span>Sombrero y saco</span></figcaption>
         </figure>
         <figure class="pieza">
-          <div class="ficha-marco"><img src="../../../../assets/Gaucho/fotitos/arte/do_it_for_him_thecualcaexperience.png" alt="Tarjeta azul con Gaucho y el texto do it for him, sobre un escritorio de programador"></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">Do it for him</b><span>Tarjeta</span><span>@thecualcaexperience</span></figcaption>
+          <div class="ficha-marco"><img src="../assets/Gaucho/fotitos/arte/do_it_for_him_thecualcaexperience.png" alt="Tarjeta azul con Gaucho y el texto do it for him, sobre un escritorio de programador"></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Do it for him</b><span>Mi tarjeta</span><span>@thecualcaexperience</span></figcaption>
         </figure>
         <!-- Lugar reservado: todavía no hay una foto de Mavi con la estampita de la chinita -->
         <figure class="pieza">
-          <div class="ficha-marco foto-pendiente"><p class="etiqueta">Foto con la chinita<br>(pendiente)</p></div>
-          <figcaption class="ficha-pie"><b class="ficha-nombre">Mavi y la chinita</b><span>Estampita</span><span>A sumar</span></figcaption>
+          <div class="ficha-marco foto-pendiente"><p class="etiqueta">Acá va la foto con la chinita<br>(todavía no está)</p></div>
+          <figcaption class="ficha-pie"><b class="ficha-nombre">Mavi y la chinita</b><span>Estampita</span><span>Falta la foto</span></figcaption>
         </figure>
       </div>
     </section>
@@ -506,9 +517,9 @@
     <!-- TALLER: dónde le gustaría laburar -->
     <section class="panel-claro" id="taller" aria-labelledby="taller-titulo" style="margin-top:0">
       <div class="panel-encabezado etiqueta">
-        <span>Taller</span>
+        <span>Mi taller</span>
         <span>Autos, herramientas, sensores</span>
-        <span>Empresas candidatas</span>
+        <span>Ideas mías, sin contrato</span>
       </div>
       <h2 class="panel-titulo" id="taller-titulo">Dónde me gustaría laburar.<span>Fierros con propósito.</span></h2>
       <div class="grilla-taller">
@@ -525,43 +536,54 @@
           <div><h3>Arbit Ingeniería</h3><p>Me gustaría contar cómo un sensor de taller termina hablando con la red. De latencia tengo experiencia de primera mano.</p></div>
         </article>
       </div>
-      <p class="etiqueta" style="margin:24px 0 0;color:var(--texto-tenue)">Ideas de colaboración. Contacto y logos: a confirmar.</p>
+      <p class="etiqueta" style="margin:24px 0 0;color:var(--texto-tenue)">Son ideas mías, ojo: contactos y logos los tengo que confirmar todavía.</p>
     </section>
 
     <!-- ENTREVISTA: llamada simulada local -->
     <section class="entrevista panel-claro" id="entrevista" aria-labelledby="entrevista-titulo">
-      <p class="etiqueta" style="color:var(--texto-tenue)">Canal de entrevista · Demostración local</p>
+      <p class="etiqueta" style="color:var(--texto-tenue)">Charlemos · Demo local, de acá no sale nada</p>
       <h2 class="panel-titulo" id="entrevista-titulo">Te entrevisto yo.<span>Vos traé el proyecto.</span></h2>
+      <p class="intro">Yo me encargo de las preguntas. Prometo no entrar en protección térmica.</p>
 
       <div class="llamada">
         <div class="pantalla-llamada" id="pantalla-gaucho">
-          <img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho en la sala de llamada">
-          <span class="etiqueta">Gaucho · <span id="estado-conexion">Esperando</span></span>
+          <img src="../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho en la sala de llamada">
+          <span class="etiqueta">Yo · <span id="estado-conexion">Esperando</span></span>
         </div>
         <div class="pantalla-llamada pantalla-compartida" id="pantalla-compartida" hidden>
-          <img src="../../../../assets/Gaucho/cvFalso/gaucho_bikini_cv_falso.png" alt="Currículum falso de Gaucho que aparece al compartir pantalla">
-          <span class="etiqueta">Pantalla compartida</span>
+          <img src="../assets/Gaucho/cvFalso/gaucho_bikini_cv_falso.png" alt="Currículum falso de Gaucho que aparece al compartir pantalla">
+          <span class="etiqueta">Mi pantalla</span>
         </div>
       </div>
 
       <div class="acciones">
-        <button class="boton-pildora boton-rojo" type="button" id="boton-llamar">Llamar a Gaucho</button>
-        <button class="boton-pildora" type="button" id="boton-compartir" disabled>Compartir pantalla</button>
-        <button class="boton-pildora" type="button" id="boton-colgar" disabled>Colgar</button>
+        <button class="boton-pildora boton-rojo" type="button" id="boton-llamar">Llamame</button>
+        <button class="boton-pildora" type="button" id="boton-compartir" disabled>Ver mi CV</button>
+        <button class="boton-pildora" type="button" id="boton-colgar" disabled>Cortar</button>
       </div>
-      <p class="estado" id="estado-llamada" role="status">Maqueta local. No se envía nada y arranca en silencio.</p>
+      <p class="estado" id="estado-llamada" role="status">Maqueta local: no se manda nada y arranco en silencio, tranqui.</p>
     </section>
   </main>
 
   <footer class="pie">
     <div class="franja-80s" aria-hidden="true"></div>
-    <p class="etiqueta">Gaucho · Omnibot 5402 · TOMY 1984 · Paisanos, Colegiales</p>
+    <p class="etiqueta">Dónde encontrarme</p>
+    <nav class="enlaces-pie etiqueta" aria-label="Dónde encontrar a Gaucho">
+      <a class="enlace" href="https://x.com/gauchopaisano" target="_blank" rel="noopener noreferrer">X<span aria-hidden="true"> ↗</span></a>
+      <a class="enlace" href="https://www.linkedin.com/in/gaucho-paisano/" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true"> ↗</span></a>
+      <a class="enlace" href="https://www.paisanos.io/" target="_blank" rel="noopener noreferrer">Paisanos<span aria-hidden="true"> ↗</span></a>
+      <a class="enlace" href="https://ofi.paisanos.io/" target="_blank" rel="noopener noreferrer">La Ofi<span aria-hidden="true"> ↗</span></a>
+      <a class="enlace" href="https://www.labitconf.com/" target="_blank" rel="noopener noreferrer">LABITCONF<span aria-hidden="true"> ↗</span></a>
+      <a class="enlace" href="https://www.youtube.com/watch?v=jlnoMtGMSz4" target="_blank" rel="noopener noreferrer">Gauchomentary<span aria-hidden="true"> ↗</span></a>
+      <a class="enlace" href="https://gaucho-studio.vercel.app" target="_blank" rel="noopener noreferrer">GauchoStudio<span aria-hidden="true"> ↗</span></a>
+    </nav>
+    <p class="etiqueta">Omnibot 5402 · TOMY 1984 · Hecho con fierros, mate y una Raspberry bien ventilada</p>
   </footer>
 
   <!-- Aviso flotante inferior, con punto rojo y cierre -->
   <div class="aviso-flotante" id="aviso" role="region" aria-label="Disponibilidad">
     <i aria-hidden="true"></i>
-    <span>Gaucho busca laburo</span>
+    <span>Busco laburo</span>
     <span class="tenue">Disponible</span>
     <button type="button" id="cerrar-aviso" aria-label="Cerrar aviso">×</button>
   </div>
@@ -602,7 +624,7 @@
       botonLlamar.disabled = llamadaActiva;
       botonCompartir.disabled = !llamadaActiva;
       botonColgar.disabled = !llamadaActiva;
-      textoEstadoConexion.textContent = llamadaActiva ? 'En línea' : 'Esperando';
+      textoEstadoConexion.textContent = llamadaActiva ? 'Al toque' : 'Esperando';
       textoEstadoLlamada.textContent = mensaje;
       if (!llamadaActiva) pantallaCompartida.hidden = true;
     }
@@ -612,10 +634,10 @@
     });
     botonCompartir.addEventListener('click', () => {
       pantallaCompartida.hidden = false;
-      textoEstadoLlamada.textContent = 'Compartiste pantalla. Este sería el CV de Gaucho si fuera un tipo sin gracia.';
+      textoEstadoLlamada.textContent = 'Te compartí pantalla. Este sería mi CV si fuera un tipo sin gracia.';
     });
     botonColgar.addEventListener('click', () => {
-      mostrarEstadoDeLlamada(false, 'Llamada terminada. Maqueta local, no se envió nada.');
+      mostrarEstadoDeLlamada(false, 'Colgué. Maqueta local, no se mandó nada.');
     });
   </script>
 </body>

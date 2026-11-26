@@ -1,4 +1,6 @@
-# Spec: réplica del estilo de 108 Supply con la información de Gaucho
+# Spec: web de Gaucho (`webGaucho/index.html`)
+
+Nació como réplica del estilo de 108 Supply y desde el 26/11/2026 es la base de la web de Gaucho (se mudó de `webGaucho/index.html` a `webGaucho/index.html`).
 
 Fecha: 26/11/2026. Pedido de Mavi: analizar https://108.supply/ y replicar **su estilo** con los datos de Gaucho ya recolectados. Hecha por Claude directamente (sin Codex).
 
@@ -30,13 +32,16 @@ No se copia: logo, textos, imágenes ni la tipografía propietaria de 108 Supply
 
 ## Reglas técnicas
 
-- Archivo único: `docs/designKits/propuestas/paginaGaucho/replica108Supply_gaucho.html`, CSS y JS vanilla integrados, mobile first.
+- Archivo único: `webGaucho/index.html`, CSS y JS vanilla integrados, mobile first.
 - Ids de sección de la maqueta: `perfil`, `cinta`, `taller`, `entrevista`, más `comunidad` (nueva, entre `cinta` y `taller`).
 - Paleta y modo (actualizado 26/11/2026, pedido de Mavi): la página es **clara**, con los colores del CV real (`docs/designKits/propuestas/cv/cv.css`): fondo crema TOMY con puntitos de tinta, texto azul Omnibot, bordes marrón sombrero, superficies crema plástico, acento rojo ojos (texto negro encima, nunca rojo sobre crema), franja de 4 colores. Todos los colores salen de `docs/designKits/paletas.md`: sin hex fuera de `:root`, sin lima (es de 108 Supply) y sin fondos oscuros salvo la foto del hero. Los neutros se derivan con `color-mix()`.
 - Vuelve a cumplir la regla de "modo claro" de la ronda 2 (`color-scheme: light`).
+- **Voz (26/11/2026, pedido de Mavi):** la página entera suena a Gaucho hablando, según `docs/investigacionGaucho.md` sección 3.5. Primera persona, voseo, vocabulario de taller (fierros, Raspberry, soldadura, protección térmica), chiste en la última cláusula, cargadas con cariño, sin emojis. Todo el microcopy va en su voz (nav: Quién soy / Mis laburos / Mi gente / Mi taller / Charlemos; botones: Contratame, Llamame, Ver mi CV, Cortar). Frases reales suyas: "con menos dramatismo y más soldadura", "negocio cerrado", "ruedas y opiniones". Solo el `<title>` y la meta description quedan en tercera persona, por SEO (sección 18). Prohibido copiar titulares de 108 Supply.
+- **Links (26/11/2026):** a todo lo que se pudo, solo con URLs de la investigación (nada inventado): X y LinkedIn de Gaucho, Paisanos, La Ofi, LABITCONF, post de Wallbit, reel de Hackware, El Origen, Gauchomentary, GauchoStudio. Hackware, SLA Live, Gaucho Adventures y Misión Despertar enlazan a búsquedas en X que la investigación cita como fuente (no hay link directo). Los externos abren en pestaña nueva con `rel="noopener noreferrer"`. Siguen prohibidos los recursos externos (scripts, estilos, imágenes) salvo Google Fonts.
+- **Favicon (26/11/2026):** logo elegido por Mavi, opción 1 "Frente" (`docs/logo/guiaDelLogo.md`). Archivos en `webGaucho/`: `favicon-16.png` (16x16), `favicon-32.png` (32x32), `favicon.ico` (los dos PNG incrustados tal cual) y `apple-touch-icon.png` (180x180, sprite ampliado 5x sobre crema TOMY). Declarados en el `<head>` con rutas relativas. Es pixel art: **nunca se reescala con suavizado**, solo por vecino más cercano y en escala entera. Se regeneran con `python tools/generarFaviconGaucho.py`.
 - Accesibilidad: `lang="es"`, `prefers-reduced-motion`, arranca en silencio, botones con nombre, contraste AA.
-- Sin recursos externos salvo Google Fonts. Fotos por rutas relativas `../../../../assets/Gaucho/...` que existan.
+- Sin recursos externos salvo Google Fonts. Fotos por rutas relativas `../assets/Gaucho/...` que existan.
 
 ## Verificación
 
-`node --test tests/paginaGauchoReplica108Supply.test.mjs`
+`node --test tests/webGaucho.test.mjs`

@@ -1,14 +1,11 @@
-// Tests de la réplica del estilo de 108 Supply con datos de Gaucho.
-// Spec: specs/paginaGauchoReplica108Supply.md
+// Tests de la web de Gaucho (webGaucho/index.html). Nació como réplica del estilo de 108 Supply.
+// Spec: specs/webGaucho.md
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
-const RUTA_PAGINA = join(
-  import.meta.dirname, '..', 'docs', 'designKits', 'propuestas', 'paginaGaucho',
-  'replica108Supply_gaucho.html',
-);
+const RUTA_PAGINA = join(import.meta.dirname, '..', 'webGaucho', 'index.html');
 const IDS_DE_SECCION_OBLIGATORIOS = ['perfil', 'cinta', 'comunidad', 'taller', 'entrevista'];
 const MINIMO_TOKENS_DE_PALETA = 8;
 // Hex de docs/designKits/paletas.md (la lima queda afuera a propósito).
@@ -20,7 +17,7 @@ const HEX_DE_LA_PALETA = [
 const html = existsSync(RUTA_PAGINA) ? readFileSync(RUTA_PAGINA, 'utf8') : '';
 
 test('la página existe', () => {
-  assert.ok(html.length > 0, 'falta replica108Supply_gaucho.html');
+  assert.ok(html.length > 0, 'falta webGaucho/index.html');
 });
 
 test('es accesible: idioma, viewport y movimiento reducido', () => {
@@ -75,6 +72,27 @@ test('las tarjetas de laburos se adelantan al pasar el mouse, solo con movimient
   assert.match(estilos, /\.carrusel\s*{[^}]*padding-block/, 'el carrusel recorta la tarjeta elevada');
 });
 
+test('el texto habla como Gaucho: primera persona, sin copiar titulares de 108 Supply', () => {
+  // Guía de voz: docs/investigacionGaucho.md sección 3.5 (primera persona, honesto con su cuerpo, vocabulario de taller).
+  const visible = html.replace(/<style>[\s\S]*?<\/style>/, '').replace(/<script>[\s\S]*?<\/script>/, '');
+  const terceraPersona = ['Contratar a Gaucho', 'Llamar a Gaucho', 'el CV de Gaucho', 'sobre su vida', 'terminó siendo Gaucho', 'Gaucho busca laburo</span>'];
+  for (const frase of terceraPersona) {
+    assert.ok(!visible.includes(frase) && !html.includes(frase), `habla de Gaucho en tercera persona: "${frase}"`);
+  }
+  for (const copiado of ['Lo más elegido', 'Y algunos favoritos', 'Most picked']) {
+    assert.ok(!html.includes(copiado), `titular copiado de 108 Supply: "${copiado}"`);
+  }
+  // Microcopy neutro de interfaz: todo tiene que sonar a Gaucho hablando (guía 3.5: "microcopy en voz de Gaucho")
+  const microcopyNeutro = ['Ver todos', 'Compartir pantalla', '>Colgar<', '>Jurado<', '>Presentador<', '>Anfitrión<', 'Speaker y embajador', 'Demostración local', 'Actualizado 2026'];
+  for (const frase of microcopyNeutro) {
+    assert.ok(!html.includes(frase), `microcopy neutro, falta pasarlo a voz de Gaucho: "${frase}"`);
+  }
+  for (const propia of ['Contratame', 'Charlemos', 'Mi gente', 'protección térmica', 'Raspberry', 'soldadura', 'ruedas y opiniones', 'robot chiquito']) {
+    assert.ok(html.includes(propia), `falta una frase propia de Gaucho: "${propia}"`);
+  }
+  assert.doesNotMatch(visible, /[\u{1F300}-\u{1FAFF}]/u, 'Gaucho casi no usa emojis');
+});
+
 test('usa los tokens principales de la paleta de Gaucho', () => {
   const tokensUsados = new Set(html.match(/--gaucho-[a-z-]+/g) ?? []);
   assert.ok(tokensUsados.size >= MINIMO_TOKENS_DE_PALETA, 'pocos tokens --gaucho-*');
@@ -115,10 +133,35 @@ test('no copia contenido ni marca de 108 Supply', () => {
   assert.doesNotMatch(html, /Black Friday|Bailey Hart|Mockup Gem|Get All Access|\$\d+/);
 });
 
-test('no carga recursos externos salvo Google Fonts', () => {
-  const externos = html.match(/(?:src|href)="https?:\/\/[^"]+"/g) ?? [];
-  const noPermitidos = externos.filter((url) => !/fonts\.(googleapis|gstatic)\.com/.test(url));
+test('no carga recursos externos salvo Google Fonts (los links <a> sí pueden ser externos)', () => {
+  const recursosExternos = html.match(/<(?:link|script|img|video|source|iframe)\b[^>]*(?:src|href)="https?:\/\/[^"]+"/g) ?? [];
+  const noPermitidos = recursosExternos.filter((etiqueta) => !/fonts\.(googleapis|gstatic)\.com/.test(etiqueta));
   assert.deepEqual(noPermitidos, []);
+});
+
+test('hay links a lo que hizo Gaucho, todos con URLs de la investigación y abiertos de forma segura', () => {
+  const linksExternos = html.match(/<a\b[^>]*href="https?:\/\/[^"]+"[^>]*>/g) ?? [];
+  assert.ok(linksExternos.length >= 12, `se esperaban al menos 12 links externos, hay ${linksExternos.length}`);
+  for (const etiqueta of linksExternos) {
+    assert.match(etiqueta, /rel="noopener noreferrer"/, `link externo sin rel seguro: ${etiqueta}`);
+    assert.match(etiqueta, /target="_blank"/, `link externo sin target: ${etiqueta}`);
+  }
+  // URLs sacadas de docs/investigacionGaucho.md y assets/fuentes.md (no se inventa ninguna)
+  const urlsConocidas = [
+    'https://www.linkedin.com/in/gaucho-paisano/',
+    'https://x.com/gauchopaisano',
+    'https://www.youtube.com/watch?v=jlnoMtGMSz4',
+    'https://x.com/nays1_/status/2089865919849812091',
+    'https://gaucho-studio.vercel.app',
+    'https://ofi.paisanos.io/',
+    'https://www.labitconf.com/',
+    'https://www.paisanos.io/',
+    'https://x.com/gauchopaisano/status/2123932261762392088',
+    'https://www.instagram.com/reel/DcOi7HYxxXH/',
+  ];
+  for (const url of urlsConocidas) {
+    assert.ok(html.includes(`href="${url}"`), `falta el link a ${url}`);
+  }
 });
 
 test('todas las imágenes locales existen en disco', () => {
@@ -140,4 +183,59 @@ test('incluye el contenido real de Gaucho', () => {
   for (const dato of ['Omnibot', 'Paisanos', 'Hackware', 'LABITCONF', 'Wallbit', 'cvFalso']) {
     assert.ok(html.includes(dato), `falta: ${dato}`);
   }
+});
+
+// ---------------------------------------------------------------------------
+// Favicon (logo elegido por Mavi: opción 1 "Frente", ver docs/logo/guiaDelLogo.md)
+// ---------------------------------------------------------------------------
+const CARPETA_DE_LA_PAGINA = join(import.meta.dirname, '..', 'webGaucho');
+
+// Cada ícono que el <head> debe declarar: etiqueta esperada, archivo y medida en píxeles.
+const ICONOS_PNG_ESPERADOS = [
+  { archivo: 'favicon-32.png', medida: 32, etiqueta: /<link[^>]+rel="icon"[^>]+type="image\/png"[^>]+sizes="32x32"[^>]+href="favicon-32\.png"/ },
+  { archivo: 'favicon-16.png', medida: 16, etiqueta: /<link[^>]+rel="icon"[^>]+type="image\/png"[^>]+sizes="16x16"[^>]+href="favicon-16\.png"/ },
+  { archivo: 'apple-touch-icon.png', medida: 180, etiqueta: /<link[^>]+rel="apple-touch-icon"[^>]+href="apple-touch-icon\.png"/ },
+];
+
+// Lee ancho y alto del bloque IHDR de un PNG (bytes 16-19 y 20-23, big endian).
+function leerMedidasDelPng(rutaDelArchivo) {
+  const bytes = readFileSync(rutaDelArchivo);
+  return { ancho: bytes.readUInt32BE(16), alto: bytes.readUInt32BE(20) };
+}
+
+test('el <head> declara los favicon PNG y el apple-touch-icon con rutas relativas', () => {
+  const head = html.slice(html.indexOf('<head>'), html.indexOf('</head>'));
+  for (const { archivo, etiqueta } of ICONOS_PNG_ESPERADOS) {
+    assert.match(head, etiqueta, `el <head> no declara ${archivo} como corresponde`);
+  }
+});
+
+test('el <head> declara favicon.ico', () => {
+  const head = html.slice(html.indexOf('<head>'), html.indexOf('</head>'));
+  assert.match(head, /<link[^>]+rel="shortcut icon"[^>]+href="favicon\.ico"/);
+});
+
+test('los PNG del favicon existen y miden lo que declaran', () => {
+  for (const { archivo, medida } of ICONOS_PNG_ESPERADOS) {
+    const ruta = join(CARPETA_DE_LA_PAGINA, archivo);
+    assert.ok(existsSync(ruta), `falta webGaucho/${archivo}`);
+    assert.deepEqual(leerMedidasDelPng(ruta), { ancho: medida, alto: medida }, `${archivo} no mide ${medida}x${medida}`);
+  }
+});
+
+test('favicon.ico es un ICO válido con las medidas 16 y 32', () => {
+  const ruta = join(CARPETA_DE_LA_PAGINA, 'favicon.ico');
+  assert.ok(existsSync(ruta), 'falta webGaucho/favicon.ico');
+  const bytes = readFileSync(ruta);
+  // Cabecera ICONDIR: reservado (0), tipo (1 = ícono) y cantidad de imágenes.
+  assert.equal(bytes.readUInt16LE(0), 0, 'el campo reservado debe ser 0');
+  assert.equal(bytes.readUInt16LE(2), 1, 'el tipo debe ser 1 (ícono)');
+  const cantidadDeImagenes = bytes.readUInt16LE(4);
+  assert.equal(cantidadDeImagenes, 2);
+  // Cada ICONDIRENTRY mide 16 bytes; el primer byte es el ancho.
+  const medidasEnElIco = [];
+  for (let i = 0; i < cantidadDeImagenes; i++) {
+    medidasEnElIco.push(bytes.readUInt8(6 + i * 16));
+  }
+  assert.deepEqual(medidasEnElIco.sort((a, b) => a - b), [16, 32]);
 });
