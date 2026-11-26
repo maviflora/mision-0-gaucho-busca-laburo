@@ -1,0 +1,22 @@
+# Lo que NO se sube a Vercel: la web solo necesita webGaucho/ y las fotos que usa.
+# Spec: specs/despliegueVercel.md
+
+# Documentación, specs, tests y herramientas del proyecto
+docs
+specs
+tests
+tools
+
+# Instrucciones para los agentes y README raíz
+CLAUDE.md
+AGENTS.md
+README.md
+
+# Capturas sueltas de la raíz (pegadas desde Orca)
+orca-paste-*.png
+
+# Videos pesados (97 MB) y fotos que la web no usa
+assets/Gaucho/videitos
+assets/Gaucho/cvFalso/referencia_bikini_uruguay.png
+assets/Gaucho/estiloArtisticoRetro
+assets/fuentes.md
