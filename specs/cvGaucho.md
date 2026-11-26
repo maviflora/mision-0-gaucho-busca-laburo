@@ -1,4 +1,6 @@
-# Spec: CV real y CV falso de Gaucho
+# Spec: CV real de Gaucho
+
+> **25/11/2026:** el CV falso "Gaucho por dentro" (y sus 3 variantes de póster) se archivó en `docs/designKits/archivo/cv/`. La idea nueva del CV falso es una foto de Gaucho en bikini que aparece al compartir pantalla en la llamada (ver `docs/notasDeMavi.md`). Lo que sigue describe la entrega original; solo el CV real sigue vigente (R1 a R6, R10 a R12).
 
 Fecha: 24/11/2026. Estado: implementación inicial (solo las dos hojas; la secuencia que las conecta se hace después).
 
@@ -15,7 +17,7 @@ La secuencia del "error" (cuándo y cómo se manda cada uno) queda **fuera de al
 
 - Experiencia: `docs/investigacionGaucho.md` secciones 7.1, 7.2 (perfil A titular + perfil B como proyectos, sugerido en la sección 7.2 y todavía sin decisión final de Mavi) y 15.3.
 - Specs técnicos: `docs/investigacionGaucho.md`, bloque "SPECS TÉCNICOS DE GAUCHO" (escrito por Mavi, sacado de subtítulos automáticos del video de SLA: pueden tener errores).
-- Marca: paleta y tipografías del kit seleccionado `docs/designKits/seleccionados/webPortfolio/propuesta1_catalogoTomy.html` (Anton, Chivo, IBM Plex Mono; crema TOMY, azul Omnibot, rojo ojos).
+- Marca: paleta y tipografías del kit seleccionado `docs/designKits/archivo/webPortfolioSeleccionado/propuesta1_catalogoTomy.html` (Anton, Chivo, IBM Plex Mono; crema TOMY, azul Omnibot, rojo ojos).
 
 ## Reglas de contenido
 

@@ -1,32 +1,16 @@
-﻿# Design kits de Gaucho
+# Design kit de Gaucho
 
-Abrí [el índice](index.html) en el navegador para recorrer las propuestas por tema. Las insignias **SELECCIONADA** enlazan a la copia elegida.
+El design kit **arranca de cero**. Mavi rechazó todo lo anterior y se conservó solo la paleta de colores: [`paletas.md`](paletas.md).
 
 ## Carpetas
 
-- `propuestas/webPortfolio/` guarda las tres direcciones para el portfolio.
-- `propuestas/paginaGaucho/` guarda las tres interpretaciones navegables de la maqueta.
-- `propuestas/videos16bit/` guarda el kit Cartucho de taller.
-- `propuestas/videosRealista/` guarda el kit Prueba de cámara.
-- `seleccionados/webPortfolio/` guarda la copia elegida del portfolio.
+- `paletas.md`: paleta de marca y tokens CSS. Es lo único vigente.
+- `archivo/`: todo lo que se descartó, para tener trazabilidad del proceso. No es referencia de diseño vigente.
+  - `archivo/webPortfolio/` y `archivo/webPortfolioSeleccionado/`: las tres direcciones del portfolio y la copia que se había elegido (Catálogo TOMY 1984).
+  - `archivo/paginaGaucho/`: las seis interpretaciones de la maqueta (detalle en [`guiaDePaginaGaucho.md`](archivo/paginaGaucho/guiaDePaginaGaucho.md)).
+  - `archivo/videos16bit/` y `archivo/videosRealista/`: los dos kits de video.
+  - `archivo/cv/`: el CV falso "Gaucho por dentro", sus variantes, el generador y los tests viejos (ver [`guiaDelArchivoCv.md`](archivo/cv/guiaDelArchivoCv.md)).
+- `propuestas/paginaGaucho/`: las 5 propuestas nuevas de la página (ronda 2), todavía sin elegir (ver [`guiaDePaginaGaucho.md`](propuestas/paginaGaucho/guiaDePaginaGaucho.md)).
+- `propuestas/cv/`: solo el CV real, que se mantiene (ver [`guiaDelCvDeGaucho.md`](propuestas/cv/guiaDelCvDeGaucho.md)). Sus estilos todavía usan la paleta y tipografías del kit archivado "Catálogo TOMY 1984".
 
-Cada propuesta nueva va en `propuestas/<tema>/`. Cuando Mavi elija una, copiá el HTML a `seleccionados/<tema>/`, conservá el original y actualizá el índice con la insignia y su enlace. Revisá los links relativos al copiar.
-
-## Selección vigente
-
-Mavi eligió [Catálogo TOMY 1984](seleccionados/webPortfolio/propuesta1_catalogoTomy.html) para el portfolio. Los dos kits de video están en consideración.
-
-Las propuestas de `paginaGaucho` usan ese catálogo como punto de partida y siguen en consideración.
-
-## Especificación de los kits de video
-
-Cada guía es un HTML mobile first con CSS y storyboard SVG integrados. Incluye concepto, paleta, tipografía accesible, formatos vertical y horizontal, reglas de cámara y movimiento, sonido, cinco cuadros, prompt reutilizable y muestras de intro y cierre. Google Fonts mejora la fidelidad tipográfica si hay conexión y cada HTML define fuentes de respaldo.
-
-## Especificación de los prototipos de página
-
-Abrí [Manual de usuario](propuestas/paginaGaucho/propuesta1_manualDeUsuario.html), [Una sola escena](propuestas/paginaGaucho/propuesta2_unaSolaEscena.html) o [Cassette y recibo](propuestas/paginaGaucho/propuesta3_casetteYRecibo.html). Los HTML incluyen CSS y JavaScript vanilla. Las fotos se cargan desde `assets/`.
-
-El prólogo corporativo se rompe con una acción deliberada. Después se puede recorrer la presentación, jugar la cinta de 8 bits, abrir fichas de empresas candidatas y probar las dos ramas de la entrevista. La llamada presenta una pregunta de Gaucho y la reserva muestra un correo de ejemplo. Todo sucede localmente. Los prototipos respetan la preferencia de movimiento reducido y arrancan en silencio.
-
-El contacto definitivo, el enlace de reunión y la ubicación de Modo seguime y Casa de Gaucho quedan a definir.
-
+Cada propuesta nueva va en `propuestas/<tema>/`. Cuando Mavi elija una, copiá el HTML a `seleccionados/<tema>/`, conservá el original y actualizá el índice con la insignia y su enlace. Revisá los links relativos al copiar. Lo que Mavi rechace se mueve a `archivo/`.

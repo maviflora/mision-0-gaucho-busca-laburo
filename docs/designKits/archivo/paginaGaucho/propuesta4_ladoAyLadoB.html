@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lado A y lado B · Gaucho</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Chivo:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+  <style>
+    /* Base compartida: paleta TOMY, controles y estados de la maqueta. */
+    :root {
+      color-scheme: light;
+      --gaucho-taller: #0B0F14;
+      --gaucho-azul-omnibot: #0A2B46;
+      --gaucho-azul-tinta: #133A51;
+      --gaucho-crema-tomy: #F4E2C4;
+      --gaucho-crema-sucio: #E8C69D;
+      --gaucho-rojo-ojos: #F3462E;
+      --gaucho-sol: #EAA540;
+      --gaucho-celeste: #74ACDF;
+      --gaucho-naranja-sunset: #F28409;
+      --gaucho-marron-sombrero: #523823;
+      --gaucho-franja: linear-gradient(
+        var(--gaucho-rojo-ojos) 25%, var(--gaucho-naranja-sunset) 25% 50%,
+        var(--gaucho-sol) 50% 75%, var(--gaucho-celeste) 75%
+      );
+      --line: color-mix(in srgb, var(--gaucho-azul-omnibot) 32%, transparent);
+      --gutter: clamp(1rem, 4vw, 4rem);
+      --space: clamp(1.4rem, 5vw, 4.5rem);
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      background: var(--gaucho-crema-tomy);
+      color: var(--gaucho-azul-omnibot);
+      font: 1rem/1.55 var(--body-font);
+    }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+    button, input, select { font: inherit; color: inherit; }
+    button, .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      background: var(--gaucho-crema-tomy);
+      border: 1px solid currentColor;
+      padding: .55rem .95rem;
+    }
+    button, summary { cursor: pointer; }
+    button:hover, summary:hover, .cta:hover { background: var(--gaucho-sol); }
+    button:disabled { opacity: .6; cursor: default; }
+    .cta { background: var(--gaucho-celeste); font-weight: 700; text-decoration: none; }
+    .frame { width: min(100% - 2 * var(--gutter), 88rem); margin-inline: auto; }
+    .masthead {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem 1rem;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .label { font: 500 .75rem/1.5 var(--mono); letter-spacing: .06em; }
+    .masthead .label::before {
+      content: '';
+      display: inline-block;
+      width: .48rem;
+      height: .48rem;
+      margin: 0 1rem .1rem 0;
+      border-radius: 50%;
+      background: var(--gaucho-rojo-ojos);
+      box-shadow: .68rem 0 var(--gaucho-rojo-ojos);
+    }
+    h1, h2, h3, p { margin: 0 0 .7rem; }
+    h1, h2 { font-family: var(--heading-font); line-height: 1; }
+    h1 { font-size: clamp(3.1rem, 12vw, 9rem); }
+    h2 { font-size: clamp(1.85rem, 5vw, 4.1rem); }
+    .subtitle { font-size: clamp(1.3rem, 3vw, 2.5rem); }
+    .stripe { width: min(100%, 21rem); height: .65rem; margin-block: 1rem; background: var(--gaucho-franja); }
+    .hero { display: grid; align-items: center; gap: var(--space); padding-block: var(--space); }
+    .portrait { margin: 0; min-width: 0; }
+    .portrait img, .cv-photo { width: 100%; display: block; object-fit: cover; object-position: center 42%; }
+    .portrait img { aspect-ratio: 5/4; }
+    .portrait figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .45rem; padding-block: .55rem; }
+    .cv-falso { padding-block: var(--space); overflow: hidden; }
+    .cv-layout { display: grid; align-items: stretch; gap: clamp(1rem, 3vw, 3rem); }
+    .cv-sheet { min-width: 0; padding: clamp(1rem, 4vw, 3.5rem); border: 1px solid var(--line); }
+    .cv-sheet h1 { font-size: clamp(2.35rem, 7vw, 6rem); overflow-wrap: anywhere; }
+    .cv-sheet h2 { font: 700 1rem/1.4 var(--body-font); padding-top: .65rem; margin-top: .9rem; border-top: 1px solid var(--line); }
+    .cv-photo { aspect-ratio: 4/3; height: 100%; min-height: 0; }
+    .break-message { margin: 1rem auto 0; }
+    .breaking .cv-layout { animation: dismiss-cv .6s ease-in-out both; }
+    .chapter-nav { margin: 0; }
+    .controls { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-block: .7rem; }
+    .chapter-nav a { display: inline-flex; min-height: 44px; align-items: center; padding-inline: .6rem; }
+    .section { padding-block: var(--space); border-top: 1px solid var(--line); scroll-margin-top: 6rem; }
+    .section > p { max-width: 65ch; }
+    .stamp { display: inline-block; padding: .25rem .65rem; border: 3px double; }
+    .tape-layout, .bench, .call-stage { display: grid; gap: .85rem; }
+    .tv, .tape-index, .interview, .endnotes {
+      min-width: 0;
+      padding: clamp(.85rem, 2.3vw, 1.8rem);
+      border: 1px solid var(--line);
+    }
+    .game-track {
+      position: relative;
+      height: clamp(8rem, 19vw, 12rem);
+      overflow: hidden;
+      border: 1px solid currentColor;
+      background: linear-gradient(var(--gaucho-crema-tomy) 83%, var(--gaucho-celeste) 83%);
+    }
+    .sprite {
+      position: absolute;
+      width: clamp(1.45rem, 6vw, 3rem);
+      bottom: 17%;
+      left: var(--position, 4%);
+      transition: left .22s ease-out;
+    }
+    .obstacle {
+      position: absolute;
+      bottom: 17%;
+      left: 56%;
+      width: 8%;
+      height: 17%;
+      border: 2px solid var(--gaucho-marron-sombrero);
+      background: var(--gaucho-sol);
+    }
+    .sprite.jumping { animation: jump .28s ease-out; }
+    @keyframes jump { 50% { transform: translateY(-1.2rem); } }
+    .marker {
+      position: absolute;
+      bottom: 48%;
+      display: grid;
+      place-items: center;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: var(--gaucho-sol);
+      font: 600 .8rem var(--mono);
+    }
+    .marker[data-collected="true"] { background: var(--gaucho-celeste); }
+    details { min-width: 0; border-bottom: 1px solid var(--line); }
+    summary { min-height: 44px; padding: .55rem; font-weight: 700; }
+    details p { padding-inline: .55rem; }
+    .bench button { display: grid; justify-items: center; align-content: center; }
+    .object { width: 4.5rem; height: 3.2rem; margin-block: .25rem; }
+    .call-stage { margin-block: .75rem; }
+    .call-tile {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      min-height: 6rem;
+      padding: .65rem;
+      border: 1px solid var(--line);
+      background: var(--gaucho-crema-tomy);
+    }
+    .call-tile img { width: min(8rem, 65%); aspect-ratio: 1; object-fit: cover; object-position: 50% 43%; }
+    .interview label { display: block; margin-top: .65rem; }
+    .interview select, .interview input {
+      padding: .45rem;
+      min-height: 44px;
+      max-width: 100%;
+      background: var(--gaucho-crema-tomy);
+      border: 1px solid currentColor;
+    }
+    .mail { padding: 1rem; background: var(--gaucho-crema-tomy); overflow-wrap: anywhere; }
+    .endnotes { margin-bottom: var(--space); }
+    dialog {
+      max-width: min(34rem, calc(100vw - 2rem));
+      max-height: calc(100dvh - 2rem);
+      overflow: auto;
+      background: var(--gaucho-crema-tomy);
+      color: inherit;
+      border: 1px solid currentColor;
+      padding: 1.2rem;
+    }
+    dialog::backdrop { background: color-mix(in srgb, var(--gaucho-taller) 70%, transparent); }
+    @media (min-width: 39rem) {
+      .bench { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .call-stage { grid-template-columns: 2fr 1fr; }
+    }
+    @media (min-width: 57rem) {
+      .cv-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+      .hero, .tape-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .cv-photo { aspect-ratio: auto; }
+    }
+
+    :root {
+      --body-font: Chivo, Arial, sans-serif;
+      --heading-font: 'Barlow Condensed', Impact, sans-serif;
+    }
+
+    /* Carcasa y ventanilla de cassette, con controles que se presionan. */
+    .alternate-type { --heading-font: var(--mono); }
+    .masthead { border-bottom: .55rem solid var(--gaucho-azul-omnibot); }
+    .cv-falso, .hero { background: var(--gaucho-crema-sucio); }
+    .hero { margin-block: 1rem; padding: var(--space); border-radius: 1rem 1rem 3rem 3rem; }
+    .cv-sheet { border: 3px double currentColor; background: var(--gaucho-crema-tomy); }
+    .cv-photo, .portrait img { border-radius: 5rem; border: .4rem double var(--gaucho-azul-omnibot); }
+    .stripe { width: 100%; height: 1.2rem; }
+    .tv { border: 2px solid; border-radius: 1.25rem; background: var(--gaucho-crema-sucio); }
+    .tv .label::after { content: " • •"; color: var(--gaucho-azul-omnibot); }
+    .tv button { box-shadow: 0 .25rem var(--gaucho-azul-omnibot); transition: transform .12s, box-shadow .12s; }
+    .tv button:active { transform: translateY(.2rem); box-shadow: 0 .05rem var(--gaucho-azul-omnibot); }
+    .chapter-nav a { border: 1px solid var(--line); border-radius: .4rem; }
+    .chapter-nav a:hover { background: var(--gaucho-celeste); }
+    .tape-index { border-style: dashed; }
+    .bench button { min-height: 8rem; border-radius: .85rem; background: var(--gaucho-crema-sucio); }
+    @keyframes dismiss-cv {
+      to { transform: translateX(105%); opacity: 0; }
+    }
+    @media (min-width: 57rem) {
+      .hero { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+      .tape-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+    }
+
+    /* La foto acompaña el prólogo sin fijar la altura de la ficha. */
+    .cv-image { position: relative; min-width: 0; margin: 0; }
+    @media (min-width: 57rem) {
+      .cv-photo { position: absolute; inset: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead frame">
+    <a href="../../index.html">Design kits de Gaucho</a>
+    <span class="label">Lado A y lado B</span>
+    <button type="button" id="view-mode" aria-pressed="false" hidden>Cambiar tipografía</button>
+  </header>
+
+  <!-- El CV corporativo es el prólogo. El portfolio sigue disponible si no hay JS. -->
+  <section id="cv-falso" class="cv-falso" aria-labelledby="cv-heading" hidden>
+    <div class="cv-layout frame">
+      <div class="cv-sheet">
+        <p>Currículum vitae</p>
+        <h1 id="cv-heading">Gaucho Paisano</h1>
+        <p>DevRel y creación de contenido · Paisanos</p>
+        <h2>Perfil profesional</h2>
+        <p>Comunicación técnica, participación en eventos y proyectos de hardware.</p>
+        <h2>Historial de actividades</h2>
+        <p>Jurado en Hackware. Speaker en LABITCONF. Presentador en Wallbit.</p>
+        <h2>Observaciones</h2>
+        <p>Este sería el CV de Gaucho si él fuera un tipo sin gracia.</p>
+        <button type="button" id="cv-reveal">Abrir el manual real</button>
+      </div>
+      <figure class="cv-image" aria-hidden="true">
+        <img class="cv-photo" src="../../../../assets/Gaucho/fotitos/juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png" alt="">
+      </figure>
+    </div>
+    <p class="break-message frame" id="break-message" role="status" hidden>Rasgando por el troquel…</p>
+  </section>
+
+  <main class="frame" id="portfolio">
+    <noscript><p>Las fichas de experiencia se pueden leer aquí. Activá JavaScript para probar el prólogo, la cinta y la entrevista.</p></noscript>
+
+    <header class="hero">
+      <div>
+        <p class="label">Paisanos · Omnibot 5402 · TOMY 1984</p>
+        <h1 id="gaucho" tabindex="-1">GAUCHO</h1>
+        <p class="subtitle">Busco laburo</p>
+        <div class="stripe" aria-hidden="true"></div>
+        <p>Abrí las fichas y recorré el banco de taller.</p>
+        <a class="cta" href="#entrevista">Contratar a Gaucho</a>
+      </div>
+      <figure class="portrait">
+        <img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_campera_cuero_y_lentes_gonzalo_martinese.png" alt="Gaucho, robot Omnibot, posando con campera de cuero y anteojos oscuros">
+        <figcaption class="label"><span>gaucho hot pic :)</span><span>150 / 240 / 300</span></figcaption>
+      </figure>
+    </header>
+
+    <nav class="chapter-nav controls label" aria-label="Capítulos del manual">
+      <a href="#perfil">Ficha</a><a href="#cinta">La cinta</a><a href="#taller">Taller</a><a href="#entrevista">Entrevista</a>
+    </nav>
+    <section class="section" id="perfil" aria-labelledby="perfil-title">
+      <h2 id="perfil-title" tabindex="-1">Ficha de presentación</h2>
+      <p>Soy el Omnibot del 84 que recuperaron en Misión Despertar. Laburo en Paisanos como DevRel y creador de contenido. Si hay fierros con propósito y aire para la Raspberry, charlemos.</p>
+      <span class="stamp label">APROBADO</span>
+    </section>
+    <section class="section" id="cinta" aria-labelledby="cinta-title">
+      <h2 id="cinta-title" tabindex="-1">Laburos anteriores de Gaucho</h2>
+      <p>Inspirado en Gaucho Adventures de Gonzalo Martinese. Avanzá con las ruedas y juntá las fichas de mi laburo.</p>
+      <div class="tape-layout">
+      <div class="tv">
+        <p class="label">La cinta de Gaucho · CV de 8 bits</p>
+        <div class="game-track" id="game-track" aria-hidden="true">
+          <svg class="sprite" viewBox="0 0 20 20" aria-hidden="true" shape-rendering="crispEdges">
+            <path fill="var(--gaucho-crema-sucio)" d="M4 2h12v8H4zm-1 8h14v7H3z"/>
+            <path fill="var(--gaucho-taller)" d="M5 17h4v3H5zm6 0h4v3h-4zM1 11h2v5H1zm16 0h2v5h-2zM5 4h10v4H5zm1 8h8v3H6z"/>
+            <path fill="var(--gaucho-rojo-ojos)" d="M6 5h3v2H6zm5 0h3v2h-3z"/>
+            <path fill="var(--gaucho-sol)" d="M9 5h2v5H9z"/>
+          </svg>
+          <span class="obstacle"></span>
+          <span class="marker" style="left:25%">1</span>
+          <span class="marker" style="left:45%">2</span>
+          <span class="marker" style="left:65%">3</span>
+          <span class="marker" style="left:85%">4</span>
+        </div>
+        <div class="controls"><button id="game-move" type="button">Avanzar</button><button id="game-jump" type="button">Saltar</button><button id="game-reset" type="button">Rebobinar</button></div>
+        <p id="game-status" role="status">Listo. Avanzá para levantar una ficha. Cuando aparezca el cajón, saltalo.</p>
+      </div>
+      <div class="tape-index">
+        <h3>Fichas de experiencia</h3>
+        <details data-experience><summary>Hackware</summary><p class="label">05/09/2026 · Jurado</p><p>Me tocó ser jurado en la hackatón de hardware de Paisanos y SLA. Doce horas de fierros ajenos: planazo.</p></details>
+        <details data-experience><summary>LABITCONF</summary><p class="label">31/10/2026 · Speaker y embajador</p><p>Subí al Escenario Visión con Sofi a hablar de creatividad humana. Los nervios también arrancaron en vivo.</p></details>
+        <details data-experience><summary>La Ofi</summary><p class="label">2026 · Anfitrión</p><p>En el coworking de Paisanos salgo en el registro. Seguridad informática con olor a café.</p></details>
+        <details data-experience><summary>Wallbit</summary><p class="label">19/11/2026 · Presentador y embajador</p><p>Presenté la tarjeta de metal y la entregué en el lanzamiento. Por fin un operativo de fierros que me entraba en la pinza.</p></details>
+      </div>
+    </div>
+    </section>
+    <section class="section" id="taller" aria-labelledby="taller-title">
+      <h2 id="taller-title" tabindex="-1">Dónde me gustaría laburar</h2>
+      <p>Busco autos, herramientas o sensores. Abrí un objeto del taller y te cuento qué haría con esos fierros.</p>
+      <div class="bench" aria-label="Objetos del banco de taller">
+      <button type="button" data-dialog="auto" aria-haspopup="dialog">
+        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><circle cx="32" cy="25" r="19" fill="var(--gaucho-taller)"/><circle cx="32" cy="25" r="12" fill="var(--gaucho-celeste)"/><path stroke="var(--gaucho-azul-omnibot)" stroke-width="4" d="M32 13v24M20 25h24m-20-8 16 16m0-16L24 33"/></svg>
+        Rueda · Toyota Argentina
+      </button>
+      <button type="button" data-dialog="tool" aria-haspopup="dialog">
+        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path d="M48 6 37 9l-4 10L13 35l-2 7 6 4 6-3 17-19 11-2 6-9-9 4-5-5z" fill="var(--gaucho-azul-omnibot)"/><circle cx="17" cy="40" r="2" fill="var(--gaucho-sol)"/></svg>
+        Llave · Bosch Professional
+      </button>
+      <button type="button" data-dialog="sensor" aria-haspopup="dialog">
+        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path d="M13 9h38v31H13z" fill="var(--gaucho-azul-tinta)"/><path d="M25 17h14v14H25z" fill="var(--gaucho-sol)"/><path stroke="var(--gaucho-celeste)" stroke-width="2" d="M17 2v8m9-8v8m11-8v8m9-8v8M17 40v8m9-8v8m11-8v8m9-8v8"/><circle cx="45" cy="15" r="3" fill="var(--gaucho-rojo-ojos)"/></svg>
+        Sensor · Arbit Ingeniería
+      </button>
+    </div>
+    </section>
+    <section class="section" id="entrevista" aria-labelledby="entrevista-title">
+      <h2 id="entrevista-title" tabindex="-1">Entrevista con Gaucho</h2>
+      <div class="interview">
+      <p class="label">Canal de entrevista · Demostración local</p>
+      <div data-call-state="opciones">
+        <h3 tabindex="-1">Agendar llamada</h3>
+        <p>Te entrevisto yo. Vos traé el proyecto y yo me encargo de las preguntas.</p>
+        <div class="controls">
+          <button class="cta" type="button" data-go="llamando">Tenerla al toque</button>
+          <button type="button" data-go="reservar">Reservar llamada con Gaucho</button>
+        </div>
+      </div>
+      <div data-call-state="llamando" hidden>
+        <h3 tabindex="-1">Llamando a Gaucho</h3>
+        <div class="call-stage">
+          <div class="call-tile"><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Retrato de Gaucho en la sala de llamada"><p>Gaucho · Esperando</p></div>
+          <div class="call-tile"><p>Vos · Cámara apagada</p></div>
+        </div>
+        <div class="controls"><button class="cta" type="button" data-go="en-llamada">Entrar a la llamada de prueba</button><button type="button" data-go="opciones">Volver</button></div>
+      </div>
+      <div data-call-state="en-llamada" hidden>
+        <h3 tabindex="-1">En llamada con Gaucho</h3>
+        <div class="call-stage">
+          <div class="call-tile"><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Retrato de Gaucho en la llamada"><p>Gaucho · En línea en la maqueta</p></div>
+          <div class="call-tile"><p>Vos · Cámara apagada</p></div>
+        </div>
+        <form id="answer" method="post">
+          <label for="project">¿Qué fierros con propósito están armando?</label>
+          <input id="project" name="project" required maxlength="180" autocomplete="off">
+          <button id="send-answer" type="submit" disabled>Responder</button>
+        </form>
+        <p id="verdict" role="status"></p>
+        <button type="button" data-go="opciones">Colgar</button>
+      </div>
+      <div data-call-state="reservar" hidden>
+        <h3 tabindex="-1">Reservar llamada con Gaucho</h3>
+        <div class="call-stage">
+          <div class="call-tile"><p>Gaucho · Sala reservable</p></div>
+          <div class="call-tile"><p>Vos · Cámara apagada</p></div>
+        </div>
+        <form id="booking" method="post">
+          <label for="slot">Horario de ejemplo</label>
+          <select id="slot" name="slot" required>
+            <option value="">Elegí un horario</option>
+            <option>Martes, 11:00 (Buenos Aires)</option>
+            <option>Jueves, 16:00 (Buenos Aires)</option>
+          </select>
+          <label for="email">Correo de ejemplo</label>
+          <input id="email" name="email" type="email" required placeholder="vos@example.com" autocomplete="off">
+          <div class="controls"><button id="preview-booking" class="cta" type="submit" disabled>Ver correo de confirmación</button><button type="button" data-go="opciones">Volver</button></div>
+        </form>
+      </div>
+      <div data-call-state="correo" hidden>
+        <h3 tabindex="-1">Correo de confirmación · Vista previa</h3>
+        <div class="mail">
+          <p><strong>De</strong> [remitente a definir]</p>
+          <p><strong>Para</strong> <span id="recipient"></span></p>
+          <p><strong>Asunto</strong> Tu llamada con Gaucho</p>
+          <p><strong>Horario</strong> <span id="slot-preview"></span></p>
+          <p>Dale, quedamos. Traé una idea piola y yo llevo las ruedas.</p>
+          <p><strong>Reunión</strong> [enlace a definir]</p>
+        </div>
+        <p>Maqueta local. No se envió ningún correo.</p>
+        <button type="button" data-go="opciones">Volver a las opciones</button>
+      </div>
+    </div>
+      
+    </section>
+    <aside class="endnotes" aria-labelledby="extras">
+      <h2 id="extras">Easter eggs</h2>
+      <button type="button" data-dialog="por-dentro" aria-haspopup="dialog">Gaucho por dentro</button>
+      <details><summary>Modo seguime · ubicación a definir</summary><p>Boceto pendiente de integrar. Los ojos seguirían un objetivo.</p></details>
+      <details><summary>Casa de Gaucho · ubicación a definir</summary><p>Boceto pendiente de integrar. Un espacio propio con objetos de mi historia.</p></details>
+    </aside>
+  </main>
+
+  <dialog id="auto" aria-labelledby="auto-title">
+    <h2 id="auto-title">Toyota Argentina</h2>
+    <p class="label">Autos y movilidad · Empresa candidata</p><p>Me gustaría mostrar cómo se arma un auto en una visita de planta. Ruedas ya traje.</p><p>Idea de colaboración. Contacto y logo por confirmar.</p>
+    <form method="dialog"><button autofocus>Cerrar ficha</button></form>
+  </dialog>
+<dialog id="tool" aria-labelledby="tool-title">
+    <h2 id="tool-title">Bosch Professional</h2>
+    <p class="label">Herramientas · Empresa candidata</p><p>Probame en una demo de herramientas conectadas. El único requisito es que me quede a mano, o a pinza.</p><p>Idea de colaboración. Contacto y logo por confirmar.</p>
+    <form method="dialog"><button autofocus>Cerrar ficha</button></form>
+  </dialog>
+<dialog id="sensor" aria-labelledby="sensor-title">
+    <h2 id="sensor-title">Arbit Ingeniería</h2>
+    <p class="label">Sensores e IoT · Empresa candidata</p><p>Me gustaría contar cómo un sensor de taller termina hablando con la red. Para hablar de latencia tengo experiencia de primera mano.</p><p>Idea de colaboración. Contacto y logo por confirmar.</p>
+    <form method="dialog"><button autofocus>Cerrar ficha</button></form>
+  </dialog>
+<dialog id="por-dentro" aria-labelledby="por-dentro-title">
+    <h2 id="por-dentro-title">Gaucho por dentro</h2>
+    <p>El ESP32 controla motores y ojos. La cámara Raspberry mira entre los dos LED rojos, con un flex ámbar que se ve desde afuera.</p><p>El ReSpeaker aporta los micrófonos. La casetera y el plástico vienen del juguete original.</p>
+    <form method="dialog"><button autofocus>Cerrar ficha</button></form>
+  </dialog>
+
+  <script>
+    'use strict';
+
+    const falseCv = document.querySelector('#cv-falso');
+    const portfolio = document.querySelector('#portfolio');
+    const revealButton = document.querySelector('#cv-reveal');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    portfolio.hidden = true;
+    falseCv.hidden = false;
+
+    // El control cambia la vista sin alterar los contenidos ni el modo claro.
+    const viewMode = document.querySelector('#view-mode');
+    viewMode.hidden = false;
+    viewMode.addEventListener('click', () => {
+      const active = document.body.classList.toggle('alternate-type');
+      viewMode.setAttribute('aria-pressed', String(active));
+    });
+
+    // La acción funciona con teclado. Con movimiento reducido, el corte es inmediato.
+    revealButton.addEventListener('click', () => {
+      revealButton.disabled = true;
+      falseCv.classList.add('breaking');
+      document.querySelector('#break-message').hidden = false;
+      const reveal = () => {
+        portfolio.hidden = false;
+        falseCv.hidden = true;
+        document.querySelector('#gaucho').focus();
+        window.scrollTo(0, 0);
+      };
+      if (reduceMotion.matches) reveal();
+      else window.setTimeout(reveal, 620);
+    });
+
+    // Minijuego por pasos. Las fichas también se pueden abrir sin jugar.
+    const game = document.querySelector('#game-track');
+    const moveButton = document.querySelector('#game-move');
+    const cards = [...document.querySelectorAll('[data-experience]')];
+    const markers = [...game.querySelectorAll('.marker')];
+    const gameStatus = document.querySelector('#game-status');
+    const jumpButton = document.querySelector('#game-jump');
+    const sprite = game.querySelector('.sprite');
+    let step = 0;
+
+    function collectExperience(jumping) {
+      if (step >= cards.length) return;
+      if (step === 2 && !jumping) {
+        gameStatus.textContent = 'Hay un cajón adelante. Usá Saltar para pasar.';
+        return;
+      }
+      if (step !== 2 && jumping) {
+        gameStatus.textContent = 'Camino libre. Usá Avanzar para levantar la ficha.';
+        return;
+      }
+      sprite.classList.toggle('jumping', jumping);
+      const card = cards[step];
+      markers[step].dataset.collected = 'true';
+      game.style.setProperty('--position', markers[step].style.left);
+      card.open = true;
+      step += 1;
+      gameStatus.textContent = 'Ficha ' + step + ' de ' + cards.length + ' · ' + card.querySelector('summary').textContent;
+      if (step === cards.length) {
+        gameStatus.textContent += ' · Cinta completa.';
+        document.querySelector('#game-reset').focus({ preventScroll: true });
+        moveButton.disabled = true;
+        jumpButton.disabled = true;
+      }
+    }
+    moveButton.addEventListener('click', () => collectExperience(false));
+    jumpButton.addEventListener('click', () => collectExperience(true));
+    document.querySelector('#game-reset').addEventListener('click', () => {
+      step = 0;
+      game.style.removeProperty('--position');
+      markers.forEach(marker => { marker.dataset.collected = 'false'; });
+      cards.forEach(card => { card.open = false; });
+      gameStatus.textContent = 'Listo. Avanzá para levantar una ficha.';
+      sprite.classList.remove('jumping');
+      moveButton.disabled = false;
+      jumpButton.disabled = false;
+      moveButton.focus({ preventScroll: true });
+    });
+
+    // El diálogo nativo maneja Escape y devuelve el foco al objeto.
+    document.querySelectorAll('[data-dialog]').forEach(button => {
+      button.addEventListener('click', () => document.getElementById(button.dataset.dialog).showModal());
+    });
+
+    // Simulación local. Las pantallas nunca piden permisos ni envían datos.
+    const callStates = [...document.querySelectorAll('[data-call-state]')];
+    document.querySelectorAll('[data-go]').forEach(button => {
+      button.addEventListener('click', () => showCallState(button.dataset.go));
+    });
+    document.querySelector('#booking').addEventListener('submit', event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      document.querySelector('#recipient').textContent = form.elements.email.value;
+      document.querySelector('#slot-preview').textContent = form.elements.slot.value;
+      showCallState('correo');
+      form.reset();
+    });
+    document.querySelector('#answer').addEventListener('submit', event => {
+      event.preventDefault();
+      document.querySelector('#verdict').textContent =
+        'Dale, ya anoté tu respuesta para esta demo. Ahora falta encontrarle enchufe al proyecto.';
+      event.currentTarget.reset();
+    });
+
+    document.querySelector('#send-answer').disabled = false;
+    document.querySelector('#preview-booking').disabled = false;
+
+    function showCallState(next) {
+      callStates.forEach(panel => { panel.hidden = panel.dataset.callState !== next; });
+      const current = callStates.find(panel => panel.dataset.callState === next);
+      if (next === 'opciones') {
+        document.querySelector('#recipient').textContent = '';
+        document.querySelector('#slot-preview').textContent = '';
+        document.querySelector('#verdict').textContent = '';
+      }
+      current.querySelector('h3').focus();
+    }
+  </script>
+</body>
+</html>

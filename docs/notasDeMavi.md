@@ -155,5 +155,20 @@ COMO FUI PENSANDO TODO/ MI PROCESO CREATIVO / COSAS QUE FUERON PASANDO EN MEDIO
 - Hoy ya es Martes, habia dicho que esta semana iba a soñar con Gaucho. Dicho y hecho. Anoche soñe con la solucion de como queria que se viera el portfolio. "Tanto el conflicto como la solucion estan dentro."
 - Me di cuenta que estaria bueno sumar las paletas de marca, unos disenios, hacer un figma bien lindo
 - Tambien me di cuenta que paisanos hace [un caso de estudio](https://www.paisanos.io/es/projects/switch-website-case-study) por cada empresa y/o producto que hace, asi que yo voy a hacer uno tambien :D. Es la primera vez que hago un caso de estudio, voey a aprender como 
-- Antes de empezar la pagina voy a terminar de diseniar el design kit, y voy a darle una web de referencia. Quiero pegar un level up lindo en disenio. Y no que sea un ai slop como el de Pacta.  
+- Antes de empezar la pagina voy a terminar de diseniar el design kit, y voy a darle una web de referencia. Quiero pegar un level up lindo en disenio. Y no que sea un ai slop como el de Pacta.
+- Martes 24/11 8.46Am, arranco el design kit visual del portfolio y empiezo a explorar opciones. El finde me dio un merecido descanso, ya no me siento la guerrera favorita de dios.
+- Una idea nueva mientras prompteaba "cucha, hacele un CV a gaucho. Y tambien hacele - B. "Gaucho por dentro": el robot abierto, pieza por pieza, con sus specs reales (ESP32, ReSpeaker, cámara). Se puede sumar como una tarjeta más. que parezca CV, asi cuando le piden a Gaucho su CV pase ese primero, por error, se de cuenta que le mando como es le por adentro (lo mismo que mandar una foto en bolas o en bikini), le de verguenza y corte la llamada. Toda la secuencia esa la vamos a implementar despues. Por ahora hacete el falso CV y el CV real"
+- Mientras estaba maqueteando como quiero que sea el flujo de la pagina mis asesores comerciales me obligaron a tomar un break. Sobra aclarar que despues tuve que sacar el teclado del escritorio pq no me dejaban usarlo ![](orca-paste-1795523538855-2e27d050-ab90-4540-9e0c-57796d64c763.png)
+- NDA del proyecto violados e informacion likeada: 1 (link a publicacion de X)
+- En mi delirio de investigacion y saber mas termine viendo un episodio de 1.30h en SLA. Descubri que Nahue usa las mismas keywords. Todo el tiempo. Muchas veces. "super", "dale", "tipo", "viste", "che"
 
+  Ok se puso raro el episodio cuando Nahue empezo a hablar de perfumes de estomagos de bestias y de que huele paisanos. Gagà. Me hizo sentir menos gaga a mi. Gracias.
+- ellos tienen unas metricas de discovery, un estudio de discovery, necesito saber
+- preferi hacer lento y hacer bien, y aprender lo mas posible, y curiosear todo lo que pueda, y mejorar muchas cosas que quizas en productos anteriores no me gustaron como me salieron
+- Estoy esperando el episodio 100 para q NIco Producto baile tap
+- Que es taste? 
+- Que en la pantalla 2.6 el "no contratar" se mueva y no te deje cliclearlo 
+- Video de gaucho donde solo cambia el estado de los ojos 
+- El video tiene fondo verde para que gaucho este en distintas localizaciobnes 
+- El "cv falso" pasa a ser una foto de gaucho en bikini rosa, despues de eso gaucho se disculpa con mcuha verguenza y corta la llamada 
+- El "cv falso" ya no es el robot abierto. Es solo una foto de Gaucho en bikini (como la de la bikini de bandera de Uruguay). Pasa en la llamada: Gaucho dice "ya fue, te comparto pantalla y mirá mi CV", empieza a compartir pantalla, abre un archivo "CVvVvv.png" en el escritorio y es la foto de él en bikini. Se ve unos 5 segundos, corta el compartir pantalla y dice "AY, ESA FOTO NO ERA, AY ESA ERA PARA PUNTA TECH......." y corta la llamada. Del CV falso anterior queda archivado todo; solo sigue el CV real.

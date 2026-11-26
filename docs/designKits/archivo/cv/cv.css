@@ -1,0 +1,232 @@
+/*
+  Estilos compartidos del CV real y del CV falso de Gaucho (spec: specs/cvGaucho.md).
+  Los dos CV usan EXACTAMENTE esta hoja: así, a primera vista, no se distinguen.
+  Paleta y tipografías: kit seleccionado "Catálogo TOMY 1984" (docs/designKits/archivo/webPortfolioSeleccionado).
+*/
+
+:root {
+  --crema-tomy: #F4E2C4;
+  --crema-plastico: #E8C69D;
+  --azul-omnibot: #0A2B46;
+  --azul-tinta: #133A51;
+  --negro-taller: #0B0F14;
+  --rojo-ojos: #F3462E;
+  --rojo-glow: #FF6A55;
+  --amarillo-sol: #EAA540;
+  --celeste-bandera: #74ACDF;
+  --naranja-sunset: #F28409;
+  --marron-tinta: #523823;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 1rem 0 2rem;
+  color: var(--azul-omnibot);
+  background-color: var(--negro-taller);
+  font: 1rem/1.55 Chivo, Arial, sans-serif;
+}
+
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--rojo-ojos); outline-offset: 3px; }
+
+/* ---------- La hoja de papel ---------- */
+.hoja {
+  width: min(100% - 1.5rem, 56rem);
+  margin-inline: auto;
+  padding: 1.25rem;
+  background-color: var(--crema-tomy);
+  /* Puntitos de tinta, mismo recurso que el kit TOMY. */
+  background-image: radial-gradient(#52382325 .55px, transparent .8px);
+  background-size: 5px 7px;
+  border: 1px solid var(--marron-tinta);
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--azul-omnibot);
+}
+
+.etiqueta {
+  margin: 0;
+  font: 600 .8rem/1.3 'IBM Plex Mono', monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: .1em 0;
+  font: 400 clamp(2.6rem, 11vw, 5.5rem)/.98 Anton, Impact, sans-serif;
+  letter-spacing: .01em;
+}
+
+.cargo { margin: 0; font-weight: 700; font-size: 1.1rem; }
+
+.franja {
+  height: 1rem;
+  max-width: 20rem;
+  margin: .8rem 0;
+  background: linear-gradient(var(--rojo-ojos) 25%, var(--naranja-sunset) 25% 50%, var(--amarillo-sol) 50% 75%, var(--celeste-bandera) 75%);
+}
+
+.foto { margin: 0; padding: .5rem; border: 1px solid var(--azul-omnibot); background: var(--crema-plastico); }
+.foto img, .foto svg { display: block; width: 100%; height: auto; }
+.foto img { aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 62%; }
+.foto figcaption { margin-top: .4rem; }
+
+/* ---------- Secciones: título a la izquierda, contenido a la derecha ---------- */
+.seccion {
+  display: grid;
+  gap: .5rem 1.5rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--marron-tinta);
+}
+
+h2 {
+  margin: 0;
+  font: 600 .95rem/1.3 'IBM Plex Mono', monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--rojo-ojos);
+}
+
+h3 { margin: 0; font-size: 1.05rem; line-height: 1.25; }
+.contenido > :first-child { margin-top: 0; }
+p { margin: .4rem 0; }
+ul, ol { margin: .4rem 0; padding-left: 1.2rem; }
+li { margin: .25rem 0; }
+
+/* Una "entrada" es un puesto, un evento o un paso: título, fecha y descripción. */
+.entrada { margin: 0 0 1rem; }
+.entrada:last-child { margin-bottom: 0; }
+.entrada-cabecera { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem 1rem; align-items: baseline; }
+.fecha { font: 600 .8rem/1.3 'IBM Plex Mono', monospace; white-space: nowrap; }
+.lugar { margin: 0; font-style: italic; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: .4rem 0; }
+.chips li {
+  margin: 0;
+  padding: .15rem .55rem;
+  border: 1px solid var(--azul-omnibot);
+  background: var(--crema-plastico);
+  font: 600 .8rem/1.4 'IBM Plex Mono', monospace;
+}
+
+.aviso { padding: .5rem .75rem; border-left: 4px solid var(--amarillo-sol); background: var(--crema-plastico); font-size: .9rem; }
+
+.boton {
+  display: inline-block;
+  margin-top: .4rem;
+  padding: .6rem 1rem;
+  border: 2px solid var(--negro-taller);
+  background: var(--celeste-bandera);
+  color: var(--negro-taller);
+  font-weight: 700;
+  text-decoration: none;
+}
+.boton:hover { text-decoration: underline; }
+
+.pie { margin: 1rem 0 0; font: 400 .8rem/1.4 'IBM Plex Mono', monospace; }
+
+/* ---------- "Gaucho por dentro": leyenda de piezas ---------- */
+.piezas { list-style: none; padding: 0; margin: .5rem 0 0; display: grid; gap: .6rem; }
+.pieza { display: grid; grid-template-columns: 2rem 1fr; gap: .1rem .6rem; align-items: start; margin: 0; }
+.numero-pieza {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--azul-omnibot);
+  color: var(--crema-tomy);
+  font: 600 .9rem/1 'IBM Plex Mono', monospace;
+}
+.nombre-pieza { font-weight: 700; }
+.spec-pieza { margin: 0; font-size: .92rem; }
+
+/* El dibujo hereda los colores de la paleta mediante estas clases. */
+.dibujo .trazo { stroke: var(--azul-omnibot); stroke-width: 2.5; stroke-linejoin: round; }
+.dibujo .plastico { fill: var(--crema-plastico); }
+.dibujo .placa { fill: var(--azul-tinta); }
+.dibujo .oscuro { fill: var(--negro-taller); }
+.dibujo .ojo { fill: var(--rojo-ojos); }
+.dibujo .brillo { fill: var(--rojo-glow); }
+.dibujo .cobre { fill: var(--amarillo-sol); }
+.dibujo .cable { fill: none; stroke: var(--rojo-ojos); stroke-width: 2; }
+.dibujo .cable-azul { fill: none; stroke: var(--celeste-bandera); stroke-width: 2; }
+.dibujo .insignia { fill: var(--azul-omnibot); }
+.dibujo .numero { fill: var(--crema-tomy); font: 600 13px 'IBM Plex Mono', monospace; text-anchor: middle; }
+.dibujo .rotulo { fill: var(--crema-tomy); font: 600 8px 'IBM Plex Mono', monospace; text-anchor: middle; }
+
+/* ---------- Pantallas anchas ---------- */
+@media (min-width: 48rem) {
+  .hoja { padding: 2rem 2.5rem; }
+  .encabezado { grid-template-columns: 1fr 15rem; }
+  .seccion { grid-template-columns: 9rem 1fr; }
+}
+
+/* ---------- Impresión: el CV es una hoja imprimible ---------- */
+@media print {
+  body { padding: 0; background: #fff; }
+  .hoja { width: 100%; padding: 0; border: 0; background: none; }
+  .seccion, .entrada, .pieza, .foto { break-inside: avoid; }
+  .boton { border: 1px solid #000; background: none; }
+  a { text-decoration: none; }
+  /* Para papel se imprime con tinta, sin los puntitos de fondo. */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ---------- Póster de vista explotada (solo en el CV falso) ---------- */
+.poster {
+  margin: .75rem 5px 1rem;
+  padding: .75rem;
+  border: 1px solid var(--azul-omnibot);
+  outline: 1px solid var(--azul-omnibot);
+  outline-offset: 4px;
+  background: var(--crema-tomy);
+}
+.poster svg { display: block; width: 100%; height: auto; }
+.poster figcaption { margin-top: .5rem; text-align: center; }
+.dibujo .guia { fill: none; stroke: var(--azul-omnibot); stroke-width: 1; }
+.dibujo .punto { fill: var(--azul-omnibot); }
+.dibujo .eje { fill: none; stroke: var(--marron-tinta); stroke-width: 1; stroke-dasharray: 5 5; }
+.dibujo .rotulo-nombre { fill: var(--azul-omnibot); font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: .06em; }
+.dibujo .rotulo-spec { fill: var(--azul-tinta); font: 400 9.5px 'IBM Plex Mono', monospace; }
+.dibujo .rotulo-der { text-anchor: end; }
+
+/* ---------- Variantes del póster (V1 cuadro knolling, V2 explosión de noche, V3 afiche TOMY) ---------- */
+/* Estas variantes traen su propio marco dentro del SVG, así que se saca el marco del <figure>. */
+.poster-sinmarco { padding: 0; border: 0; outline: 0; background: none; }
+.dibujo .marco { fill: var(--negro-taller); }
+.dibujo .papel { fill: var(--crema-tomy); }
+.dibujo .filete { fill: none; stroke: var(--marron-tinta); stroke-width: 1; }
+.dibujo .fondo-noche { fill: var(--azul-omnibot); }
+.dibujo .eje-fino { fill: none; stroke: var(--celeste-bandera); stroke-width: 1; opacity: .12; }
+.dibujo .sol-externo { fill: var(--rojo-ojos); }
+.dibujo .sol-medio { fill: var(--naranja-sunset); }
+.dibujo .sol-interno { fill: var(--amarillo-sol); }
+.dibujo .franja-naranja { fill: var(--naranja-sunset); }
+.dibujo .franja-celeste { fill: var(--celeste-bandera); }
+.dibujo .caja-tomy { fill: none; stroke: var(--azul-omnibot); stroke-width: 2; }
+.dibujo .titulo-svg { fill: var(--azul-omnibot); font: 400 28px Anton, Impact, sans-serif; letter-spacing: .02em; }
+.dibujo .titulo-grande { font-size: 64px; }
+.dibujo .titulo-der { text-anchor: end; font-size: 34px; }
+.dibujo .rotulo-centro { text-anchor: middle; }
+
+/* Tema de noche (V2): líneas y textos claros sobre azul Omnibot. */
+.dibujo.noche .guia { stroke: var(--crema-tomy); }
+.dibujo.noche .punto { fill: var(--crema-tomy); }
+.dibujo.noche .eje { stroke: var(--crema-plastico); }
+.dibujo.noche .trazo { stroke: var(--celeste-bandera); }
+.dibujo.noche .rotulo-nombre, .dibujo.noche .titulo-svg { fill: var(--crema-tomy); }
+.dibujo.noche .rotulo-spec { fill: var(--crema-plastico); }
+.dibujo.noche .insignia { fill: var(--rojo-ojos); }
+.dibujo.noche .numero { fill: var(--negro-taller); }
+/* Las piezas dibujadas con <use> leen este color de contorno (ver tools/generarVariantesCvFalso.mjs). */
+.dibujo.noche { --trazo-color: var(--celeste-bandera); }

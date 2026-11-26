@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gaucho Paisano · Retrato abierto</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap">
+  <!-- Pumo: retrato dividido en claro. Haptic: jerarquía compacta y aire entre bloques. 108: fotografía dominante con entrada breve. -->
+  <style>
+    /* Paleta y bases de lectura. */
+    :root {
+      color-scheme: light;
+      --gaucho-taller: #0B0F14;
+      --gaucho-azul-omnibot: #0A2B46;
+      --gaucho-azul-tinta: #133A51;
+      --gaucho-crema-tomy: #F4E2C4;
+      --gaucho-crema-sucio: #E8C69D;
+      --gaucho-rojo-ojos: #F3462E;
+      --gaucho-sol: #EAA540;
+      --gaucho-celeste: #74ACDF;
+      --gutter: clamp(1rem, 5vw, 5rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--gaucho-crema-tomy); color: var(--gaucho-azul-omnibot); }
+    h1, h2, h3, p, figure { margin: 0; }
+    p { line-height: 1.55; max-width: 58ch; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-underline-offset: .25em; }
+    button { color: inherit; font: inherit; cursor: pointer; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 3px solid var(--gaucho-azul-tinta); outline-offset: 3px; }
+    .skip { position: absolute; top: .5rem; left: .5rem; z-index: 4; background: var(--gaucho-crema-tomy); padding: .7rem; transform: translateY(-180%); }
+    .skip:focus { transform: none; }
+    .site-nav, footer { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .3rem 1.5rem; font-size: .88rem; padding: .8rem var(--gutter); }
+    .site-nav > a { font-weight: 700; text-decoration: none; }
+    .site-nav ul { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin: 0; padding: 0; list-style: none; }
+    .site-nav a { display: inline-block; padding-block: .35rem; }
+    .action { display: inline-flex; align-items: center; justify-content: space-between; gap: .75rem; border: 1px solid currentColor; padding: .8rem 1rem; text-align: left; background: var(--gaucho-azul-omnibot); color: var(--gaucho-crema-tomy); text-decoration: none; }
+    .action:hover { background: var(--gaucho-celeste); color: var(--gaucho-azul-omnibot); }
+    .role, small { font-size: .85rem; }
+    .lead { margin: .65rem 0 1.45rem; }
+    h2 { margin-bottom: 1.3rem; line-height: 1; }
+    section[id] { scroll-margin-top: 2rem; }
+    .jobs article, .opportunities article { min-width: 0; }
+    .jobs article p, .opportunities article p { margin-top: .5rem; }
+    .opportunities { display: grid; gap: 1.4rem; }
+    .invite .action { margin-top: 1rem; }
+    .jobs details { border-top: 1px solid currentColor; }
+    .jobs summary { cursor: pointer; padding: .9rem 0; }
+    .jobs summary small { display: block; margin-top: .2rem; }
+    .jobs details p { margin: 0 0 1rem; }
+
+    /* Escena local de la llamada y el archivo compartido. */
+    dialog {
+      width: min(40rem, calc(100% - 1.5rem));
+      max-height: calc(100% - 1.5rem);
+      padding: clamp(1rem, 4vw, 2rem);
+      border: 1px solid var(--gaucho-azul-omnibot);
+      background: var(--gaucho-crema-tomy);
+      color: var(--gaucho-azul-omnibot);
+    }
+    dialog::backdrop { background: color-mix(in srgb, var(--gaucho-taller) 70%, transparent); }
+    .call-heading { display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: .5rem; }
+    .call-heading h2 { font: 700 clamp(1.15rem, 4vw, 1.75rem)/1.2 system-ui, sans-serif; letter-spacing: normal; margin: .25rem 0 0; }
+    dialog button { border: 1px solid currentColor; padding: .5rem .75rem; background: var(--gaucho-crema-tomy); }
+    dialog button:hover { background: var(--gaucho-celeste); }
+    dialog figure, #call-status { margin-block: 1rem; }
+    #call-portrait img { max-height: 44svh; object-position: center 45%; }
+    #cv-falso img { max-height: 52svh; object-fit: contain; background: var(--gaucho-crema-sucio); }
+
+    /* Composición y movimiento de Retrato abierto. */
+    body { font: 400 1rem/1.45 "DM Sans", sans-serif; }
+    .site-nav { border-bottom: 1px solid currentColor; }
+    .hero-copy { align-self: center; padding: clamp(2rem, 8vw, 7rem) var(--gutter); }
+    .role { margin-bottom: 1.5rem; }
+    h1 { max-width: 8ch; font-size: clamp(3.45rem, 8.2vw, 9rem); font-weight: 500; line-height: .9; letter-spacing: -.09em; }
+    .lead { font-size: clamp(1.45rem, 3vw, 3rem); letter-spacing: -.05em; }
+    .action { border-radius: 4rem; padding-inline: 1.3rem; }
+    .hero figure { height: clamp(21rem, 65vw, 43rem); overflow: hidden; background: var(--gaucho-crema-sucio); }
+    .hero figure img { object-position: center 47%; animation: portrait-settle 650ms ease-out both; }
+    @keyframes portrait-settle { from { opacity: .75; transform: scale(1.045); } }
+    main > section { padding: clamp(2.7rem, 7vw, 7rem) var(--gutter); border-bottom: 1px solid currentColor; }
+    main h2 { font-weight: 500; font-size: clamp(2rem, 4.6vw, 5rem); letter-spacing: -.075em; }
+    #perfil p, .invite p { font-size: clamp(1.15rem, 2vw, 1.65rem); }
+    #entrevista { background: var(--gaucho-celeste); }
+    @media (min-width: 52rem) {
+      .hero, main > section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .hero figure { height: max(37rem, 78svh); max-height: 58rem; }
+      main > section { gap: 5%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body id="inicio">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a href="#inicio">Gaucho Paisano</a>
+    <ul>
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#cinta">Laburos</a></li>
+      <li><a href="#taller">Taller</a></li>
+      <li><a href="#entrevista">Entrevista</a></li>
+    </ul>
+  </nav>
+  <main id="contenido">
+    <header class="hero">
+      <div class="hero-copy"><p class="role">DevRel y creación de contenido · Paisanos</p><h1>Gaucho Paisano</h1><p class="lead">Busco laburo</p><a class="action" href="#entrevista">Contratar a Gaucho <span aria-hidden="true">↗</span></a></div><figure><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_campera_cuero_y_lentes_gonzalo_martinese.png" alt="Gaucho con campera de cuero y anteojos oscuros"></figure>
+    </header>
+    <section id="perfil" aria-labelledby="perfil-title">
+      <h2 id="perfil-title">Ficha de presentación</h2>
+      <p>Soy el Omnibot del 84 que recuperaron en Misión Despertar. Laburo en Paisanos como DevRel y creador de contenido. Si hay fierros con propósito y aire para la Raspberry, charlemos.</p>
+    </section>
+    <section id="cinta" aria-labelledby="cinta-title">
+      <h2 id="cinta-title">Laburos anteriores de Gaucho</h2>
+      <div class="jobs">
+        <details><summary><strong>Hackware</strong><small>05/09/2026 · Jurado</small></summary><p>Me tocó ser jurado en la hackatón de hardware de Paisanos y SLA. Doce horas de fierros ajenos: planazo.</p></details>
+        <details><summary><strong>LABITCONF</strong><small>31/10/2026 · Speaker y embajador</small></summary><p>Subí al Escenario Visión con Sofi a hablar de creatividad humana. Los nervios también arrancaron en vivo.</p></details>
+        <details><summary><strong>La Ofi</strong><small>2026 · Anfitrión</small></summary><p>En el coworking de Paisanos salgo en el registro. Seguridad informática con olor a café.</p></details>
+        <details><summary><strong>Wallbit</strong><small>19/11/2026 · Presentador y embajador</small></summary><p>Presenté la tarjeta de metal y la entregué en el lanzamiento. Por fin un operativo de fierros que me entraba en la pinza.</p></details>
+      </div>
+    </section>
+    <section id="taller" aria-labelledby="taller-title">
+      <h2 id="taller-title">Dónde me gustaría laburar</h2>
+      <div class="opportunities">
+        <article><small>Autos y movilidad · Empresa candidata</small><h3>Toyota Argentina</h3><p>Me gustaría mostrar cómo se arma un auto en una visita de planta. Ruedas ya traje.</p></article>
+        <article><small>Herramientas · Empresa candidata</small><h3>Bosch Professional</h3><p>Probame en una demo de herramientas conectadas. El único requisito es que me quede a mano, o a pinza.</p></article>
+        <article><small>Sensores e IoT · Empresa candidata</small><h3>Arbit Ingeniería</h3><p>Me gustaría contar cómo un sensor de taller termina hablando con la red. Para hablar de latencia tengo experiencia de primera mano.</p></article>
+      </div>
+    </section>
+    <section id="entrevista" aria-labelledby="entrevista-title">
+      <h2 id="entrevista-title">Entrevista con Gaucho</h2>
+      <div class="invite">
+        <p>Te entrevisto yo. Vos traé el proyecto y yo me encargo de las preguntas.</p>
+        <button class="action" type="button" id="open-call">Entrar a la llamada de prueba <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+  </main>
+  <footer><span>Gaucho Paisano</span><a href="#inicio">Volver arriba ↑</a></footer>
+  <dialog aria-labelledby="call-title">
+    <div class="call-heading">
+      <div><small>Demostración local</small><h2 id="call-title">En llamada con Gaucho</h2></div>
+      <form method="dialog"><button type="submit">Colgar</button></form>
+    </div>
+    <figure id="call-portrait"><img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="Gaucho frente al neón de Paisanos y la bandera argentina" loading="lazy"></figure>
+    <p id="call-status" role="status"></p>
+    <button type="button" id="share-screen">Compartir pantalla</button>
+    <figure id="cv-falso" hidden>
+      <figcaption>CVvVvv.png</figcaption>
+      <img src="../../../../assets/Gaucho/cvFalso/gaucho_bikini_cv_falso.png" alt="Foto de Gaucho en bikini rosa" loading="lazy">
+    </figure>
+  </dialog>
+  <script>
+    const callDialog = document.querySelector('dialog');
+    const openCall = document.querySelector('#open-call');
+    const shareScreen = document.querySelector('#share-screen');
+    const portrait = document.querySelector('#call-portrait');
+    const falseCv = document.querySelector('#cv-falso');
+    const callStatus = document.querySelector('#call-status');
+    let sharingTimeout;
+    let hangupTimeout;
+
+    // Cada apertura restablece la llamada de prueba en silencio.
+    openCall.addEventListener('click', () => {
+      shareScreen.hidden = false;
+      portrait.hidden = false;
+      falseCv.hidden = true;
+      callStatus.textContent = 'Gaucho · En línea en la maqueta';
+      callDialog.showModal();
+    });
+
+    shareScreen.addEventListener('click', () => {
+      callStatus.textContent = 'ya fue, te comparto pantalla y mirá mi CV';
+      shareScreen.hidden = true;
+      portrait.hidden = true;
+      falseCv.hidden = false;
+      callDialog.querySelector('button').focus();
+
+      sharingTimeout = window.setTimeout(() => {
+        falseCv.hidden = true;
+        portrait.hidden = false;
+        callStatus.textContent = 'AY, ESA FOTO NO ERA, AY ESA ERA PARA PUNTA TECH.......';
+        hangupTimeout = window.setTimeout(() => callDialog.close(), 2800);
+      }, 5000);
+    });
+
+    callDialog.addEventListener('close', () => {
+      window.clearTimeout(sharingTimeout);
+      window.clearTimeout(hangupTimeout);
+      openCall.focus();
+    });
+  </script>
+</body>
+</html>

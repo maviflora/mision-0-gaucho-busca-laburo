@@ -1,184 +1,292 @@
-﻿<!doctype html>
-<html lang="es-AR">
+<!doctype html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Una sola escena · Gaucho</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Chivo:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap">
+  <title>Turno de taller · Gaucho</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
   <style>
-    /* Tokens del Catálogo TOMY 1984. */
+    /* Base compartida: paleta TOMY, controles y estados de la maqueta. */
     :root {
-      --paper: #F4E2C4;
-      --plastic: #E8C69D;
-      --ink: #0A2B46;
-      --blue: #133A51;
-      --black: #0B0F14;
-      --red: #F3462E;
-      --glow: #FF6A55;
-      --gold: #EAA540;
-      --sky: #74ACDF;
-      --orange: #F28409;
-      --brown: #523823;
-      --night: #000320;
-      --surface: var(--paper);
-      --text: var(--ink);
-      --accent: var(--sky);
-      --stripe: linear-gradient(var(--red) 25%, var(--orange) 25% 50%, var(--gold) 50% 75%, var(--sky) 75%);
+      color-scheme: light;
+      --gaucho-taller: #0B0F14;
+      --gaucho-azul-omnibot: #0A2B46;
+      --gaucho-azul-tinta: #133A51;
+      --gaucho-crema-tomy: #F4E2C4;
+      --gaucho-crema-sucio: #E8C69D;
+      --gaucho-rojo-ojos: #F3462E;
+      --gaucho-sol: #EAA540;
+      --gaucho-celeste: #74ACDF;
+      --gaucho-naranja-sunset: #F28409;
+      --gaucho-marron-sombrero: #523823;
+      --gaucho-franja: linear-gradient(
+        var(--gaucho-rojo-ojos) 25%, var(--gaucho-naranja-sunset) 25% 50%,
+        var(--gaucho-sol) 50% 75%, var(--gaucho-celeste) 75%
+      );
+      --line: color-mix(in srgb, var(--gaucho-azul-omnibot) 32%, transparent);
+      --gutter: clamp(1rem, 4vw, 4rem);
+      --space: clamp(1.4rem, 5vw, 4.5rem);
       --mono: 'IBM Plex Mono', monospace;
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
-    body { margin: 0; color: var(--text); background: radial-gradient(#52382325 .55px, transparent .8px) 0 0 / 5px 7px var(--surface); font: 1rem/1.5 Chivo, Arial, sans-serif; }
-    a { color: inherit; text-underline-offset: .18em; }
+    body {
+      margin: 0;
+      background: var(--gaucho-crema-tomy);
+      color: var(--gaucho-azul-omnibot);
+      font: 1rem/1.55 var(--body-font);
+    }
+    a { color: inherit; text-underline-offset: .2em; }
     :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
-    button, input, select { font: inherit; }
+    button, input, select { font: inherit; color: inherit; }
+    button, .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      background: var(--gaucho-crema-tomy);
+      border: 1px solid currentColor;
+      padding: .55rem .95rem;
+    }
     button, summary { cursor: pointer; }
-    button, .cta { min-height: 44px; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); padding: .45rem .75rem; font-weight: 700; }
-    button:hover, .cta:hover { text-decoration: underline; }
-    .cta { display: inline-flex; align-items: center; background: var(--accent); text-decoration: none; }
-    .frame { width: min(100% - 2rem, 70rem); margin-inline: auto; }
-    .masthead { display: flex; justify-content: space-between; gap: .65rem; flex-wrap: wrap; align-items: center; padding-block: .75rem; }
-    .label { font: 600 .85rem/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-    p, h1, h2, h3 { margin: 0 0 .65rem; }
-    h1, h2 { font-family: Anton, Impact, 'Arial Narrow', sans-serif; font-weight: 400; line-height: 1.05; }
-    h1 { font-size: clamp(3rem, 12vw, 9rem); }
-    h2 { font-size: clamp(2rem, 5vw, 3.65rem); }
-    .stripe { height: 1rem; background: var(--stripe); width: min(100%, 26rem); margin: .65rem 0 1rem; }
-    .hero { display: grid; align-items: center; gap: 1.25rem; padding-block: 1rem 1.5rem; border-block: 1px solid currentColor; }
-    .hero .subtitle { font: 600 clamp(1.2rem, 4vw, 2.2rem)/1.2 var(--mono); }
-    .portrait, .detail-card { margin: 0; padding: .6rem; border: 1px solid currentColor; }
-    .portrait img { width: 100%; display: block; aspect-ratio: 5/4; object-fit: cover; object-position: center 42%; }
-    .portrait figcaption { border-bottom: 1px solid; margin-top: .5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .3rem; }
-    .section { padding: clamp(1rem, 4vw, 2.3rem) 0; border-bottom: 1px solid var(--ink); }
-    .section p { max-width: 65ch; }
-    .stamp { display: inline-block; border: 3px double currentColor; transform: rotate(-5deg); padding: .15rem .4rem; }
-    .controls { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem; margin-block: .65rem; }
-    .controls button:disabled { cursor: default; opacity: .65; }
-    .cv-falso { padding: 2rem 1rem 3rem; background: #e8ebee; color: #252e39; min-height: calc(100svh - 3.7rem); font-family: Arial, sans-serif; overflow: hidden; }
-    .cv-sheet { width: min(100%, 43rem); margin: 0 auto; background: #fff; padding: clamp(1rem, 5vw, 3rem); border: 1px solid #aeb8c1; }
-    .cv-sheet h1 { font: 700 clamp(1.9rem, 5vw, 3rem)/1.05 Arial, sans-serif; }
-    .cv-sheet h2 { font: 700 1.05rem/1.3 Arial, sans-serif; margin-top: 1.2rem; padding-top: .6rem; border-top: 1px solid #b4bec7; }
-    .cv-sheet button { background: #edf0f3; border-color: #3b4754; color: #252e39; }
-    .break-message { font-family: var(--mono); width: min(100%, 43rem); margin: .7rem auto 0; }
-    .tape-layout { display: grid; gap: 1rem; }
-    .tv { padding: clamp(.65rem, 2vw, 1.25rem); background: var(--ink); color: var(--paper); border: 4px double var(--plastic); }
-    .game-track { position: relative; height: clamp(7rem, 22vw, 12rem); overflow: hidden; border: 2px solid var(--sky); background: repeating-linear-gradient(#0000 0 4px, #0003 4px 5px), linear-gradient(var(--night) 65%, var(--blue) 65% 83%, var(--black) 83%); }
-    .sprite { display: block; position: absolute; width: clamp(1.4rem, 6vw, 3rem); bottom: 17%; left: var(--position, 4%); transition: left .22s ease-out; }
-    .obstacle { position: absolute; bottom: 17%; left: 56%; width: 8%; height: 17%; background: var(--brown); border: 2px solid var(--gold); }
+    button:hover, summary:hover, .cta:hover { background: var(--gaucho-sol); }
+    button:disabled { opacity: .6; cursor: default; }
+    .cta { background: var(--gaucho-celeste); font-weight: 700; text-decoration: none; }
+    .frame { width: min(100% - 2 * var(--gutter), 88rem); margin-inline: auto; }
+    .masthead {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem 1rem;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .label { font: 500 .75rem/1.5 var(--mono); letter-spacing: .06em; }
+    .masthead .label::before {
+      content: '';
+      display: inline-block;
+      width: .48rem;
+      height: .48rem;
+      margin: 0 1rem .1rem 0;
+      border-radius: 50%;
+      background: var(--gaucho-rojo-ojos);
+      box-shadow: .68rem 0 var(--gaucho-rojo-ojos);
+    }
+    h1, h2, h3, p { margin: 0 0 .7rem; }
+    h1, h2 { font-family: var(--heading-font); line-height: 1; }
+    h1 { font-size: clamp(3.1rem, 12vw, 9rem); }
+    h2 { font-size: clamp(1.85rem, 5vw, 4.1rem); }
+    .subtitle { font-size: clamp(1.3rem, 3vw, 2.5rem); }
+    .stripe { width: min(100%, 21rem); height: .65rem; margin-block: 1rem; background: var(--gaucho-franja); }
+    .hero { display: grid; align-items: center; gap: var(--space); padding-block: var(--space); }
+    .portrait { margin: 0; min-width: 0; }
+    .portrait img, .cv-photo { width: 100%; display: block; object-fit: cover; object-position: center 42%; }
+    .portrait img { aspect-ratio: 5/4; }
+    .portrait figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .45rem; padding-block: .55rem; }
+    .cv-falso { padding-block: var(--space); overflow: hidden; }
+    .cv-layout { display: grid; align-items: stretch; gap: clamp(1rem, 3vw, 3rem); }
+    .cv-sheet { min-width: 0; padding: clamp(1rem, 4vw, 3.5rem); border: 1px solid var(--line); }
+    .cv-sheet h1 { font-size: clamp(2.35rem, 7vw, 6rem); overflow-wrap: anywhere; }
+    .cv-sheet h2 { font: 700 1rem/1.4 var(--body-font); padding-top: .65rem; margin-top: .9rem; border-top: 1px solid var(--line); }
+    .cv-photo { aspect-ratio: 4/3; height: 100%; min-height: 0; }
+    .break-message { margin: 1rem auto 0; }
+    .breaking .cv-layout { animation: dismiss-cv .6s ease-in-out both; }
+    .chapter-nav { margin: 0; }
+    .controls { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-block: .7rem; }
+    .chapter-nav a { display: inline-flex; min-height: 44px; align-items: center; padding-inline: .6rem; }
+    .section { padding-block: var(--space); border-top: 1px solid var(--line); scroll-margin-top: 6rem; }
+    .section > p { max-width: 65ch; }
+    .stamp { display: inline-block; padding: .25rem .65rem; border: 3px double; }
+    .tape-layout, .bench, .call-stage { display: grid; gap: .85rem; }
+    .tv, .tape-index, .interview, .endnotes {
+      min-width: 0;
+      padding: clamp(.85rem, 2.3vw, 1.8rem);
+      border: 1px solid var(--line);
+    }
+    .game-track {
+      position: relative;
+      height: clamp(8rem, 19vw, 12rem);
+      overflow: hidden;
+      border: 1px solid currentColor;
+      background: linear-gradient(var(--gaucho-crema-tomy) 83%, var(--gaucho-celeste) 83%);
+    }
+    .sprite {
+      position: absolute;
+      width: clamp(1.45rem, 6vw, 3rem);
+      bottom: 17%;
+      left: var(--position, 4%);
+      transition: left .22s ease-out;
+    }
+    .obstacle {
+      position: absolute;
+      bottom: 17%;
+      left: 56%;
+      width: 8%;
+      height: 17%;
+      border: 2px solid var(--gaucho-marron-sombrero);
+      background: var(--gaucho-sol);
+    }
     .sprite.jumping { animation: jump .28s ease-out; }
     @keyframes jump { 50% { transform: translateY(-1.2rem); } }
-    .marker { position: absolute; display: grid; place-items: center; width: 1.35rem; height: 1.35rem; bottom: 48%; background: var(--gold); color: var(--black); font: 600 .8rem var(--mono); }
-    .marker[data-collected="true"] { background: var(--paper); }
-    .tv .controls button:focus-visible { outline-color: var(--sky); }
-    .tape-index { background: var(--plastic); border: 1px solid var(--ink); padding: .75rem; }
-    details { padding: .5rem 0; border-bottom: 1px solid currentColor; }
-    summary { padding: .3rem; font-weight: 700; }
-    details p { padding-inline: .3rem; }
-    .bench { display: grid; gap: .65rem; padding: 1rem; background: repeating-linear-gradient(0deg, #52382324 0 1px, transparent 1px 21px), var(--plastic); border: 1px solid; }
-    .bench button { display: grid; justify-items: center; align-content: center; background: var(--paper); }
-    .object { display: block; width: 4.5rem; height: 3.2rem; margin: .2rem 0; }
-    dialog { max-width: min(34rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; background: var(--paper); color: var(--ink); border: 3px double; padding: 1rem; }
-    dialog::backdrop { background: #0b0f14bf; }
-    .interview { background: var(--ink); color: var(--paper); padding: clamp(.75rem, 3vw, 1.5rem); border: 4px double var(--plastic); }
-    .interview :focus-visible { outline-color: var(--sky); }
-    .call-stage { display: grid; gap: .65rem; margin-block: .75rem; }
-    .call-tile { display: grid; align-content: center; justify-items: center; min-height: 6rem; background: var(--black); color: var(--paper); border: 1px solid var(--sky); padding: .6rem; }
-    .call-tile img { width: min(8rem, 65%); aspect-ratio: 1; object-fit: cover; object-position: 50% 43%; border: 1px solid var(--plastic); }
-    .call-tile p { margin: .3rem 0 0; }
-    .interview label { display: block; margin-top: .65rem; }
-    .interview select, .interview input { padding: .4rem; min-height: 44px; max-width: 100%; color: var(--ink); background: var(--paper); border: 2px solid var(--sky); }
-    .interview h3:focus, main h1:focus, .section h2:focus { outline-offset: 4px; }
-    .mail { margin-block: .65rem; padding: .75rem; background: var(--paper); color: var(--ink); overflow-wrap: anywhere; }
-    .endnotes { padding-block: 1rem 2rem; }
-    @media (min-width: 34rem) { .bench { grid-template-columns: repeat(3, 1fr); } .call-stage { grid-template-columns: 2fr 1fr; } }
-    @media (min-width: 49rem) { .hero, .tape-layout { grid-template-columns: 1.4fr 1fr; } }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .marker {
+      position: absolute;
+      bottom: 48%;
+      display: grid;
+      place-items: center;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: var(--gaucho-sol);
+      font: 600 .8rem var(--mono);
     }
-    /* El CV se contrae a la línea de un CRT al cambiar de canal. */
-      .cv-falso { background: #aeb7c0; }
-      .cv-sheet { border: .7rem solid #596675; box-shadow: 0 .65rem #39434e; }
-      .breaking .cv-sheet { animation: signal .6s both; }
-      @keyframes signal {
-        25% { filter: grayscale(1); transform: scaleX(.97) translateX(-.25rem); }
-        65% { transform: scaleY(.025); opacity: .85; }
-        100% { transform: scaleY(0); opacity: 0; }
+    .marker[data-collected="true"] { background: var(--gaucho-celeste); }
+    details { min-width: 0; border-bottom: 1px solid var(--line); }
+    summary { min-height: 44px; padding: .55rem; font-weight: 700; }
+    details p { padding-inline: .55rem; }
+    .bench button { display: grid; justify-items: center; align-content: center; }
+    .object { width: 4.5rem; height: 3.2rem; margin-block: .25rem; }
+    .call-stage { margin-block: .75rem; }
+    .call-tile {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      min-height: 6rem;
+      padding: .65rem;
+      border: 1px solid var(--line);
+      background: var(--gaucho-crema-tomy);
+    }
+    .call-tile img { width: min(8rem, 65%); aspect-ratio: 1; object-fit: cover; object-position: 50% 43%; }
+    .interview label { display: block; margin-top: .65rem; }
+    .interview select, .interview input {
+      padding: .45rem;
+      min-height: 44px;
+      max-width: 100%;
+      background: var(--gaucho-crema-tomy);
+      border: 1px solid currentColor;
+    }
+    .mail { padding: 1rem; background: var(--gaucho-crema-tomy); overflow-wrap: anywhere; }
+    .endnotes { margin-bottom: var(--space); }
+    dialog {
+      max-width: min(34rem, calc(100vw - 2rem));
+      max-height: calc(100dvh - 2rem);
+      overflow: auto;
+      background: var(--gaucho-crema-tomy);
+      color: inherit;
+      border: 1px solid currentColor;
+      padding: 1.2rem;
+    }
+    dialog::backdrop { background: color-mix(in srgb, var(--gaucho-taller) 70%, transparent); }
+    @media (min-width: 39rem) {
+      .bench { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .call-stage { grid-template-columns: 2fr 1fr; }
+    }
+    @media (min-width: 57rem) {
+      .cv-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+      .hero, .tape-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .cv-photo { aspect-ratio: auto; }
+    }
+
+    :root {
+      --body-font: Inter, Arial, sans-serif;
+      --heading-font: Inter, Arial, sans-serif;
+    }
+
+    /* La cabecera mantiene la entrevista al alcance durante el recorrido. */
+    .masthead { position: sticky; top: 0; z-index: 2; background: var(--gaucho-crema-tomy); }
+    .masthead time { font: .75rem var(--mono); font-variant-numeric: tabular-nums; }
+    .cv-layout { gap: 0; }
+    .cv-sheet { display: grid; align-content: center; background: var(--gaucho-crema-sucio); }
+    .cv-sheet button { justify-self: start; }
+    .hero h1, .hero h2, .section h2 { font-weight: 500; letter-spacing: -.075em; }
+    .portrait img { border-radius: 45% 45% 0 0; }
+    .cta, .interview button { border-radius: 2rem; }
+    .tape-index { border: 0; counter-reset: experience; }
+    .tape-index details { counter-increment: experience; }
+    .tape-index summary::before { content: counter(experience, decimal-leading-zero) " / "; font: .8rem var(--mono); }
+    .interview { border-radius: 1.8rem; background: var(--gaucho-crema-sucio); }
+    .interview > div:not([hidden]) { animation: channel-open .25s ease-out both; }
+    @keyframes channel-open { from { opacity: 0; transform: translateY(.55rem); } }
+    @keyframes dismiss-cv {
+      70%, 100% { opacity: 0; }
+      to { transform: scale(.98); }
+    }
+    @media (min-width: 57rem) {
+      .cv-layout, .hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero figure { grid-column: 1; grid-row: 1; }
+    }
+
+    /* La foto acompaña el prólogo sin fijar la altura de la ficha. */
+    .cv-image { position: relative; min-width: 0; margin: 0; }
+    @media (min-width: 57rem) {
+      .cv-photo { position: absolute; inset: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
-      .scene-shell { background: var(--plastic); border: 1px solid; box-shadow: .4rem .4rem var(--ink); margin-bottom: 1.25rem; }
-      .desk { display: grid; gap: .55rem; padding: .7rem; align-items: end; background: repeating-linear-gradient(0deg,#52382320 0 1px, transparent 1px 22px), var(--plastic); }
-      .desk button { display: grid; justify-items: center; min-height: 4rem; }
-      .desk button[aria-expanded="true"] { background: var(--sky); }
-      .desk-head { padding: .65rem; display: flex; justify-content: space-between; align-items: center; gap: .75rem; border-bottom: 1px solid; }
-      .desk-head p { margin: 0; }
-      .scene-shell .hero { padding: .85rem; background: var(--paper); }
-      .desk-panel { background: var(--paper); padding-inline: 1rem; border: 1px solid var(--ink); margin-block: 1rem; }
-      @media (min-width: 37rem) { .desk { grid-template-columns: repeat(4,1fr); } .desk button:nth-child(even) { margin-bottom: .75rem; } }
-      @media (min-width: 49rem) { .scene-shell { display: grid; grid-template-rows: auto auto auto; } .desk { border-top: .4rem solid var(--brown); } }
+    }
   </style>
 </head>
 <body>
   <header class="masthead frame">
     <a href="../../index.html">Design kits de Gaucho</a>
-    <span class="label">Una sola escena</span>
+    <span class="label">Turno de taller</span>
+    <time id="taller-clock" aria-label="Hora de Buenos Aires"></time>
+    <a class="cta" id="header-contact" href="#entrevista" hidden>Contratar a Gaucho</a>
   </header>
 
   <!-- El CV corporativo es el prólogo. El portfolio sigue disponible si no hay JS. -->
   <section id="cv-falso" class="cv-falso" aria-labelledby="cv-heading" hidden>
-    <div class="cv-sheet">
-      <p>Currículum vitae</p>
-      <h1 id="cv-heading">Gaucho Paisano</h1>
-      <p>DevRel y creación de contenido · Paisanos</p>
-      <h2>Perfil profesional</h2>
-      <p>Comunicación técnica, participación en eventos y proyectos de hardware.</p>
-      <h2>Historial de actividades</h2>
-      <p>Jurado en Hackware. Speaker en LABITCONF. Presentador en Wallbit.</p>
-      <h2>Observaciones</h2>
-      <p>Este sería el CV de Gaucho si él fuera un tipo sin gracia.</p>
-      <button type="button" id="cv-reveal">Cambiar de canal</button>
+    <div class="cv-layout frame">
+      <div class="cv-sheet">
+        <p>Currículum vitae</p>
+        <h1 id="cv-heading">Gaucho Paisano</h1>
+        <p>DevRel y creación de contenido · Paisanos</p>
+        <h2>Perfil profesional</h2>
+        <p>Comunicación técnica, participación en eventos y proyectos de hardware.</p>
+        <h2>Historial de actividades</h2>
+        <p>Jurado en Hackware. Speaker en LABITCONF. Presentador en Wallbit.</p>
+        <h2>Observaciones</h2>
+        <p>Este sería el CV de Gaucho si él fuera un tipo sin gracia.</p>
+        <button type="button" id="cv-reveal">Abrir el manual real</button>
+      </div>
+      <figure class="cv-image" aria-hidden="true">
+        <img class="cv-photo" src="../../../../assets/Gaucho/fotitos/fotos/gaucho_robot_cartel_neon_paisanos_bandera.png" alt="">
+      </figure>
     </div>
-    <p class="break-message" id="break-message" role="status" hidden>Señal de oficina cortada. Entrando al escritorio…</p>
+    <p class="break-message frame" id="break-message" role="status" hidden>Rasgando por el troquel…</p>
   </section>
 
   <main class="frame" id="portfolio">
     <noscript><p>Las fichas de experiencia se pueden leer aquí. Activá JavaScript para probar el prólogo, la cinta y la entrevista.</p></noscript>
-    <div class="scene-shell">
-      <div class="desk-head"><p class="label">Oficina de Gaucho · Mesa de trabajo</p><button type="button" id="scene-info" aria-pressed="false">Ver info</button></div>
-      <div class="desk" id="desk" aria-label="Explorar el escritorio">
-        <button type="button" data-object="perfil" aria-controls="perfil" aria-expanded="false">
-          <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path fill="#F4E2C4" stroke="#0A2B46" stroke-width="2" d="M19 6h32v42H19z"/><path d="M25 16h19m-19 8h19m-19 8h13" stroke="#0A2B46" stroke-width="3"/></svg>Ficha
-        </button>
-        <button type="button" data-object="cinta" aria-controls="cinta" aria-expanded="false">
-          <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><rect x="6" y="6" width="53" height="34" fill="#0A2B46"/><rect x="11" y="11" width="34" height="24" fill="#74ACDF"/><circle cx="52" cy="19" r="3" fill="#EAA540"/><path stroke="#0A2B46" stroke-width="4" d="M17 40v6m31-6v6"/></svg>Televisor
-        </button>
-        <button type="button" data-object="taller" aria-controls="taller" aria-expanded="false">
-          <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path fill="#F3462E" stroke="#0A2B46" stroke-width="3" d="M7 21h51v24H7z"/><path fill="none" stroke="#0A2B46" stroke-width="4" d="M22 21v-9h22v9M8 30h49"/><path stroke="#EAA540" stroke-width="4" d="M30 30h6"/></svg>Caja de herramientas
-        </button>
-        <button type="button" data-object="entrevista" aria-controls="entrevista" aria-expanded="false">
-          <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path fill="#0A2B46" d="M7 39 15 20h36l8 19v7H7zM7 12q26-18 52 0v10H44v-8H22v8H7z"/><circle cx="33" cy="32" r="7" fill="#EAA540"/></svg>Teléfono
-        </button>
-      </div>
+
     <header class="hero">
       <div>
         <p class="label">Paisanos · Omnibot 5402 · TOMY 1984</p>
         <h1 id="gaucho" tabindex="-1">GAUCHO</h1>
         <p class="subtitle">Busco laburo</p>
         <div class="stripe" aria-hidden="true"></div>
-        <p>Tocá un objeto del escritorio o elegí Ver info.</p>
-        <button type="button" data-scene-cta>Contratar a Gaucho</button>
+        <p>Abrí las fichas y recorré el banco de taller.</p>
+        <a class="cta" href="#entrevista">Contratar a Gaucho</a>
       </div>
       <figure class="portrait">
         <img src="../../../../assets/Gaucho/fotitos/fotos/gaucho_campera_cuero_y_lentes_gonzalo_martinese.png" alt="Gaucho, robot Omnibot, posando con campera de cuero y anteojos oscuros">
         <figcaption class="label"><span>gaucho hot pic :)</span><span>150 / 240 / 300</span></figcaption>
       </figure>
     </header>
-    </div>
 
-    <section class="section desk-panel" id="perfil" data-desk-panel aria-labelledby="perfil-title">
+    <nav class="chapter-nav controls label" aria-label="Capítulos del manual">
+      <a href="#perfil">Ficha</a><a href="#cinta">La cinta</a><a href="#taller">Taller</a><a href="#entrevista">Entrevista</a>
+    </nav>
+    <section class="section" id="perfil" aria-labelledby="perfil-title">
       <h2 id="perfil-title" tabindex="-1">Ficha de presentación</h2>
       <p>Soy el Omnibot del 84 que recuperaron en Misión Despertar. Laburo en Paisanos como DevRel y creador de contenido. Si hay fierros con propósito y aire para la Raspberry, charlemos.</p>
       <span class="stamp label">APROBADO</span>
     </section>
-    <section class="section desk-panel" id="cinta" data-desk-panel aria-labelledby="cinta-title">
+    <section class="section" id="cinta" aria-labelledby="cinta-title">
       <h2 id="cinta-title" tabindex="-1">Laburos anteriores de Gaucho</h2>
       <p>Inspirado en Gaucho Adventures de Gonzalo Martinese. Avanzá con las ruedas y juntá las fichas de mi laburo.</p>
       <div class="tape-layout">
@@ -186,10 +294,10 @@
         <p class="label">La cinta de Gaucho · CV de 8 bits</p>
         <div class="game-track" id="game-track" aria-hidden="true">
           <svg class="sprite" viewBox="0 0 20 20" aria-hidden="true" shape-rendering="crispEdges">
-            <path fill="#E8C69D" d="M4 2h12v8H4zm-1 8h14v7H3z"/>
-            <path fill="#0B0F14" d="M5 17h4v3H5zm6 0h4v3h-4zM1 11h2v5H1zm16 0h2v5h-2zM5 4h10v4H5zm1 8h8v3H6z"/>
-            <path fill="#F3462E" d="M6 5h3v2H6zm5 0h3v2h-3z"/>
-            <path fill="#EAA540" d="M9 5h2v5H9z"/>
+            <path fill="var(--gaucho-crema-sucio)" d="M4 2h12v8H4zm-1 8h14v7H3z"/>
+            <path fill="var(--gaucho-taller)" d="M5 17h4v3H5zm6 0h4v3h-4zM1 11h2v5H1zm16 0h2v5h-2zM5 4h10v4H5zm1 8h8v3H6z"/>
+            <path fill="var(--gaucho-rojo-ojos)" d="M6 5h3v2H6zm5 0h3v2h-3z"/>
+            <path fill="var(--gaucho-sol)" d="M9 5h2v5H9z"/>
           </svg>
           <span class="obstacle"></span>
           <span class="marker" style="left:25%">1</span>
@@ -209,25 +317,25 @@
       </div>
     </div>
     </section>
-    <section class="section desk-panel" id="taller" data-desk-panel aria-labelledby="taller-title">
+    <section class="section" id="taller" aria-labelledby="taller-title">
       <h2 id="taller-title" tabindex="-1">Dónde me gustaría laburar</h2>
       <p>Busco autos, herramientas o sensores. Abrí un objeto del taller y te cuento qué haría con esos fierros.</p>
       <div class="bench" aria-label="Objetos del banco de taller">
       <button type="button" data-dialog="auto" aria-haspopup="dialog">
-        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><circle cx="32" cy="25" r="19" fill="#0B0F14"/><circle cx="32" cy="25" r="12" fill="#74ACDF"/><path stroke="#0A2B46" stroke-width="4" d="M32 13v24M20 25h24m-20-8 16 16m0-16L24 33"/></svg>
+        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><circle cx="32" cy="25" r="19" fill="var(--gaucho-taller)"/><circle cx="32" cy="25" r="12" fill="var(--gaucho-celeste)"/><path stroke="var(--gaucho-azul-omnibot)" stroke-width="4" d="M32 13v24M20 25h24m-20-8 16 16m0-16L24 33"/></svg>
         Rueda · Toyota Argentina
       </button>
       <button type="button" data-dialog="tool" aria-haspopup="dialog">
-        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path d="M48 6 37 9l-4 10L13 35l-2 7 6 4 6-3 17-19 11-2 6-9-9 4-5-5z" fill="#0A2B46"/><circle cx="17" cy="40" r="2" fill="#EAA540"/></svg>
+        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path d="M48 6 37 9l-4 10L13 35l-2 7 6 4 6-3 17-19 11-2 6-9-9 4-5-5z" fill="var(--gaucho-azul-omnibot)"/><circle cx="17" cy="40" r="2" fill="var(--gaucho-sol)"/></svg>
         Llave · Bosch Professional
       </button>
       <button type="button" data-dialog="sensor" aria-haspopup="dialog">
-        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path d="M13 9h38v31H13z" fill="#133A51"/><path d="M25 17h14v14H25z" fill="#EAA540"/><path stroke="#74ACDF" stroke-width="2" d="M17 2v8m9-8v8m11-8v8m9-8v8M17 40v8m9-8v8m11-8v8m9-8v8"/><circle cx="45" cy="15" r="3" fill="#F3462E"/></svg>
+        <svg class="object" viewBox="0 0 64 50" aria-hidden="true"><path d="M13 9h38v31H13z" fill="var(--gaucho-azul-tinta)"/><path d="M25 17h14v14H25z" fill="var(--gaucho-sol)"/><path stroke="var(--gaucho-celeste)" stroke-width="2" d="M17 2v8m9-8v8m11-8v8m9-8v8M17 40v8m9-8v8m11-8v8m9-8v8"/><circle cx="45" cy="15" r="3" fill="var(--gaucho-rojo-ojos)"/></svg>
         Sensor · Arbit Ingeniería
       </button>
     </div>
     </section>
-    <section class="section desk-panel" id="entrevista" data-desk-panel aria-labelledby="entrevista-title">
+    <section class="section" id="entrevista" aria-labelledby="entrevista-title">
       <h2 id="entrevista-title" tabindex="-1">Entrevista con Gaucho</h2>
       <div class="interview">
       <p class="label">Canal de entrevista · Demostración local</p>
@@ -334,6 +442,24 @@
     portfolio.hidden = true;
     falseCv.hidden = false;
 
+    // La hora local del taller se actualiza sin anuncios para el lector de pantalla.
+    const workshopClock = document.querySelector('#taller-clock');
+    const formatWorkshopTime = new Intl.DateTimeFormat('es-AR', {
+      timeZone: 'America/Argentina/Buenos_Aires',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    function updateWorkshopClock() {
+      const now = new Date();
+      workshopClock.dateTime = now.toISOString();
+      workshopClock.textContent = 'Buenos Aires · ' + formatWorkshopTime.format(now);
+    }
+
+    updateWorkshopClock();
+    window.setInterval(updateWorkshopClock, 1000);
+
     // La acción funciona con teclado. Con movimiento reducido, el corte es inmediato.
     revealButton.addEventListener('click', () => {
       revealButton.disabled = true;
@@ -341,6 +467,7 @@
       document.querySelector('#break-message').hidden = false;
       const reveal = () => {
         portfolio.hidden = false;
+        document.querySelector('#header-contact').hidden = false;
         falseCv.hidden = true;
         document.querySelector('#gaucho').focus();
         window.scrollTo(0, 0);
@@ -348,35 +475,6 @@
       if (reduceMotion.matches) reveal();
       else window.setTimeout(reveal, 620);
     });
-
-    // La escena abre un objeto por vez. Ver info recupera la lectura completa.
-    const scene = document.querySelector('#desk');
-    if (scene) {
-      const infoButton = document.querySelector('#scene-info');
-      const panels = [...document.querySelectorAll('[data-desk-panel]')];
-      const objects = [...scene.querySelectorAll('[data-object]')];
-
-      function showPanels(activeId) {
-        panels.forEach(panel => { panel.hidden = Boolean(activeId) && panel.id !== activeId; });
-        objects.forEach(object => object.setAttribute('aria-expanded', String(!activeId || object.dataset.object === activeId)));
-        infoButton.setAttribute('aria-pressed', String(!activeId));
-        infoButton.textContent = activeId ? 'Ver info' : 'Cerrar vista de texto';
-      }
-      showPanels('perfil');
-      document.querySelector('[data-scene-cta]').addEventListener('click', () => {
-        showPanels('entrevista');
-        document.querySelector('#entrevista h2').focus();
-      });
-      objects.forEach(object => object.addEventListener('click', () => {
-        showPanels(object.dataset.object);
-        document.getElementById(object.dataset.object).querySelector('h2').focus();
-      }));
-      infoButton.addEventListener('click', () => {
-        const reading = infoButton.getAttribute('aria-pressed') === 'true';
-        showPanels(reading ? 'perfil' : '');
-        if (!reading) document.querySelector('#perfil h2').focus();
-      });
-    }
 
     // Minijuego por pasos. Las fichas también se pueden abrir sin jugar.
     const game = document.querySelector('#game-track');
