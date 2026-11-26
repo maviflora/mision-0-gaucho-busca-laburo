@@ -253,3 +253,33 @@ test('la cinta infinita tiene dos mitades iguales y lo bastante largas para no c
   const cantidadDeNombres = (mitades[0].match(/<span>/g) ?? []).length;
   assert.ok(cantidadDeNombres >= VUELTAS_MINIMAS_POR_MITAD * NOMBRES_POR_VUELTA, `cada mitad tiene ${cantidadDeNombres} nombres, hacen falta ${VUELTAS_MINIMAS_POR_MITAD * NOMBRES_POR_VUELTA}`);
 });
+
+test('las fotos de las tarjetas de laburos llenan el marco: casi sin bordes y todas del mismo tamaño', () => {
+  const estilos = html.match(/<style>([\s\S]*?)<\/style>/)[1];
+  const PADDING_MAXIMO_EN_PX = 10;
+  const reglaDelMarco = estilos.match(/\n\s*\.ficha-marco\s*{([^}]*)}/)[1];
+  const padding = Number(reglaDelMarco.match(/padding:\s*(\d+)px/)[1]);
+  assert.ok(padding <= PADDING_MAXIMO_EN_PX, `el marco deja ${padding}px de borde, máximo ${PADDING_MAXIMO_EN_PX}`);
+  assert.match(reglaDelMarco, /aspect-ratio:/, 'todos los marcos tienen la misma proporción');
+  const reglaDeLaFoto = estilos.match(/\n\s*\.ficha-marco img\s*{([^}]*)}/)[1];
+  assert.match(reglaDeLaFoto, /object-fit:\s*cover/, 'la foto tiene que llenar el marco (cover)');
+  // Las piezas de la sección de comunidad conservan su encuadre entero (contain): no se tocan
+  assert.match(estilos, /\.pieza \.ficha-marco img\s*{[^}]*object-fit:\s*contain/, 'la comunidad conserva object-fit: contain');
+});
+
+test('las tarjetas quedan del mismo tamaño en móvil, el hover no se recorta y las fotos de comunidad se ven enteras', () => {
+  // Hallazgos del control visual del 26/11/2026.
+  const estilos = html.match(/<style>([\s\S]*?)<\/style>/)[1];
+  // 1) Sin min-width: 0 una tarjeta con pie largo se ensancha más que las otras
+  assert.match(estilos, /\.ficha\s*{[^}]*min-width:\s*0/, '.ficha necesita min-width: 0 para que todas midan lo mismo');
+  assert.match(estilos, /\.ficha-pie\s*{[^}]*flex-wrap:\s*wrap/, 'el pie debe poder pasar a otra línea');
+  // 2) La tarjeta elevada (-10 px y escala 1,035) necesita más de 18 px de aire arriba
+  const aire = Number(estilos.match(/\.carrusel\s*{[^}]*padding-block:\s*(\d+)px/)[1]);
+  assert.ok(aire >= 22, `el carrusel deja ${aire}px de aire y la tarjeta elevada se recorta; hacen falta 22`);
+  // 3) En la grilla height:100% no se resuelve: las fotos de comunidad se salían del marco
+  assert.match(estilos, /\.pieza \.ficha-marco\s*{[^}]*position:\s*relative/, 'el marco de comunidad es la referencia de posición');
+  assert.match(estilos, /\.pieza \.ficha-marco img\s*{[^}]*position:\s*absolute/, 'las fotos de comunidad tienen que ocupar exactamente el marco, sin agrandar la fila');
+  // 4) Encuadres: no cortar la P de PAISANOS ni el nombre de la primera persona del afiche
+  assert.match(estilos, /\.ficha-marco img\[src\*="hackware"\]\s*{[^}]*object-position/, 'falta el encuadre del afiche de Hackware');
+  assert.match(estilos, /\.ficha-marco img\[src\*="cartel_neon"\]\s*{[^}]*object-position/, 'falta el encuadre del cartel de neón');
+});

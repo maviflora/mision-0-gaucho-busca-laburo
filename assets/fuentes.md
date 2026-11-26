@@ -27,7 +27,7 @@ Todas las pasó Mavi (capturas de historias de Instagram o fotos sueltas).
 | `arte/do_it_for_him_thecualcaexperience.png` | Tarjeta "do it for him" | @thecualcaexperience (captura de Mavi) |
 | `eventos/charla_fijacion_labitconf_gaucho_en_escenario.png` | Charla "Fijación" en LABITCONF, con Gaucho en el escenario (@ferrosof) | Historia de @slatv_ (captura de Mavi) |
 | `eventos/hackware_jurados_gaucho_devrel.png` | Afiche de jurados de la Hackware (Paisanos x SLA), con Gaucho como jurado DevRel | Historia de @gaucho del 31/08 (captura de Mavi) |
-| `merch/merch_oficial_gaucho_omnibot_tomy_1984.png` | Afiche del merch oficial de Gaucho (Omnibot TOMY 1984) por @thecualcaexperience | Historia de @gaucho del 11/09 (captura de Mavi) |
+| `arte/merch_oficial_gaucho_omnibot_tomy_1984.png` | Afiche del merch oficial de Gaucho (Omnibot TOMY 1984) por @thecualcaexperience | Historia de @gaucho del 11/09 (captura de Mavi) |
 | `juego/gaucho_adventures_juego_sega_gonzalo_martinese.png` | Portada del juego "Gaucho Adventures" estilo SEGA, de @gonzalo.martinese | Captura de Mavi |
 | `juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png` | Gaucho real al lado de una tele con la pantalla de inicio de "Gaucho Adventures" (PRESS START) | Imagen que pasó Mavi |
 | `render3d/gaucho_studio_render_3d_sombrero_pajilla_poncho_y_escopeta.png` | Render 3D de Gaucho en GauchoStudio: sombrero de paja, poncho marrón, escopeta roja, sobre fondo gris. Se ve el cartel "TOMY" del robot | Captura de la herramienta GauchoStudio (https://gaucho-studio.vercel.app), pasada por Mavi el 23/11/2026 |

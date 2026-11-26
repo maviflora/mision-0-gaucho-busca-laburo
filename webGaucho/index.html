@@ -199,21 +199,22 @@
 
     /* Carrusel de tarjetas */
     /* El padding vertical (compensado con margen negativo) deja lugar a la tarjeta elevada, que si no se recortaría */
-    .carrusel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-block: 18px; margin-block: -18px; scrollbar-width: none; }
+    .carrusel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-block: 22px; margin-block: -22px; scrollbar-width: none; }
     .carrusel::-webkit-scrollbar { display: none; }
-    .ficha { flex: 0 0 min(86%, 430px); scroll-snap-align: start; }
+    /* min-width: 0 evita que una tarjeta con pie largo se ensanche más que las otras en móvil */
+    .ficha { flex: 0 0 min(86%, 430px); min-width: 0; scroll-snap-align: start; }
     .ficha-marco {
-      aspect-ratio: 1 / 1.1;
+      aspect-ratio: 4 / 5;   /* misma proporción en todas las tarjetas */
       border-radius: var(--radio-panel);
       border: 1px solid var(--borde-suave);
       background: var(--superficie-carta);
-      padding: 22px;
+      padding: 8px;          /* borde mínimo: la foto llena el marco */
       display: grid; place-items: center;
       overflow: hidden;
     }
-    /* Las fotos son capturas verticales: se muestran enteras, como los mockups de la referencia */
-    .ficha-marco img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
-    .ficha-pie { display: flex; justify-content: space-between; gap: 12px; padding: 12px 4px 0; font-size: 16px; }
+    /* Las fotos ya están recortadas: llenan el marco (cover) para que todas las tarjetas queden homogéneas */
+    .ficha-marco img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radio-panel) - 8px); }
+    .ficha-pie { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 12px 4px 0; font-size: 16px; }
     .ficha-pie span { color: var(--texto-tenue); }
     .ficha-pie span:first-child { margin-left: 8px; }
     .ficha-nombre { font-weight: 500; }
@@ -244,7 +245,13 @@
     .linea-de-tiempo time { color: var(--texto-tenue); }
     .grilla-comunidad { display: grid; gap: 12px; }
     .pieza { margin: 0; }
-    .pieza .ficha-marco { aspect-ratio: 1 / 1; padding: 16px; }
+    .pieza .ficha-marco { position: relative; aspect-ratio: 1 / 1; padding: 16px; }
+    /* Encuadres: que no se corte el nombre de la primera persona del afiche ni la P de PAISANOS */
+    .ficha-marco img[src*="hackware"] { object-position: 15% 50%; }
+    .ficha-marco img[src*="cartel_neon"] { object-position: 30% 50%; }
+    /* La comunidad mezcla encuadres muy distintos: ahí las fotos se muestran enteras */
+    /* Absoluta y con las medidas del marco menos el relleno: si no, la fila de la grilla crece con la foto y se recorta */
+    .pieza .ficha-marco img { position: absolute; inset: 16px; width: calc(100% - 32px); height: calc(100% - 32px); object-fit: contain; border-radius: 10px; }
     /* Lugar reservado para una foto que todavía no existe */
     .foto-pendiente { border-style: dashed; background: transparent; text-align: center; color: var(--texto-tenue); }
     .foto-pendiente p { margin: 0; }
