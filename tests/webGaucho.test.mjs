@@ -283,3 +283,13 @@ test('las tarjetas quedan del mismo tamaño en móvil, el hover no se recorta y 
   assert.match(estilos, /\.ficha-marco img\[src\*="hackware"\]\s*{[^}]*object-position/, 'falta el encuadre del afiche de Hackware');
   assert.match(estilos, /\.ficha-marco img\[src\*="cartel_neon"\]\s*{[^}]*object-position/, 'falta el encuadre del cartel de neón');
 });
+
+test('las esquinas de las fotos son concéntricas con las de la tarjeta (radio de la tarjeta menos borde y relleno)', () => {
+  const estilos = html.match(/<style>([\s\S]*?)<\/style>/)[1];
+  const BORDE_DEL_MARCO = 1;
+  // Laburos: relleno de 8 px. Comunidad: relleno de 16 px.
+  const reglaDeLaburos = estilos.match(/\n\s*\.ficha-marco img\s*{([^}]*)}/)[1];
+  assert.ok(reglaDeLaburos.includes(`border-radius: calc(var(--radio-panel) - ${BORDE_DEL_MARCO + 8}px)`), 'laburos: radio = tarjeta - 9 px');
+  const reglaDeComunidad = estilos.match(/\.pieza \.ficha-marco img\s*{([^}]*)}/)[1];
+  assert.ok(reglaDeComunidad.includes(`border-radius: calc(var(--radio-panel) - ${BORDE_DEL_MARCO + 16}px)`), 'comunidad: radio = tarjeta - 17 px');
+});
