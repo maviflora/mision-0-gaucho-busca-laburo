@@ -31,3 +31,7 @@ Todas las pasó Mavi (capturas de historias de Instagram o fotos sueltas).
 | `juego/gaucho_adventures_juego_sega_gonzalo_martinese.png` | Portada del juego "Gaucho Adventures" estilo SEGA, de @gonzalo.martinese | Captura de Mavi |
 | `juego/gaucho_junto_a_tv_gaucho_adventures_press_start.png` | Gaucho real al lado de una tele con la pantalla de inicio de "Gaucho Adventures" (PRESS START) | Imagen que pasó Mavi |
 | `render3d/gaucho_studio_render_3d_sombrero_pajilla_poncho_y_escopeta.png` | Render 3D de Gaucho en GauchoStudio: sombrero de paja, poncho marrón, escopeta roja, sobre fondo gris. Se ve el cartel "TOMY" del robot | Captura de la herramienta GauchoStudio (https://gaucho-studio.vercel.app), pasada por Mavi el 23/11/2026 |
+
+## Recortes y upscale
+
+Las fotos que eran capturas de pantalla de celular ya están recortadas (sin barras de Instagram) como pidió Mavi. Tienen upscale x2 con EDSR: `arte/san_gaucho_estampita_patrono_del_codigo.jpeg` (además recortada y enderezada) y `fotos/gaucho_robot_cartel_neon_paisanos_bandera.png`. Detalles, medidas y cómo reproducirlo en `specs/recortesDeAssets.md`.
